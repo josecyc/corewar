@@ -1,0 +1,6 @@
+for i in champions/*.s; do
+	./asm "$i"
+done
+rm -rf champions/cor_files_us
+mkdir champions/cor_files_us
+mv champions/*.cor champions/cor_files_us

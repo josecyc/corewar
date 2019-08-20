@@ -1,0 +1,6 @@
+for i in *.s; do
+	./asm "$i"
+done
+rm -rf cor_files_them
+mkdir cor_files_them
+mv *.cor cor_files_them
