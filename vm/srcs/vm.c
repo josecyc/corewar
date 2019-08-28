@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 19:58:22 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/08/26 20:27:08 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/08/28 15:59:11 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,7 @@ int		main(int argc, char **argv)
 	init_arena_ob(&arena, argc, argv);
 	fplayer = NULL;
 	if (init_state(&arena, &fplayer) == -1)
-	{
-//	system("leaks corewar");
 		return (-1);
-	}
 	loop(fplayer, &arena);
 	system("leaks corewar");
 	return (0);
