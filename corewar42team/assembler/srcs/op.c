@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:43:01 by zaz               #+#    #+#             */
-/*   Updated: 2019/08/28 17:17:21 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/08/29 20:12:23 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 /*
 ** Instruction structure:
-** { MNEMONIC, num_args, type of args, op_code, num_cyles, Description, encoding_byte, carry} 
-** Carry flag: If the instruction has it, it changes the carry an is used with zjmp
+** { MNEMONIC, num_args, type of args, op_code, num_cyles, Description, encoding_byte,
+** carry} 
+** Carry flag: If the instruction has it, it changes the carry and is used with zjmp
 */
 
 t_op	op_tab[17] =
@@ -45,7 +46,10 @@ t_op	op_tab[17] =
 	{"aff", 1, {T_REG}, 16, 2, "aff", 1, 0}, //no
 	{0, 0, {0}, 0, 0, 0, 0, 0}
 };
-
+/*
+** Certain instructions which take indexes have their expressed direct values 
+** (%value) of size indirect: zjmp 09, ldi 10, sti 11, fork 12, lldi 14, lfork 15
+*/
 int		check_index(int op_code)
 {
 	static int		intarr[6] = {9, 10, 11, 12, 14, 15};

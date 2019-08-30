@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+         #
+#    By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/15 19:22:08 by jdiaz             #+#    #+#              #
-#    Updated: 2019/08/26 19:59:25 by viduvern         ###   ########.fr        #
+#    Updated: 2019/08/29 11:10:43 by jcruz-y-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,22 @@ VM_SRC	= srcs/errorh.c \
 		  ../assembler/srcs/op.c \
 		  srcs/graphics.c \
 		  srcs/windows.c \
+#		  srcs/operations/live.c \
+		  srcs/operations/ld.c \
+		  srcs/operations/st.c \
+		  srcs/operations/add.c \
+		  srcs/operations/sub.c \
+		  srcs/operations/and.c \
+		  srcs/operations/or.c \
+		  srcs/operations/xor.c \
+		  srcs/operations/zjmp.c \
+		  srcs/operations/ldi.c \
+		  srcs/operations/fork.c \
+		  srcs/operations/lld.c \
+		  srcs/operations/lldi.c \
+		  srcs/operations/lfork.c \
+		  srcs/operations/aff.c \
+
 		  
 VM_OBJ =  errorh.o \
 		  flags.o \
@@ -50,6 +66,21 @@ VM_OBJ =  errorh.o \
 		  op.o \
 		  graphics.o \
 		  windows.o \
+#		  srcs/operations/live.o \
+		  srcs/operations/ld.o \
+		  srcs/operations/st.o \
+		  srcs/operations/add.o \
+		  srcs/operations/sub.o \
+		  srcs/operations/and.o \
+		  srcs/operations/or.o \
+		  srcs/operations/xor.o \
+		  srcs/operations/zjmp.o \
+		  srcs/operations/ldi.o \
+		  srcs/operations/fork.o \
+		  srcs/operations/lld.o \
+		  srcs/operations/lldi.o \
+		  srcs/operations/lfork.o \
+		  srcs/operations/aff.o \
 
 all: $(NAME)
 

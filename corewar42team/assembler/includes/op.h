@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2019/08/28 17:17:27 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/08/29 18:48:48 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@
 # define OP_H
 
 #define IND_SIZE				2
-#define REG_SIZE				4
+#define REG_SIZE				4   // reg size for each reg slot i.e. int data type
 #define DIR_SIZE				REG_SIZE
 
 
-# define REG_CODE				1
-# define DIR_CODE				2
-# define IND_CODE				3
+# define REG_CODE				1  // binary: 01
+# define DIR_CODE				2  // binary: 10
+# define IND_CODE				3  // binary: 11
 
 
-#define MAX_ARGS_NUMBER			4
+#define MAX_ARGS_NUMBER			4 // Max args for what?
 #define MAX_PLAYERS				6
 #define MEM_SIZE				(4*1024)
 #define IDX_MOD					(MEM_SIZE / 8)
@@ -53,7 +53,8 @@
 
 /*
 ** T_REG identifier for register parameter takes only 1 byte
-** T_DIR identifier for direct parameter as many as specified in label_size command?
+** T_DIR identifier for direct parameter as many as specified in label_size
+** command? or 4 bytes depending on index
 ** T_IND identifier for indirect parameter 2 bytes
 ** T_LAB identifier for label parameter?
 */
@@ -63,7 +64,7 @@ typedef char	t_arg_type;
 #define T_REG					1
 #define T_DIR					2
 #define T_IND					4
-#define T_LAB					8
+#define T_LAB					8 // 
 
 /*
 **

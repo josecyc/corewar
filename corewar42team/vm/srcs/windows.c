@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   windows.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/02 18:43:50 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/02/02 19:11:43 by tholzheu         ###   ########.fr       */
+/*   Updated: 2019/08/29 11:06:06 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vm.h"
 
-static t_windows	*new_t_window(WINDOW *win)
+static t_wins	*new_t_window(WINDOW *win)
 {
-	t_windows	*new;
+	t_wins	*new;
 
-	new = (t_windows *)malloc(sizeof(t_windows));
+	new = (t_wins *)malloc(sizeof(t_wins));
 	if (!new)
 		return (NULL);
 	new->win = win;
@@ -24,10 +24,10 @@ static t_windows	*new_t_window(WINDOW *win)
 	return (new);
 }
 
-static void			add_window_back(t_windows **window_head, WINDOW *win)
+static void			add_window_back(t_wins **window_head, WINDOW *win)
 {
-	t_windows	*cur;
-	t_windows	*new;
+	t_wins	*cur;
+	t_wins	*new;
 
 	new = new_t_window(win);
 	if (*window_head == NULL)
@@ -63,7 +63,7 @@ static WINDOW 		*create_sidewin(int height, int width, int starty, int startx)
 	return (local_win);
 }
 
-void				init_windows(t_windows **window_head)
+void				init_windows(t_wins **window_head)
 {
 	WINDOW *my_win;
 

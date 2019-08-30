@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   graphics.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 14:49:47 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/02/04 09:06:07 by tholzheu         ###   ########.fr       */
+/*   Updated: 2019/08/29 11:09:29 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vm.h"
 
-static void		print_arena(char memory[MEM_SIZE], t_player *fplayer, t_windows *window_head)
+static void		print_arena(char memory[MEM_SIZE], t_player *fplayer, t_wins *window_head)
 {
 	int			x;
 	int			y;
@@ -56,7 +56,7 @@ static void		init_colors(void)
 
 void	 		graphics(t_arena *arena, t_player *fplayer)
 {	
-	t_windows	*window_head;
+	t_wins	*window_head;
 	/*int			y;*/
 	/*int			x;*/
 
