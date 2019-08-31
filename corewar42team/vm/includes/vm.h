@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:56:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/08/29 11:11:42 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/08/30 15:16:01 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct		s_inst
 	int 			counter;
 	int				op_code;
 	unsigned char	ebyte;
-	int				args[3];
+	int			args[3];
 }					t_inst;
 
 typedef struct		s_player
@@ -42,7 +42,7 @@ typedef struct		s_player
 	int				carry;
 	int				life_bl;
 	int				dead;
-	//int				xy[2];   //start location
+	//int			xy[2];   //start location
 	int				pc;
 	int				pnum;	
 	t_inst			*inst;

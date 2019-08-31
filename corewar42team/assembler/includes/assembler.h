@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 19:15:46 by jdiaz             #+#    #+#             */
-/*   Updated: 2019/01/30 15:52:56 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/08/30 15:25:56 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct			s_op
 {
 	char				*mnemonic;
 	int					num_args;
+	//int					arg_types[3];
 	int					arg_types[3];
 	int					op_code;
 	int					num_cycles;

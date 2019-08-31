@@ -6,62 +6,103 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 18:23:21 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/08/29 20:04:25 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/08/30 20:31:27 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vm.h"
 
 /*
-** Writes to the player arguments array which arguments are being used 
-** indicated by an int
+** Advance player (process) pc
+** taking into account circular memory
+*/
+static void		advance_proc_pc(t_player *player, int step)
+{
+	if ((player->pc + step) >= MEM_SIZE)
+		player->pc = player->pc + step - MEM_SIZE;
+	else
+		player->pc += step;	
+}
+
+/*
+** Reads bytes from memory and writes the value to the player arguments array  
 ** returns the amount of bytes copied
 */
 
-static int		memory_to_int(int *dest, t_arena *arena, int addr, int bytes) 
+static int		memory_to_int(int *dest, t_arena *arena, int src_addr, int bytes) 
 {
 	int		i;
 
 	i = 0;
 	while (i++ < bytes)
 	{
-		if (addr == 4096)
-			addr = 0;
+		if (src_addr == 4096)
+			src_addr = 0;
 		*dest <<= 8;
-		*dest = ((int)arena->memory[addr++] & 255) | *dest;
+		*dest = ((int)arena->memory[src_addr++] & 255) | *dest;
 	}
 	return (bytes);
+}
+
+/*
+** Validates each ebyte pair against the valid arg types for the particular
+** argument for the particular operation
+*/
+
+static int		valid_ebyte(char e_pair, char valid_arg_types)
+{
+	if ((e_pair & valid_arg_types) == e_pair)
+		return (1);
+	else
+		return (0);
+}
+
+/*
+** Validate the register num 
+*/
+static int		valid_reg(t_arena *arena, t_player *player)
+{
+	if (arena->memory[player->pc] <= REG_NUMBER && arena->memory[player->pc] > 0)
+		return (-1);
+	else
+		return (1);
 }
 
 /*
 ** Translates encoding byte to arguments and 
 ** check_index are the particular instructions that have a DIR_CODE but actually
 ** have only 2 bytes.
+** checks also the validity of the encoding byte pairs and returns whenever 
+** they're invalid
 */
 
-static int		ebyte_to_args(t_player *player, t_arena *arena, int tmp_pc)
+
+
+static int		ebyte_to_args(t_player *player, t_arena *arena, int *step)
 {
 	int		i;
 	int		j;
-	int		n;
-	char	tmp;
+	char	e_pair;
+	char	valid_arg_types;
 
 	i = 6;
-	n = op_tab[player->inst->op_code - 1].num_args;
 	j = 0;
-	while (j < n)
+	while (j < op_tab[player->inst->op_code - 1].num_args)
 	{
-		tmp = player->inst->ebyte >> i & 3;
-		if (tmp == REG_CODE)
-			player->inst->args[j++] = (int)arena->memory[tmp_pc++] & 255;
-		else if (tmp == IND_CODE)
-			tmp_pc += memory_to_int(&player->inst->args[j++], arena, tmp_pc, 2);
-		else if (tmp == DIR_CODE && check_index(player->inst->op_code) == 1)
-			tmp_pc += memory_to_int(&player->inst->args[j++], arena, tmp_pc, 2);
-		else if (tmp == DIR_CODE)
-			tmp_pc += memory_to_int(&player->inst->args[j++], arena, tmp_pc, 4);
+		e_pair = player->inst->ebyte >> i & 3;
+		valid_arg_types = op_tab[player->inst->op_code - 1].arg_types[j];
+		if (e_pair == REG_CODE && valid_ebyte(e_pair, valid_arg_types))
+			player->inst->args[j] = (int)arena->memory[player->pc],./r////r5 & 255;
+		else if (e_pair == IND_CODE && valid_ebyte(e_pair, valid_arg_types))
+			*step += memory_to_int(&player->inst->args[j], arena, (*step)++, 2);
+		else if (e_pair == DIR_CODE && check_index(player->inst->op_code) &&
+		valid_ebyte(e_pair, valid_arg_types))
+			*step += memory_to_int(&player->inst->args[j], arena, (*step)++, 2);
+		else if (e_pair == DIR_CODE && valid_ebyte(e_pair, valid_arg_types))
+			*step += memory_to_int(&player->inst->args[j], arena, (*step)++, 4);
 		else
 			return (-1);
+		j++;
 		i -= 2;
 	}
 	return (1);
@@ -72,8 +113,8 @@ static int		ebyte_to_args(t_player *player, t_arena *arena, int tmp_pc)
 ** instruction has valid op_code
 ** ebyte is correct
 ** Must increase player counter if instruction is correct
-** TO DO: Handle whenever circular memory and update player->pc
-** TO DO? : not checking if ebyte is correct but doesn't match op
+** TO DO: Handle whenever circular memory and update player->pc DONE
+** TO DO? : not checking if ebyte is correct but doesn't match op DONE
 ** invalid instruction?
 ** are arguments always valid? no there can be times when they have an incorrect opcode 
 ** incorrect encoding byte 
@@ -85,28 +126,31 @@ static int		ebyte_to_args(t_player *player, t_arena *arena, int tmp_pc)
 
 int				save_inst(t_player *player, t_arena *arena) 
 {
-	int		tmp_pc;
+	int		step;
 
-	tmp_pc = player->pc;
-	// why char? because we only want to read 1 byte?
-	player->inst->op_code = (char)arena->memory[tmp_pc];
-	if (player->inst->op_code < 1 || player->inst->op_code < 16)
+	step = 0;
+	player->inst->op_code = (char)arena->memory[player->pc]; // Char bc we only increase 1 byte?
+	if (player->inst->op_code < 1 || player->inst->op_code < 17)
 		return (-1);
-	tmp_pc++;
-	if (op_tab[player->inst->op_code - 1].encoding_byte == 1) //3 args?
+	step++;
+	if (op_tab[player->inst->op_code - 1].encoding_byte == 1) 
 	{
-		player->inst->ebyte = (char)arena->memory[tmp_pc++];
-		if (ebyte_to_args(player, arena, tmp_pc) == -1)
+		player->inst->ebyte = (char)arena->memory[player->pc + step++];
+		//step++;
+		if (ebyte_to_args(player, arena, &step) == -1) //ebyte when more than 1 arg -> must advance step
+		{
+			player->pc += step;
 			return (-1);
+		}
 	}
-	else //1 arg?
+	else //1 arg , check reg_num is valid
 	{
 		if (check_index(player->inst->op_code - 1) == 1)
-			tmp_pc += memory_to_int(&player->inst->args[0], arena, tmp_pc, 2);
-		else
-			tmp_pc += memory_to_int(&player->inst->args[0], arena, tmp_pc, 4);
+			step += memory_to_int(&player->inst->args[0], arena, step, 2);
+		else if (op_tab[player->inst->op_code - 1].arg_types[0] == REG_CODE && valid_reg(arena, player))
+			step += memory_to_int(&player->inst->args[0], arena, step, 4);
 	}
-	player->pc = player->pc + tmp_pc;
+	advance_proc_pc(player, step);
 	player->inst->counter = op_tab[player->inst->op_code - 1].num_cycles;
 	return (1);
 }
