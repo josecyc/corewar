@@ -6,7 +6,7 @@
 /*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 20:39:45 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/08/26 20:51:27 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/01 12:47:21 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ MAX_PLAYERS, arena->num_plys);
 	else if (errnum == 7)
 		ft_printf("%s", OPTIONS);
 	else if (errnum == 8)
-		ft_printf("Options -dump Must be followed by a number: ./corewar [-dump] [num cycles till dump] \n");
+		ft_printf("Options -dump Must be followed by a number: ./corewar [-dump] [num cycles till dump] [[champions1.cor]...] \n");
 	else if (errnum == 9)
 		ft_printf("player number '%d' previously assigned\n", fplayer->pnum);
 	else if (errnum == 10)
-		ft_printf(" Options -n Must be followed by a number: ./corewar [-n] [number] \n");
+		ft_printf(" Options -n Must be followed by a number : ./corewar [-n] [number] [champion.cor] \n");
 	return (-1);
 }
