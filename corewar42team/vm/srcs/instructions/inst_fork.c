@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 12:20:00 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/08/31 15:49:24 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/01 16:03:47 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,20 @@
 
 static void inst_fork(t_player *player, t_arena *arena)
 {
-    t_player *new_process;
+    int         i;    
+    t_player    *new_process;
     
+    i = 0;
     new_process = create_player();
     new_process->pnum = player->pnum;
-    new_process->reg[]
-
-}
+    while (i < REG_NUMBER)
+    {
+        new_process->reg[i] = player->reg[i];
+        i++;
+    }
+    advance_proc_pc(player, player->inst->args[0]);
+    if ((player->pc + player->inst->args[0]) >= MEM_SIZE)
+        new_process->pc = player->pc + player->inst->args[0] - MEM_SIZE;
+    else
+        new_process->pc = player->inst->args[0];
+}   
