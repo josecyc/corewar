@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 14:49:47 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/08/29 11:09:29 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/01 13:53:58 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ void	 		graphics(t_arena *arena, t_player *fplayer)
 	endwin();			/* End curses mode		  */
 }
 
-/*int				main(void)*/
-/*{*/
-	/*graphics();*/
-	/*return (0);*/
-/*}*/
+/*/int				main(void)
+{
+	graphics(arena, player);
+	return (0);
+}*/
