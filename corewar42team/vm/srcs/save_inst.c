@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 18:23:21 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/08/31 14:54:47 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/01 15:06:15 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,15 @@ static int		valid_ebyte(char e_pair, char valid_arg_types)
 }
 
 /*
-** Takes arena, player and step to check a register byter in the arena
+** Takes arena, player and step to check a register byte in the arena
 */
 static int		valid_reg(t_arena *arena, t_player *player, int step)
 {
 	if (arena->memory[player->pc] <= REG_NUMBER && arena->memory[player->pc] > 0)
+	{
+		player->pc += step;	
 		return (-1);
+	}
 	else
 		return (1);
 }
@@ -135,6 +138,8 @@ int				save_inst(t_player *player, t_arena *arena)
 	step++;
 	if (op_tab[player->inst->op_code - 1].encoding_byte == 1) 
 	{
+		if ((player->pc + step) > MEM_SIZE)
+			player->inst->ebyte = 
 		player->inst->ebyte = (char)arena->memory[player->pc + step++];
 		//step++;
 		if (ebyte_to_args(player, arena, &step) == -1) //ebyte when more than 1 arg -> must advance step
