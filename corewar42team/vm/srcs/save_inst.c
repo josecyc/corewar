@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 18:23:21 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/01 15:06:15 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/01 16:03:59 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@
 ** Advance player (process) pc
 ** taking into account circular memory
 */
-static void		advance_proc_pc(t_player *player, int step)
+int			advance_proc_pc(t_player *player, int step)
 {
 	if ((player->pc + step) >= MEM_SIZE)
-		player->pc = player->pc + step - MEM_SIZE;
+		player->pc = (player->pc + step) % MEM_SIZE;
+	else if ((player->pc + step) < 0)
+		player->pc = MEM_SIZE - ((player->pc - step) % MEM_SIZE);
 	else
 		player->pc += step;	
+	return (1);
 }
 
 /*
@@ -64,7 +67,7 @@ static int		valid_reg(t_arena *arena, t_player *player, int step)
 {
 	if (arena->memory[player->pc] <= REG_NUMBER && arena->memory[player->pc] > 0)
 	{
-		player->pc += step;	
+		advance_proc_pc(player, step);
 		return (-1);
 	}
 	else
@@ -94,8 +97,9 @@ static int		ebyte_to_args(t_player *player, t_arena *arena, int *step)
 	{
 		e_pair = player->inst->ebyte >> i & 3;
 		valid_arg_types = op_tab[player->inst->op_code - 1].arg_types[j];
-		if (e_pair == REG_CODE && valid_ebyte(e_pair, valid_arg_types) && valid_reg(arena, player, *step))
-			player->inst->args[j] = (int)arena->memory[player->pc + (*step)++] & 255;
+		if (e_pair == REG_CODE && valid_ebyte(e_pair, valid_arg_types) &&
+		valid_reg(arena, player, *step) && advance_proc_pc(player, 1))
+			player->inst->args[j] = (int)arena->memory[player->pc] & 255;
 		else if (e_pair == IND_CODE && valid_ebyte(e_pair, valid_arg_types))
 			*step += memory_to_int(&player->inst->args[j], arena, (*step)++, 2);
 		else if (e_pair == DIR_CODE && check_index(player->inst->op_code) &&
@@ -135,13 +139,11 @@ int				save_inst(t_player *player, t_arena *arena)
 	player->inst->op_code = (char)arena->memory[player->pc]; // Char bc we only read 1 byte?
 	if (player->inst->op_code < 1 || player->inst->op_code < 17)
 		return (-1);
-	step++;
+	advance_proc_pc(player, 1);
 	if (op_tab[player->inst->op_code - 1].encoding_byte == 1) 
 	{
-		if ((player->pc + step) > MEM_SIZE)
-			player->inst->ebyte = 
-		player->inst->ebyte = (char)arena->memory[player->pc + step++];
-		//step++;
+		player->inst->ebyte = (char)arena->memory[player->pc];
+		step++;
 		if (ebyte_to_args(player, arena, &step) == -1) //ebyte when more than 1 arg -> must advance step
 		{
 			advance_proc_pc(player, step);
