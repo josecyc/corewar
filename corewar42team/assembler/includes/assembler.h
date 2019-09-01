@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 19:15:46 by jdiaz             #+#    #+#             */
-/*   Updated: 2019/08/30 15:25:56 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/01 10:43:27 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct			s_op
 	int					num_cycles;
 	char				*description;
 	int					encoding_byte;   //boolean
-	int					carry;
+	int					indexed;
 }						t_op;
 
 extern t_op		op_tab[17];

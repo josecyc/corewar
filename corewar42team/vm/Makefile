@@ -6,7 +6,7 @@
 #    By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/15 19:22:08 by jdiaz             #+#    #+#              #
-#    Updated: 2019/08/29 11:10:43 by jcruz-y-         ###   ########.fr        #
+#    Updated: 2019/08/31 11:52:40 by jcruz-y-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,21 +35,21 @@ VM_SRC	= srcs/errorh.c \
 		  ../assembler/srcs/op.c \
 		  srcs/graphics.c \
 		  srcs/windows.c \
-#		  srcs/operations/live.c \
-		  srcs/operations/ld.c \
-		  srcs/operations/st.c \
-		  srcs/operations/add.c \
-		  srcs/operations/sub.c \
-		  srcs/operations/and.c \
-		  srcs/operations/or.c \
-		  srcs/operations/xor.c \
-		  srcs/operations/zjmp.c \
-		  srcs/operations/ldi.c \
-		  srcs/operations/fork.c \
-		  srcs/operations/lld.c \
-		  srcs/operations/lldi.c \
-		  srcs/operations/lfork.c \
-		  srcs/operations/aff.c \
+#		  srcs/instructions/inst_live.c \
+		  srcs/instructions/inst_ld.c \
+		  srcs/instructions/inst_st.c \
+		  srcs/instructions/inst_add.c \
+		  srcs/instructions/inst_sub.c \
+		  srcs/instructions/inst_and.c \
+		  srcs/instructions/inst_or.c \
+		  srcs/instructions/inst_xor.c \
+		  srcs/instructions/inst_zjmp.c \
+		  srcs/instructions/inst_ldi.c \
+		  srcs/instructions/inst_fork.c \
+		  srcs/instructions/inst_lld.c \
+		  srcs/instructions/inst_lldi.c \
+		  srcs/instructions/inst_lfork.c \
+		  srcs/instructions/inst_aff.c \
 
 		  
 VM_OBJ =  errorh.o \
@@ -66,21 +66,21 @@ VM_OBJ =  errorh.o \
 		  op.o \
 		  graphics.o \
 		  windows.o \
-#		  srcs/operations/live.o \
-		  srcs/operations/ld.o \
-		  srcs/operations/st.o \
-		  srcs/operations/add.o \
-		  srcs/operations/sub.o \
-		  srcs/operations/and.o \
-		  srcs/operations/or.o \
-		  srcs/operations/xor.o \
-		  srcs/operations/zjmp.o \
-		  srcs/operations/ldi.o \
-		  srcs/operations/fork.o \
-		  srcs/operations/lld.o \
-		  srcs/operations/lldi.o \
-		  srcs/operations/lfork.o \
-		  srcs/operations/aff.o \
+#		  srcs/instructions/inst_live.o \
+		  srcs/instructions/inst_ld.o \
+		  srcs/instructions/inst_st.o \
+		  srcs/instructions/inst_add.o \
+		  srcs/instructions/inst_sub.o \
+		  srcs/instructions/inst_and.o \
+		  srcs/instructions/inst_or.o \
+		  srcs/instructions/inst_xor.o \
+		  srcs/instructions/inst_zjmp.o \
+		  srcs/instructions/inst_ldi.o \
+		  srcs/instructions/inst_fork.o \
+		  srcs/instructions/inst_lld.o \
+		  srcs/instructions/inst_lldi.o \
+		  srcs/instructions/inst_lfork.o \
+		  srcs/instructions/inst_aff.o \
 
 all: $(NAME)
 

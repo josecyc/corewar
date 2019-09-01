@@ -6,37 +6,30 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 10:55:08 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/08/30 14:24:05 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/08/31 11:53:07 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vm.h"
 
-/*static void		init_inst_funct(t_inst_funct *inst_functions[16])
-{
-	inst_functions[0] = inst_live;*/
-	/*inst_functions[1] = &inst_ld;*/
-	/*inst_functions[2] = &inst_st;*/
-	/*inst_functions[3] = &inst_add;*/
-	/*inst_functions[4] = &inst_sub;*/
-	/*inst_functions[5] = &inst_and;*/
-	/*inst_functions[6] = &inst_or;*/
-	/*inst_functions[7] = &inst_xor;*/
-	/*inst_functions[8] = &inst_zjmp;*/
-	/*inst_functions[9] = &inst_ldi;*/
-	/*inst_functions[10] = &inst_sti;*/
-	/*inst_functions[11] = &inst_fork;*/
-	/*inst_functions[12] = &inst_lld;*/
-	/*inst_functions[13] = &inst_lldi;*/
-	/*inst_functions[14] = &inst_lfork;*/
-	/*inst_functions[15] = &inst_aff;
-}*/
-
 /* static inst_functions[16] =
 {
-	{inst_live},
-	{inst_ld},
-	{inst_st},
+	&inst_live,
+	&inst_ld,
+	&inst_st,
+	&inst_add,
+	&inst_sub,
+	&inst_and,
+	&inst_or,
+	&inst_xor,
+	&inst_zjmp,
+	&inst_ldi,
+	&inst_sti,
+	&inst_fork,
+	&inst_lld,
+	&inst_lldi,
+	&inst_lfork,
+	&inst_aff;
 
 } */
 
