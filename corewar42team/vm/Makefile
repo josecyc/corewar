@@ -6,7 +6,7 @@
 #    By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/15 19:22:08 by jdiaz             #+#    #+#              #
-#    Updated: 2019/08/31 11:52:40 by jcruz-y-         ###   ########.fr        #
+#    Updated: 2019/09/02 10:35:16 by jcruz-y-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ VM_SRC	= srcs/errorh.c \
 		  ../assembler/srcs/op.c \
 		  srcs/graphics.c \
 		  srcs/windows.c \
-#		  srcs/instructions/inst_live.c \
+		  srcs/instructions/inst_live.c \
 		  srcs/instructions/inst_ld.c \
 		  srcs/instructions/inst_st.c \
 		  srcs/instructions/inst_add.c \
@@ -66,7 +66,7 @@ VM_OBJ =  errorh.o \
 		  op.o \
 		  graphics.o \
 		  windows.o \
-#		  srcs/instructions/inst_live.o \
+		  srcs/instructions/inst_live.o \
 		  srcs/instructions/inst_ld.o \
 		  srcs/instructions/inst_st.o \
 		  srcs/instructions/inst_add.o \
