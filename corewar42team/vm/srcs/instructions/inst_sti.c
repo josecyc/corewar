@@ -6,7 +6,7 @@
 /*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:22:26 by viduvern          #+#    #+#             */
-/*   Updated: 2019/08/31 17:15:14 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/01 18:13:00 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ static void         inst_sti(t_player *cur, t_arena *arena)
     // move_pc = 1;     
     // arg_type = cur->inst->ebyte >> 4 & 3;
 
-    cur->carry = (cur->carry == 1) ? 0 : 1;
+//    cur->carry = (cur->carry == 1) ? 0 : 1;
     // move_pc += (arg_type == REG_CODE) ? 1 : 2;
     // arg_type = cur->inst->ebyte >> 2 & 3;
     // move_pc += (arg_type == REG_CODE) ? 1 : 2;
-    move_pc = (cur->inst->args[1] + cur->inst->args[2]) % IDX_MOD;
+    move_pc = ((cur->inst->args[1] + cur->inst->args[2]) % IDX_MOD);
     while (i >= 0)
     {
         arena->memory[move_pc] = (char)(byte >> i);

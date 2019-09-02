@@ -6,7 +6,7 @@
 /*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 16:16:48 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/01 12:43:28 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/08/26 20:45:45 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,6 @@ int		get_player(t_arena *arena, t_player **fplayer, int *i)
 	if (ft_strcmp(arena->argv[*i], "-n") == 0)
 	{
 		if (!arena->argv[*i + 1] || ft_isdigitstr(arena->argv[*i + 1]) == -1)
-			return (print_error(10, *fplayer, arena));		
-		else if(!arena->argv[*i + 2])
 			return (print_error(10, *fplayer, arena));
 		else
 		{
