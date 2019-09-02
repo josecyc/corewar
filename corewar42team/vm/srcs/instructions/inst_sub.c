@@ -6,13 +6,13 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 11:30:23 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/02 11:55:15 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/02 12:36:58 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/vm.h"
 
-static void		inst_sub(t_player *cur, t_arena *arena)
+void		inst_sub(t_player *cur, t_arena *arena)
 {
     (void) cur;
     (void) arena;

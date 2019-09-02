@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:56:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/02 11:53:46 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/02 12:36:30 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,28 +159,28 @@ int					assign_number(t_player *fplayer, int cur_pl_num);
 /*
 ** utils.c
 */
-int					advance_proc_pc(t_player *player, int step);
+int					advance_proc_pc(t_player **player, int step);
 
 /*
 ** instructions
 */
 
-static void				inst_live(t_player *fplayer, t_arena *arena);
-static void				inst_ld(t_player *fplayer, t_arena *arena);
-static void				inst_st(t_player *fplayer, t_arena *arena);
-static void				inst_add(t_player *fplayer, t_arena *arena);
-static void				inst_sub(t_player *fplayer, t_arena *arena);
-static void				inst_and(t_player *fplayer, t_arena *arena);
-static void				inst_or(t_player *fplayer, t_arena *arena);
-static void				inst_xor(t_player *fplayer, t_arena *arena);
-static void				inst_zjmp(t_player *fplayer, t_arena *arena);
-static void				inst_ldi(t_player *fplayer, t_arena *arena);
-static void				inst_sti(t_player *fplayer, t_arena *arena);
-static void				inst_fork(t_player *fplayer, t_arena *arena);
-static void				inst_lld(t_player *fplayer, t_arena *arena);
-static void				inst_lldi(t_player *fplayer, t_arena *arena);
-static void				inst_lfork(t_player *fplayer, t_arena *arena);
-static void				inst_aff(t_player *fplayer, t_arena *arena);
+void				inst_live(t_player *fplayer, t_arena *arena);
+void				inst_ld(t_player *fplayer, t_arena *arena);
+void				inst_st(t_player *fplayer, t_arena *arena);
+void				inst_add(t_player *fplayer, t_arena *arena);
+void				inst_sub(t_player *fplayer, t_arena *arena);
+void				inst_and(t_player *fplayer, t_arena *arena);
+void				inst_or(t_player *fplayer, t_arena *arena);
+void				inst_xor(t_player *fplayer, t_arena *arena);
+void				inst_zjmp(t_player *fplayer, t_arena *arena);
+void				inst_ldi(t_player *fplayer, t_arena *arena);
+void				inst_sti(t_player *fplayer, t_arena *arena);
+void				inst_fork(t_player *fplayer, t_arena *arena);
+void				inst_lld(t_player *fplayer, t_arena *arena);
+void				inst_lldi(t_player *fplayer, t_arena *arena);
+void				inst_lfork(t_player *fplayer, t_arena *arena);
+void				inst_aff(t_player *fplayer, t_arena *arena);
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:22:12 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/02 11:57:23 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/02 12:39:55 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 **	loads the value of ARG_1 in ARG_2
 */
 
-static void		inst_lld(t_player *cur, t_arena *arena)
+void		inst_lld(t_player *cur, t_arena *arena)
 {
 
     (void) cur;

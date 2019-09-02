@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inst_and.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 09:10:29 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/02 09:23:20 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/02 12:41:17 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 ** Usage : ARG_1(REG/IND/DIR) ARG2(REG/IND/DIR) ARG3(REG)
 ** Applies & (bitwise and) on ARG_1 & ARG_2 and stores the result in ARG_3 reg
 */
-static void		inst_and(t_player *cur, t_arena *arena)
+
+void		inst_and(t_player *cur, t_arena *arena)
 {
     int result;
 

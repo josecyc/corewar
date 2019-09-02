@@ -6,7 +6,7 @@
 #    By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/15 19:22:08 by jdiaz             #+#    #+#              #
-#    Updated: 2019/09/02 12:06:12 by jcruz-y-         ###   ########.fr        #
+#    Updated: 2019/09/02 14:40:09 by jcruz-y-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,9 @@ VM_SRC	= srcs/errorh.c \
 		  srcs/windows.c \
 		  srcs/instructions/inst_live.c \
 		  srcs/instructions/inst_ld.c \
+		  srcs/instructions/inst_ldi.c \
 		  srcs/instructions/inst_st.c \
+		  srcs/instructions/inst_sti.c \
 		  srcs/instructions/inst_add.c \
 		  srcs/instructions/inst_sub.c \
 		  srcs/instructions/inst_and.c \
@@ -81,6 +83,7 @@ VM_OBJ =  errorh.o \
 		  inst_lldi.o \
 		  inst_lfork.o \
 		  inst_aff.o \
+		  inst_sti.o \
 
 all: $(NAME)
 

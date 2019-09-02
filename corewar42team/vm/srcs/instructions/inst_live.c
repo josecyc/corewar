@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   life.c                                             :+:      :+:    :+:   */
+/*   inst_live.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 21:39:55 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/01 19:14:30 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/02 12:39:49 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 *  Stipulate the process "alive" 
 *  If the number stipulate in the argument it's not a Champion Number, Do nothing.
 */
-static void		inst_live(t_player *cur, t_arena *arena)
+
+void		inst_live(t_player *cur, t_arena *arena)
 {
     int number_player;
 
