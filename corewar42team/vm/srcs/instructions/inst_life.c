@@ -6,7 +6,7 @@
 /*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 21:39:55 by viduvern          #+#    #+#             */
-/*   Updated: 2019/08/31 01:51:13 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/01 19:14:30 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 *  Stipulate the process "alive" 
 *  If the number stipulate in the argument it's not a Champion Number, Do nothing.
 */
-static void		inst_life(t_player *cur, t_arena *arena)
+static void		inst_live(t_player *cur, t_arena *arena)
 {
     int number_player;
 
@@ -30,6 +30,7 @@ static void		inst_life(t_player *cur, t_arena *arena)
                 ft_printf("A process shows that Player [%d] named [%s] is alive", number_player, cur->name);
                 cur->life_bl = 1;
                 arena->live_counter++;
+                arena->last_alive = number_player;
                 return ;
             }
             cur = cur->next;
@@ -38,6 +39,7 @@ static void		inst_life(t_player *cur, t_arena *arena)
     {
         cur->life_bl = 1;
         arena->live_counter++;
+        arena->last_alive = number_player;
         ft_printf("A process shows that Player [%d] named [%s] is alive", number_player, cur->name);
     }
     else 
