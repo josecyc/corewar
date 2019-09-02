@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   players.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 16:16:48 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/08/26 20:45:45 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/02 11:13:09 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,9 @@ int		get_player(t_arena *arena, t_player **fplayer, int *i)
 	if (ft_strcmp(arena->argv[*i], "-n") == 0)
 	{
 		if (!arena->argv[*i + 1] || ft_isdigitstr(arena->argv[*i + 1]) == -1)
-			return (print_error(10, *fplayer, arena));
+			return (print_error(10, *fplayer, arena));	
+		else if(!arena->argv[*i + 2])
+			return (print_error(10, *fplayer, arena));	
 		else
 		{
 			cur_pl_num = ft_atoi(arena->argv[*i + 1]);
