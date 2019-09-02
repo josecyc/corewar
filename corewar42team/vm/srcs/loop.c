@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 10:55:08 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/02 14:38:14 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/02 15:15:24 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ void			loop(t_player *players, t_arena *arena)
 			if (live_checkup(players, arena) == -1)
 				return ;
 		//graphics(arena, players);
-		print_memory(arena->memory);
+		//print_memory(arena->memory);
 		print_info(arena, players);
-		sleep(10);
+		//sleep(10);
 		//break;
 		arena->cycle_counter++;
 		arena->total_cycles++;

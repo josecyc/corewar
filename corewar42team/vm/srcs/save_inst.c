@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 18:23:21 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/02 12:28:18 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/02 15:14:31 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,12 +101,12 @@ static int		ebyte_to_args(t_player *player, t_arena *arena, int *step)
 		valid_reg(arena, player, *step) && advance_proc_pc(&player, 1))
 			player->inst->args[j] = (int)arena->memory[player->pc] & 255;
 		else if (e_pair == IND_CODE && valid_ebyte(e_pair, valid_arg_types))
-			*step += memory_to_int(&player->inst->args[j], arena, (*step)++, 2);
+			*step += memory_to_int(&player->inst->args[j], arena, player->pc + *step, 2);
 		else if (e_pair == DIR_CODE && check_index(player->inst->op_code) &&
 		valid_ebyte(e_pair, valid_arg_types))
-			*step += memory_to_int(&player->inst->args[j], arena, (*step)++, 2);
+			*step += memory_to_int(&player->inst->args[j], arena, player->pc + *step, 2);
 		else if (e_pair == DIR_CODE && valid_ebyte(e_pair, valid_arg_types))
-			*step += memory_to_int(&player->inst->args[j], arena, (*step)++, 4);
+			*step += memory_to_int(&player->inst->args[j], arena, player->pc + *step, 4);
 		else
 			return (-1);
 		j++;
@@ -137,9 +137,10 @@ int				save_inst(t_player *player, t_arena *arena)
 
 	step = 0;
 	player->inst->op_code = (char)arena->memory[player->pc]; // Char bc we only read 1 byte?
-	if (player->inst->op_code < 1 || player->inst->op_code < 17)
+	if (player->inst->op_code < 1 || player->inst->op_code > 17)
 		return (-1);
 	advance_proc_pc(&player, 1);
+	printf("PROG COUNTER    = %d\n", player->pc);
 	if (op_tab[player->inst->op_code - 1].encoding_byte == 1) 
 	{
 		player->inst->ebyte = (char)arena->memory[player->pc];
@@ -163,5 +164,6 @@ int				save_inst(t_player *player, t_arena *arena)
 	}
 	advance_proc_pc(&player, step);
 	player->inst->counter = op_tab[player->inst->op_code - 1].num_cycles;
+	//print_info(arena, player);
 	return (1);
 }
