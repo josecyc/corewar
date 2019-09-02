@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inst_add.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 09:27:39 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/02 09:28:34 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/02 11:57:18 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@
 
 static void		inst_add(t_player *cur, t_arena *arena)
 {
-
+    (void) cur;
+    (void) arena;
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   st.c                                               :+:      :+:    :+:   */
+/*   inst_st.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:21:56 by viduvern          #+#    #+#             */
-/*   Updated: 2019/08/31 18:08:34 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/02 12:03:12 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void         inst_st(t_player *cur, t_arena *arena)
     arg_type = cur->inst->ebyte >> 4 & 3;
 
     if(arg_type == IND_CODE)
-        arena->memory[(cur->pc - 3) + (cur->inst->args[1] % IDX_MOD)] == (char)cur->inst->args[0];    /// - 3 (T_IND + T_REG)  
+        arena->memory[(cur->pc - 3) + (cur->inst->args[1] % IDX_MOD)] = (char)cur->inst->args[0];    /// - 3 (T_IND + T_REG)  
     else
-        arena->memory[(cur->pc - 2)] == (char)cur->inst->args[0];
+        arena->memory[(cur->pc - 2)] = (char)cur->inst->args[0];
 }

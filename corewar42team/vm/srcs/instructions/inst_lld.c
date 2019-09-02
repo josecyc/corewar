@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inst_lld.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:22:12 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/02 10:37:09 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/02 11:57:23 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,8 @@
 
 static void		inst_lld(t_player *cur, t_arena *arena)
 {
+
+    (void) cur;
+    (void) arena;
 
 }
