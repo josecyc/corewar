@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inst_xor.c                                         :+:      :+:    :+:   */
+/*   inst_lldi.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/02 10:37:45 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/02 10:38:43 by viduvern         ###   ########.fr       */
+/*   Created: 2019/08/31 01:22:18 by viduvern          #+#    #+#             */
+/*   Updated: 2019/09/02 10:38:08 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../includes/vm.h"
-
-
-static void		inst_xor(t_player *cur, t_arena *arena)
+/*
+**	opcode 0x0a, changes the carry
+**  usage : ldi ARG_1(RG/ID/D2), ARG_2(ID/D2), ARG_3(RG)
+**	reads REG_SIZE at the adress process->pc + (ARG_1 + ARG_2) and stores it
+**	in ARG_3
+*/
+static void		inst_lldi(t_player *cur, t_arena *arena)
 {
+
 
 }
