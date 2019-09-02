@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 10:55:08 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/08/31 11:53:07 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/01 19:13:35 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,14 @@ void			loop(t_player *players, t_arena *arena)
 		if (arena->cycle_counter == arena->cycle_to_die)
 			if (live_checkup(players, arena) == -1)
 				return ;
-		graphics(arena, players);
-		print_memory(arena->memory);
-		print_info(arena, players);
+	//	graphics(arena, players);
+	//	print_memory(arena->memory);
+	//	print_info(arena, players);
 	//	sleep(10);
 		break;
 		arena->cycle_counter++;
 		arena->total_cycles++;
+//		if(arena->cycle_counter == arena->flags->dump_cycles && arena->flags->dump_bl == 1)
+		//	print_memory(arena->memory);
 	}
 }

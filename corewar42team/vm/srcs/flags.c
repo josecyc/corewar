@@ -6,7 +6,7 @@
 /*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 20:32:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/08/26 20:05:04 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/01 18:33:26 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		get_flags(t_arena *arena, int *i, t_player **fplayer)
 {
-	if (ft_strcmp(arena->argv[*i], "-dump") == 0 && arena->argv[*i + 1] &&
+	if (ft_strcmp(arena->argv[*i], "-dump") == 0 &&
 	arena->flags->dump_bl == 0)
 	{
 		if (ft_isdigitstr(arena->argv[*i + 1]) != 1)

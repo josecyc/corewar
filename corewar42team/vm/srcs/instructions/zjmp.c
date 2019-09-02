@@ -6,7 +6,7 @@
 /*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 17:19:06 by viduvern          #+#    #+#             */
-/*   Updated: 2019/08/31 01:22:30 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/01 17:05:54 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,8 @@ static void     inst_zjmp(t_player *cur, t_arena *arena)
     if(cur->carry != 1)
         return ;
     else 
-        cur->pc = (cur->pc - 2) + ((short)cur->inst->args[0] % IDX_MOD);
+    {
+        advance_proc_pc(&cur, (- 2));
+        advance_proc_pc(&cur, cur->inst->args[0] % IDX_MOD);
+    }
 }

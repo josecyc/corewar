@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:56:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/01 15:38:50 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/01 18:09:29 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ int					assign_number(t_player *fplayer, int cur_pl_num);
 /*
 ** utils.c
 */
-int					advance_proc_pc(t_player *player, int step);
+int					advance_proc_pc(t_player **player, int step);
 
 /*
 ** instructions

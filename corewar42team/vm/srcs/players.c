@@ -6,7 +6,7 @@
 /*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 16:16:48 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/01 12:43:28 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/01 18:38:16 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ static int		check_openfile(t_arena *arena, t_player **fplayer, int i)
 	fd = 0;
 	if ((fd = open(arena->argv[i], O_RDONLY)) == -1) //// FAIL OPEN 
 	{
-		if(!ft_strequ("-dump", arena->argv[i]) && \
-		!ft_strequ("-i", arena->argv[i]) && !ft_strequ("-n", arena->argv[i]))
+		if(!ft_strequ("-dump", arena->argv[1]) && \
+		!ft_strequ("-i", arena->argv[1]) && !ft_strequ("-n", arena->argv[1]))
 		{
 			if(arena->argv[i][0] == '-')
 				return(print_error(2, *fplayer, arena)); /// FLAGS ERROR 
