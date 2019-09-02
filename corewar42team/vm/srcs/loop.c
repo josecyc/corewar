@@ -6,32 +6,32 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 10:55:08 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/08/31 11:53:07 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/01 19:12:48 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vm.h"
 
-/* static inst_functions[16] =
+static t_inst_funct	inst_functions[16] =
 {
 	&inst_live,
-	&inst_ld,
+//	&inst_ld,
 	&inst_st,
-	&inst_add,
-	&inst_sub,
+//	&inst_add,
+//	&inst_sub,
 	&inst_and,
-	&inst_or,
-	&inst_xor,
+//	&inst_or,
+//	&inst_xor,
 	&inst_zjmp,
-	&inst_ldi,
+//	&inst_ldi,
 	&inst_sti,
 	&inst_fork,
-	&inst_lld,
-	&inst_lldi,
+//	&inst_lld,
+//	&inst_lldi,
 	&inst_lfork,
-	&inst_aff;
+//	&inst_aff;
 
-} */
+}
 
 /*
 ** The loop consists of the main structure and mgmnt of the program,

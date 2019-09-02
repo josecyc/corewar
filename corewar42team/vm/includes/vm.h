@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:56:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/01 15:38:50 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/01 19:10:44 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ typedef struct		s_win
 	struct s_win	*next;
 }					t_wins;
 
-typedef	int			t_inst_funct(t_player *player, t_arena *arena);
+typedef	void		(*t_inst_funct)(t_player *player, t_arena *arena);
 
 /*
 * Initial State (part 1)

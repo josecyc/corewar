@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 09:04:14 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/01 18:32:02 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/01 18:35:52 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,15 @@
 // What happens when all processes are dead?
 // The game is over
 // What increases live counter?
-// Whenever a process executes live?
+// Whenever a process executes live
 // If game finishes and 2 players got their number called by live who wins?
-// Every cycles_to_die we increase the check up counter 
-// if the checkup counter is equal to MAX_CHECKS or the live instruction has been 
+// the one who executes it at the end
+// Every cycles_to_die we increase the arena->check up counter 
+// if the arena->checkup_counter is equal to MAX_CHECKS or the live instruction has been 
 // executed more than or equal to NBR_LIVE times we decrease the CYCLES_TO_DIE
 // Makes sense because the game must go faster if so many live instructions
 // are being executed
-//this is killing processes not players 
+// this is killing processes not players 
 
 static int	check_dead(t_player *fprocess, t_arena *arena)
 {

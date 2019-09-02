@@ -6,16 +6,18 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 12:20:00 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/01 16:37:34 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/01 19:03:23 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/vm.h"
 
 /*
-** Fork creates a new process which inherits the same REG_NUM registers and contents
-** of the parent and begins execution (pc address) where the first argument
-** indicates
+** op_code 12
+** arg1 DIR -> indexed
+** Fork creates a new process which inherits the same REG_NUM registers and
+** contents of the parent and begins execution (pc address) where the first
+** argument indicates
 */
 
 t_player    *add_process_last(t_player **any_process)
