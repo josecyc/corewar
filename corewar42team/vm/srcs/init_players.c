@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_players.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 20:16:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/08/26 20:45:50 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/01 16:37:47 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int		init_player(int fd, t_arena *arena, t_player **fplayer)
 	while (read(fd, &buf, 1) > 0) // READ AND PUT IN PROGRAM;
 	{
 		program[j++] = buf;
-		if(j == PROG_MAX_SIZE - 1)    /// CHECK IF PROG TO BIG
+		if(j == PROG_MAX_SIZE - 1)    /// CHECK IF PROG TO BIG in verify prog?
 			return (print_error(1, *fplayer, arena));
 	}
 	close(fd);
