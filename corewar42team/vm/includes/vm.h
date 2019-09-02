@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:56:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/01 19:10:44 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/02 11:10:39 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,22 +165,22 @@ int					advance_proc_pc(t_player *player, int step);
 ** instructions
 */
 
-/*void				live(t_player **fplayer, t_arena);
-void				ld(t_player **fplayer, t_arena);
-void				st(t_player **fplayer, t_arena);
-void				add(t_player **fplayer, t_arena);
-void				sub(t_player **fplayer, t_arena);
-void				and(t_player **fplayer, t_arena);
-void				or(t_player **fplayer, t_arena);
-void				xor(t_player **fplayer, t_arena);
-void				zjmp(t_player **fplayer, t_arena);
-void				ldi(t_player **fplayer, t_arena);
-void				sti(t_player **fplayer, t_arena);
-void				fork(t_player **fplayer, t_arena);
-void				lld(t_player **fplayer, t_arena);
-void				lldi(t_player **fplayer, t_arena);
-void				lfork(t_player **fplayer, t_arena);
-void				aff(t_player **fplayer, t_arena);
-*/
+void				inst_live(t_player **fplayer, t_arena);
+void				inst_ld(t_player **fplayer, t_arena);
+void				inst_st(t_player **fplayer, t_arena);
+void				inst_add(t_player **fplayer, t_arena);
+void				inst_sub(t_player **fplayer, t_arena);
+void				inst_and(t_player **fplayer, t_arena);
+void				inst_or(t_player **fplayer, t_arena);
+void				inst_xor(t_player **fplayer, t_arena);
+void				inst_zjmp(t_player **fplayer, t_arena);
+void				inst_ldi(t_player **fplayer, t_arena);
+void				inst_sti(t_player **fplayer, t_arena);
+void				inst_fork(t_player **fplayer, t_arena);
+void				inst_lld(t_player **fplayer, t_arena);
+void				inst_lldi(t_player **fplayer, t_arena);
+void				inst_lfork(t_player **fplayer, t_arena);
+void				inst_aff(t_player **fplayer, t_arena);
+
 
 #endif
