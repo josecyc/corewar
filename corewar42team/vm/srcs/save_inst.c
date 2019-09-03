@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 18:23:21 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/02 21:30:36 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/03 11:24:21 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,6 +194,7 @@ int				save_inst(t_player *player, t_arena *arena)
 			return (-1); // this only happens when invalid reg num must advance one step
 	}
 	advance_proc_pc(&player, step);
+	player->inst->size = op_tab[player->inst->op_code - 1].encoding_byte ? step + 2 : step + 1;
 	player->inst->counter = op_tab[player->inst->op_code - 1].num_cycles;
 	printf("- - - - - - - - - - - \n");
 	//print_info(arena, player);

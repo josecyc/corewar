@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 09:04:14 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/01 18:35:52 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/03 10:53:06 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,15 @@ static int	check_dead(t_player *fprocess, t_arena *arena)
 	//arena->num_processes -= count; ??
 	return (1);
 }
+
+/*
+** Every CYCLE_TO_DIE we perform a checkup, where:
+** 1) We increase the check_up counter by 1
+** *note: every time a process executes a live inst, we increase arena_live_counter by 1
+** 2) We check if the live inst has been executed NBR_LIVE times or more
+** 3) Check if we have performed this checkup at this amount of cycle_to_die 
+** MAX_CHECKS times
+*/
 
 int			live_checkup(t_player *fprocess, t_arena *arena)
 {

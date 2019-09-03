@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 20:16:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/01 16:37:47 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/03 11:27:10 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ t_inst		*init_instruction(void)
 	new_inst->counter = -1;
 	new_inst->op_code = -1;
 	new_inst->ebyte = 0;
+	new_inst->size = 0;
 	i = 0;
 	while (i < 3)
 		new_inst->args[i++] = 0;

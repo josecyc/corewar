@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 10:55:08 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/02 20:27:38 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/03 11:25:13 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	clean_process_inst(t_player *process)
 	process->inst->args[2] = 0;
 	process->inst->args[2] = 0;
 	process->inst->op_code = 0;
+	process->inst->size = 0;
 }
 
 /*

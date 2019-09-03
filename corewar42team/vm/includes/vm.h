@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:56:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/02 21:25:13 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/03 11:32:50 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct		s_inst
 	int				op_code;
 	unsigned char	ebyte;
 	int				args[3];
+	int				size;
 }					t_inst;
 
 typedef struct		s_player
@@ -158,9 +159,10 @@ int					verify_program(t_player **fplayer, char *prog, int size);
 int					assign_number(t_player *fplayer, int cur_pl_num);
 
 /*
-** utils.c
+** inst_utils.c
 */
 int					advance_proc_pc(t_player **player, int step);
+int					get_addres_value(t_player *player, int step);
 
 /*
 ** instructions
