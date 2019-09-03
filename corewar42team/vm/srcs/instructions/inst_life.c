@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   life.c                                             :+:      :+:    :+:   */
+/*   inst_life.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 21:39:55 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/01 19:14:30 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/02 16:33:36 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,16 @@
 *  Stipulate the process "alive" 
 *  If the number stipulate in the argument it's not a Champion Number, Do nothing.
 */
-static void		inst_live(t_player *cur, t_arena *arena)
+void		    inst_live(t_player *cur, t_arena *arena)
 {
     int number_player;
 
-    number_player = cur->inst->args[0];
-    if(number_player != cur->reg[0])
+    number_player = cur->inst->args[0]; // ---> REG[0] can change during the execution, we have to save the number in another way
+    if(number_player != cur->pnum)
+    {
         while(cur)
         {
-            if(number_player == cur->reg[0])
+            if(number_player == cur->pnum)
             {
                 ft_printf("A process shows that Player [%d] named [%s] is alive", number_player, cur->name);
                 cur->life_bl = 1;
@@ -34,8 +35,9 @@ static void		inst_live(t_player *cur, t_arena *arena)
                 return ;
             }
             cur = cur->next;
-        }        
-    else if(number_player == cur->reg[0])
+        }
+    }
+    else if(number_player == cur->pnum)
     {
         cur->life_bl = 1;
         arena->live_counter++;

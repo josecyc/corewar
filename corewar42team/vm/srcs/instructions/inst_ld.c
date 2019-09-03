@@ -6,7 +6,7 @@
 /*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 02:29:11 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/02 09:27:09 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/02 19:48:14 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 **	direct transfert from RAM to register
 */
 
-static void		inst_ld(t_player *cur, t_arena *arena)
+void		inst_ld(t_player *cur, t_arena *arena)
 {
-
-
+    cur->carry = (cur->inst->args[0] == 0)? 1 : 0;
+    cur->reg[cur->inst->args[1] - 1] = (cur->inst->args[0] % IDX_MOD);
 }
