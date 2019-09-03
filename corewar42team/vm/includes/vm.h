@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:56:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/02 12:36:30 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/02 21:25:13 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct		s_inst
 	int 			counter;
 	int				op_code;
 	unsigned char	ebyte;
-	int			args[3];
+	int				args[3];
 }					t_inst;
 
 typedef struct		s_player
@@ -143,6 +143,7 @@ void				loop(t_player *players, t_arena *arena);
 **	save_inst
 */
 int					save_inst(t_player *player, t_arena *arena);
+int					memory_to_int(int *dest, t_arena *arena, int src_addr, int bytes);
 
 /*
 ** windows.c

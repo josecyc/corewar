@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 18:23:21 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/02 20:15:21 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/02 21:30:36 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,32 @@ int			advance_proc_pc(t_player **player, int step)
 ** returns the amount of bytes copied
 */
 
-static int		memory_to_int(int *dest, t_arena *arena, int src_addr, int bytes) 
+int		memory_to_int(int *dest, t_arena *arena, int src_addr, int bytes) 
 {
 	int		i;
+	short	res;
 
 	i = 0;
-	while (i++ < bytes)
+	if (bytes == 2)
 	{
+		while (i++ < 2)
+		{
 		if (src_addr == MEM_SIZE)
 			src_addr = 0;
-		*dest <<= 8;
-		*dest = ((int)arena->memory[src_addr++] & 255) | *dest;
+		res <<= 8;
+		res = ((int)arena->memory[src_addr++] & 255) | res;
+		}
+		*dest = res;
+	}
+	else
+	{
+		while (i++ < bytes)
+		{
+			if (src_addr == MEM_SIZE)
+				src_addr = 0;
+			*dest <<= 8;
+			*dest = ((int)arena->memory[src_addr++] & 255) | *dest;
+		}
 	}
 	return (bytes);
 }
@@ -172,9 +187,9 @@ int				save_inst(t_player *player, t_arena *arena)
 		if (op_tab[player->inst->op_code - 1].arg_types[0] == REG_CODE && valid_reg(arena, player, step))
 			player->inst->args[0] = (int)arena->memory[player->pc + step++] & 255;
 		else if (op_tab[player->inst->op_code - 1].indexed || op_tab[player->inst->op_code - 1].arg_types[0] == IND_CODE)
-			step += memory_to_int(&player->inst->args[0], arena, step, 2);
+			step += memory_to_int(&player->inst->args[0], arena, player->pc + step, 2);
 		else if (op_tab[player->inst->op_code - 1].arg_types[0] == DIR_CODE)
-			step += memory_to_int(&player->inst->args[0], arena, step, 4);
+			step += memory_to_int(&player->inst->args[0], arena, player->pc + step, 4);
 		else
 			return (-1); // this only happens when invalid reg num must advance one step
 	}
