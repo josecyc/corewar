@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 02:29:11 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/02 12:39:05 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/02 20:16:55 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 
 void		inst_ld(t_player *cur, t_arena *arena)
 {
-    (void) cur;
-    (void) arena;
-
+    cur->carry = (cur->inst->args[0] == 0)? 1 : 0;
+    cur->reg[cur->inst->args[1] - 1] = (cur->inst->args[0] % IDX_MOD);
 }

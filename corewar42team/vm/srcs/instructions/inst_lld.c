@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:22:12 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/02 12:39:55 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/02 20:18:31 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 
 /* 
 **	opcode 0x0d, changes carry
-**  usage : lld ARG_1(ID/D4), ARG_2(RG)
+**  usage : lld ARG_1(ID/DI), ARG_2(RG)
 **	same as load but without % IDX_MOD
 **	loads the value of ARG_1 in ARG_2
 */
 
 void		inst_lld(t_player *cur, t_arena *arena)
 {
-
-    (void) cur;
-    (void) arena;
-
+    cur->carry = (cur->inst->args[0] == 0)? 1 : 0;
+    cur->reg[cur->inst->args[1] - 1] = (cur->inst->args[0]);
 }

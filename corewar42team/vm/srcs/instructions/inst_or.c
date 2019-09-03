@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 10:37:49 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/02 12:40:13 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/02 20:21:14 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 
 void		inst_or(t_player *cur, t_arena *arena)
 {
-    (void) cur;
-    (void) arena;
+    int result;
+
+    result = cur->inst->args[0] | cur->inst->args[1];
+    cur->carry = (result == 0 )? 1 : 0;
+    cur->reg[cur->inst->args[2] - 1] = result;
 }
