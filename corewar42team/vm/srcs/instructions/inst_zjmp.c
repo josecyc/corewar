@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 17:19:06 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/02 12:38:52 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/02 16:59:53 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 */
 void     inst_zjmp(t_player *cur, t_arena *arena)
 { 
-    if(cur->carry != 1)
+    if(cur->carry != 0)
         return ;
     else 
     {
-        advance_proc_pc(&cur, (- 2));
+        advance_proc_pc(&cur, (-2));
         advance_proc_pc(&cur, cur->inst->args[0] % IDX_MOD);
     }
 }

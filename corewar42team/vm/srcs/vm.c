@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 19:58:22 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/02 14:30:51 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/02 15:35:18 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ int		main(int argc, char **argv)
 	if (init_state(&arena, &fplayer) == -1)
 		return (-1);
 	loop(fplayer, &arena);
-	print_memory(arena.memory);
-	print_info(&arena, fplayer);
+	//print_memory(arena.memory);
+	//print_info(&arena, fplayer);
 	announce_winner(&arena, fplayer);
 	//system("leaks corewar");
 	return (0);

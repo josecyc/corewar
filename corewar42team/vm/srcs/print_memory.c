@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 11:01:01 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/02 15:04:36 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/02 17:26:46 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,15 @@ void	print_info(t_arena *arena, t_player *fplayer)
 	{
 		printf("\033[0;32m");
 		printf("- - - - - - - - -\n");
-		printf("\nPLAYER NAME   = %s\n", cur->name);
-		printf("DEAD            = %d\n", cur->dead);
+		printf("PLAYER NAME     = %s\n", cur->name);
+		printf("PROCESS DEAD    = %d\n", cur->dead);
 		printf("PLAYER NUM      = %d\n", cur->pnum);
 		printf("PROG COUNTER    = %d\n", cur->pc);
 		printf("LIVE            = %d\n", cur->life_bl);
 		printf("CARRY           = %d\n", cur->carry);
 		printf("- - - - - - - - -\n");
 		printf("REGISTERS\n");
+		printf("- - - - - - - - -\n");
 		printf("R  1     = %d\n", cur->reg[0]);
 		printf("R  2     = %d\n", cur->reg[1]);
 		printf("R  3     = %d\n", cur->reg[2]);
@@ -77,15 +78,17 @@ void	print_info(t_arena *arena, t_player *fplayer)
 		printf("R 16     = %d\n", cur->reg[15]);
 		printf("- - - - - - - - -\n");
 		printf("INSTRUCTION\n");
-		printf("INST CYCLE COUNTER  = %d\n", cur->inst->counter);
-		printf("INST OP_CODE        = %d\n", cur->inst->op_code);
-		printf("INST E_BYTE         = %x\n", cur->inst->ebyte);
-		printf("INST ARG 1 (hex)    = %x\n", cur->inst->args[0]);
-		printf("INST ARG 1          = %d\n", cur->inst->args[0]);
-		printf("INST ARG 2 (hex)    = %x\n", cur->inst->args[1]);
-		printf("INST ARG 2          = %d\n", cur->inst->args[1]);
-		printf("INST ARG 3 (hex)    = %x\n", cur->inst->args[2]);
-		printf("INST ARG 3          = %d\n", cur->inst->args[2]);
+		printf("- - - - - - - - -\n");
+		printf("MNEMONIC       = %s\n", op_tab[cur->inst->op_code - 1].mnemonic);
+		printf("CYCLE COUNTER  = %d\n", cur->inst->counter);
+		printf("OP_CODE        = %d\n", cur->inst->op_code);
+		printf("E_BYTE         = %x\n", cur->inst->ebyte);
+		printf("ARG 1 (hex)    = %x\n", cur->inst->args[0]);
+		printf("ARG 1          = %d\n", cur->inst->args[0]);
+		printf("ARG 2 (hex)    = %x\n", cur->inst->args[1]);
+		printf("ARG 2          = %d\n", cur->inst->args[1]);
+		printf("ARG 3 (hex)    = %x\n", cur->inst->args[2]);
+		printf("ARG 3          = %d\n", cur->inst->args[2]);
 		cur = cur->next;
 	}
 	printf("\033[0m");
