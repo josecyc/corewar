@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 10:55:08 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/03 11:25:13 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/03 14:51:44 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	clean_process_inst(t_player *process)
 	process->inst->args[2] = 0;
 	process->inst->op_code = 0;
 	process->inst->size = 0;
+	process->inst->counter = 0;
 }
 
 /*
@@ -49,6 +50,8 @@ void	clean_process_inst(t_player *process)
 ** cycles_to_die have been reduced to >= 0 via or when there are no more processes 
 ** The cycles decrease whenever a loop is executed.
 */
+
+// Need to make it go slower?
 
 void			loop(t_player *players, t_arena *arena)
 {
@@ -60,6 +63,7 @@ void			loop(t_player *players, t_arena *arena)
 		cur = players;
 		while (cur)
 		{
+			
 			if (cur->inst->counter == -1 && save_inst(cur, arena) == -1) // if it's -1 it means to save inst
 				cur->pc++;
 			if (cur->inst->counter == 0)
@@ -72,7 +76,7 @@ void			loop(t_player *players, t_arena *arena)
 				inst_functions[cur->inst->op_code - 1](cur, arena);
 				clean_process_inst(cur);
 			}
-			cur->inst->counter != -1 ? cur->inst->counter-- : cur->inst->counter;
+			cur->inst->counter != -1 ? cur->inst->counter-- : cur->inst->counter;			
 			cur = cur->next;
 		}
 		if (arena->cycle_counter == arena->cycle_to_die)
