@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inst_fork.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 12:20:00 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/02 14:58:22 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/02 20:14:28 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_player    *add_process_last(t_player **any_process)
     return (elem->next);
 }
 
-void    inst_fork(t_player *player, t_arena *arena)
+void     inst_fork(t_player *player, t_arena *arena)
 {
     int         i;    
     t_player    *new_process;
@@ -47,5 +47,5 @@ void    inst_fork(t_player *player, t_arena *arena)
         i++;
     }
     new_process->pc = player->pc;
-    advance_proc_pc(new_process, player->inst->args[0] % IDX_MOD);
+    advance_proc_pc(&new_process, player->inst->args[0] % IDX_MOD);
 } 

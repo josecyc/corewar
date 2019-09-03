@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inst_zjmp.c                                        :+:      :+:    :+:   */
+/*   inst_aff.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/30 17:19:06 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/02 20:21:57 by jcruz-y-         ###   ########.fr       */
+/*   Created: 2019/09/02 11:27:56 by jcruz-y-          #+#    #+#             */
+/*   Updated: 2019/09/02 12:36:47 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/vm.h"
 
-/*
-*  Op code Number 9;
-*  Jump If carry == 1 ; 
-*   Jump thru the next adress from the pc + the index stipulate in the argument % IDX_MOD;
-*   If carry == 0 --> Do nothing.
-*/
-void     inst_zjmp(t_player *cur, t_arena *arena)
-{ 
-    if(cur->carry != 0)
-        return ;
-    else 
-    {
-        advance_proc_pc(&cur, (-2));
-        advance_proc_pc(&cur, cur->inst->args[0] % IDX_MOD);
-    }
+void		inst_aff(t_player *cur, t_arena *arena)
+{
+    (void) cur;
+    (void) arena;
 }

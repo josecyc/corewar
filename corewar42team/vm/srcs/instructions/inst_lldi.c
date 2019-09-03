@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inst_lldi.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:22:18 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/02 19:30:53 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/02 20:20:08 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ void	    	inst_lldi(t_player *cur, t_arena *arena)
     e_pair = cur->inst->ebyte >> 6 & 3;
     if(e_pair == REG_CODE)
      {
-        advance_proc_pc(&cur, (cur->pc, (-4)));
+        advance_proc_pc(&cur, -4);
         tmp_pc = cur->pc;
      }
     else
       {
-        advance_proc_pc(&cur,(cur->pc, (-5)));
+        advance_proc_pc(&cur, -5);
         tmp_pc = cur->pc;
       }
     advance_proc_pc(&cur, (cur->pc + move_pc));

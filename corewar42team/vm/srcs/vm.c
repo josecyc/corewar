@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 19:58:22 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/01 17:18:27 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/02 15:35:18 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void		announce_winner(t_arena *arena, t_player *fplayer)
 {
 	// Check the corresponding player name to the last alive value
-	ft_printf("Player %d won", arena->last_alive);
+	ft_printf("\n\nPlayer %d won\n", arena->last_alive);
 }
 
 static int		get_args(t_arena *arena, t_player **fplayer)
@@ -57,7 +57,9 @@ int		main(int argc, char **argv)
 	if (init_state(&arena, &fplayer) == -1)
 		return (-1);
 	loop(fplayer, &arena);
+	//print_memory(arena.memory);
+	//print_info(&arena, fplayer);
 	announce_winner(&arena, fplayer);
-	system("leaks corewar");
+	//system("leaks corewar");
 	return (0);
 }

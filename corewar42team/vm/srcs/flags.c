@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 20:32:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/08/26 20:05:04 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/02 15:34:06 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ int		get_flags(t_arena *arena, int *i, t_player **fplayer)
 			return (print_error(8, *fplayer, arena));
 		arena->flags->dump_bl = 1;
 		arena->flags->dump_cycles = ft_atoi(arena->argv[*i + 1]);
-		*i = *i + 1;
+		*i = *i + 2;
 		ft_printf("dump after %d\n", arena->flags->dump_cycles);
+		ft_printf("index %d\n", *i);
 		return (1);
 	}
 	else if (ft_strcmp(arena->argv[*i], "-i") == 0)

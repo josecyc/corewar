@@ -6,7 +6,7 @@
 #    By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/15 19:22:08 by jdiaz             #+#    #+#              #
-#    Updated: 2019/09/02 10:35:16 by jcruz-y-         ###   ########.fr        #
+#    Updated: 2019/09/02 14:40:09 by jcruz-y-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,9 @@ VM_SRC	= srcs/errorh.c \
 		  srcs/windows.c \
 		  srcs/instructions/inst_live.c \
 		  srcs/instructions/inst_ld.c \
+		  srcs/instructions/inst_ldi.c \
 		  srcs/instructions/inst_st.c \
+		  srcs/instructions/inst_sti.c \
 		  srcs/instructions/inst_add.c \
 		  srcs/instructions/inst_sub.c \
 		  srcs/instructions/inst_and.c \
@@ -66,27 +68,29 @@ VM_OBJ =  errorh.o \
 		  op.o \
 		  graphics.o \
 		  windows.o \
-		  srcs/instructions/inst_live.o \
-		  srcs/instructions/inst_ld.o \
-		  srcs/instructions/inst_st.o \
-		  srcs/instructions/inst_add.o \
-		  srcs/instructions/inst_sub.o \
-		  srcs/instructions/inst_and.o \
-		  srcs/instructions/inst_or.o \
-		  srcs/instructions/inst_xor.o \
-		  srcs/instructions/inst_zjmp.o \
-		  srcs/instructions/inst_ldi.o \
-		  srcs/instructions/inst_fork.o \
-		  srcs/instructions/inst_lld.o \
-		  srcs/instructions/inst_lldi.o \
-		  srcs/instructions/inst_lfork.o \
-		  srcs/instructions/inst_aff.o \
+		  inst_live.o \
+		  inst_ld.o \
+		  inst_st.o \
+		  inst_add.o \
+		  inst_sub.o \
+		  inst_and.o \
+		  inst_or.o \
+		  inst_xor.o \
+		  inst_zjmp.o \
+		  inst_ldi.o \
+		  inst_fork.o \
+		  inst_lld.o \
+		  inst_lldi.o \
+		  inst_lfork.o \
+		  inst_aff.o \
+		  inst_sti.o \
 
 all: $(NAME)
 
 $(NAME):
 	@make -C $(LIBFT_PATH)
-	@gcc $(FLAGS) $(INC) -c $(VM_SRC) 
+	#@gcc $(FLAGS) $(INC) -c $(VM_SRC) 
+	@gcc $(INC) -c $(VM_SRC) 
 	@gcc -o $(NAME) $(VM_OBJ) $(LIBFT_PATH)libft.a -lncurses
 	@echo "Compiled corewar"
 
