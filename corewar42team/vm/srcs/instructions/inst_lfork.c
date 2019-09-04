@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inst_lfork.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 10:34:12 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/02 20:18:00 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/03 20:17:21 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,32 @@
 **	creates a new process to be placed at the adress (PC + (ARG_1)
 **	the new process inherits every state from the father
 */
-void		inst_lfork(t_player *cur, t_arena *arena)
+t_player    *add_process_last(t_player **any_process)
 {
-    (void) cur;
-    (void) arena;
-    return ;
+    t_player    *elem;
+
+    elem = *any_process;
+    while (elem->next)
+    {
+        elem = elem->next;
+    }
+    elem->next = create_player();
+    return (elem->next);
 }
+
+void     inst_lfork(t_player *player, t_arena *arena)
+{
+    int         i;    
+    t_player    *new_process;
+    
+    i = 0;
+    new_process = add_process_last(&player);
+    new_process->pnum = player->pnum;
+    while (i < REG_NUMBER)
+    {
+        new_process->reg[i] = player->reg[i];
+        i++;
+    }
+    new_process->pc = player->pc;
+    advance_proc_pc(&new_process, player->inst->args[0]);
+} 
