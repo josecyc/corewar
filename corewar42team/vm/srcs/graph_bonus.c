@@ -64,7 +64,7 @@ int graph_bonus(t_player *players, t_arena *arena)
 	//	win2 = create_newwin();
 	while ((ch = getch()) != 'q');
 	endwin();			/* End curses mode		  */
-	return 0;
+	exit(1);
 }
 
 WINDOW *create_newwin(int height, int width, int starty, int startx, char *title)
