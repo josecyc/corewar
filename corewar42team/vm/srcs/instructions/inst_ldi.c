@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inst_ldi.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 02:27:58 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/02 20:21:02 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/03 16:13:34 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,28 +20,23 @@
 
 void		inst_ldi(t_player *cur, t_arena *arena)
 {
-    int result_adress;
-    int move_pc;
-    char e_pair;
-    int tmp_pc;
-
-    result_adress = 0;
-    move_pc = ((cur->inst->args[0] + cur->inst->args[1]) % IDX_MOD);
-    e_pair = cur->inst->ebyte >> 6 & 3;
-    if (e_pair == REG_CODE)
+    unsigned char ebyte;
+    int adress;
+    int get_byte;
+    ebyte = cur->inst->ebyte >> 6 & 3;
+    if (ebyte == DIR_CODE|| ebyte == REG_CODE) 
     {
-        advance_proc_pc(&cur, -4);
-        tmp_pc = cur->pc;
+        adress = get_addres_value(cur, (-cur->inst->size) + ((cur->inst->args[0] + cur->inst->args[1]) % IDX_MOD));
+        memory_to_int(&get_byte, arena, adress, 4);
+        cur->reg[cur->inst->args[2] - 1] = get_byte;
     }
     else
     {
-        advance_proc_pc(&cur, -5);
-        tmp_pc = cur->pc;
+        adress = get_addres_value(cur, (-cur->inst->size) + (cur->inst->args[0] % IDX_MOD));
+        mem_to_int(&get_byte, arena, adress, 4);
+        adress = get_addres_value(cur, (-cur->inst->size) + ((get_byte + cur->inst->args[1]) % IDX_MOD));
+        get_byte = 0;
+        mem_to_int(&get_byte, arena, adress, 4);
+        cur->reg[cur->inst->args[2] - 1] = get_byte;      
     }
-    advance_proc_pc(&cur, (cur->pc + move_pc));
-    memory_to_int(&result_adress, arena, cur->pc, 4);
-    cur->reg[cur->inst->args[2] - 1] = result_adress;
-    cur->carry = (result_adress == 0) ? 1 : 0;
-    advance_proc_pc(&cur,(-(tmp_pc + move_pc)));
-    e_pair == REG_CODE ? advance_proc_pc(&cur, 4) : advance_proc_pc(&cur, 5);
 }
