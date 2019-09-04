@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 11:01:01 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/02 17:26:46 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/03 14:45:37 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	print_info(t_arena *arena, t_player *fplayer)
 		printf("INSTRUCTION\n");
 		printf("- - - - - - - - -\n");
 		printf("MNEMONIC       = %s\n", op_tab[cur->inst->op_code - 1].mnemonic);
-		printf("CYCLE COUNTER  = %d\n", cur->inst->counter);
+		printf("EXECUTE IN     = %d\n", cur->inst->counter);
 		printf("OP_CODE        = %d\n", cur->inst->op_code);
 		printf("E_BYTE         = %x\n", cur->inst->ebyte);
 		printf("ARG 1 (hex)    = %x\n", cur->inst->args[0]);

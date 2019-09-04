@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 09:04:14 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/03 10:53:06 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/03 14:59:37 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,19 @@ static int	check_dead(t_player *fprocess, t_arena *arena)
 ** MAX_CHECKS times
 */
 
+// might be that we are not updating checks correctly
+
 int			live_checkup(t_player *fprocess, t_arena *arena)
 {
-	arena->checkup_counter++;
-	arena->cycle_counter = 0;
 	if (check_dead(fprocess, arena) == -1)
 		return (-1);
 	if (arena->live_counter >= NBR_LIVE || arena->checkup_counter == MAX_CHECKS)
 	{
 		arena->cycle_to_die -= CYCLE_DELTA;
 		arena->checkup_counter = 0;
-		arena->live_counter = 0;
 	}
+	arena->checkup_counter++;
+	arena->cycle_counter = 0;
+	arena->live_counter = 0;
 	return (1);
 }

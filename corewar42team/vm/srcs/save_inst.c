@@ -195,7 +195,7 @@ int				save_inst(t_player *player, t_arena *arena)
 	}
 	advance_proc_pc(&player, step);
 	player->inst->size = op_tab[player->inst->op_code - 1].encoding_byte ? step + 2 : step + 1;
-	player->inst->counter = op_tab[player->inst->op_code - 1].num_cycles;
+	player->inst->counter = op_tab[player->inst->op_code - 1].num_cycles - 1;
 	printf("- - - - - - - - - - - \n");
 	//print_info(arena, player);
 	return (1);
