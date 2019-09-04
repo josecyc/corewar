@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:56:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/03 19:13:00 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/03 20:22:56 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,6 +180,7 @@ void				inst_zjmp(t_player *fplayer, t_arena *arena);
 void				inst_ldi(t_player *fplayer, t_arena *arena);
 void				inst_sti(t_player *fplayer, t_arena *arena);
 void				inst_fork(t_player *fplayer, t_arena *arena);
+t_player    		*add_process_last(t_player **any_process);
 void				inst_lld(t_player *fplayer, t_arena *arena);
 void				inst_lldi(t_player *fplayer, t_arena *arena);
 void				inst_lfork(t_player *fplayer, t_arena *arena);
