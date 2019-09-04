@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inst_sti.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:22:26 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/03 16:47:53 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/03 19:38:38 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ void         inst_sti(t_player *cur, t_arena *arena)
     reg_value = cur->reg[cur->inst->args[0] - 1];
     ebyte = cur->inst->ebyte >> 4 & 3;
     if (ebyte == DIR_CODE || ebyte == REG_CODE)
-        adress = get_addres_value(cur, -cur->inst->size + (cur->inst->args[1] + cur->inst->args[2]) % IDX_MOD);
+        adress = get_addr_value(cur, -cur->inst->size + (cur->inst->args[1] + cur->inst->args[2]) % IDX_MOD);
     else
     {
-        adress = get_addres_value(cur, (-cur->inst->size) + (cur->inst->args[1] % IDX_MOD));
+        adress = get_addr_value(cur, (-cur->inst->size) + (cur->inst->args[1] % IDX_MOD));
         memory_to_int(&indirect_cell, arena, adress, 4);
-        adress = get_addres_value(cur, -cur->inst->size + (indirect_cell + cur->inst->args[2]) % IDX_MOD);
+        adress = get_addr_value(cur, -cur->inst->size + (indirect_cell + cur->inst->args[2]) % IDX_MOD);
     }
     while (i >= 0)
     {
