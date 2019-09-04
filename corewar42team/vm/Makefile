@@ -6,7 +6,7 @@
 #    By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/15 19:22:08 by jdiaz             #+#    #+#              #
-#    Updated: 2019/09/03 21:09:18 by jcruz-y-         ###   ########.fr        #
+#    Updated: 2019/09/03 21:46:02 by viclucas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ FLAGS = -Wall -Werror -Wextra -g
 
 INC = -I ./includes/ -I ./$(LIBFT_PATH)
 
-VM_SRC	= srcs/errorh.c \
+VM_SRC	= srcs/graph_bonus.c \
+		  srcs/errorh.c \
 		  srcs/flags.c \
 		  srcs/init_objs.c \
 		  srcs/init_players.c \
@@ -60,7 +61,7 @@ all: $(NAME)
 
 $(NAME): $(VM_OBJ)
 	@make -C $(LIBFT_PATH)
-	@gcc $(FLAGS) $(VM_OBJ) -o $(NAME) -L $(LIBFT_PATH) -lft -lncurses
+	@gcc $(FLAGS) $(INC) $(VM_OBJ) -o $(NAME) -L $(LIBFT_PATH) -lft -lncurses
 	@echo "Compiled corewar"
 
 clean:

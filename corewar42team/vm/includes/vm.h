@@ -6,12 +6,15 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:56:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/03 20:22:56 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/03 22:07:19 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VM_H
 # define VM_H
+
+# define WINDOW_TO_SMALL 1
+# define NO_COLORS 2
 # include "../../assembler/includes/op.h"
 # include "../../assembler/includes/assembler.h"
 # include <ncurses.h>
@@ -150,6 +153,12 @@ int					memory_to_int(int *dest, t_arena *arena, int src_addr, int bytes);
 ** windows.c
 */
 void				init_windows(t_wins **window_head);
+
+/*
+ *
+** graphic_bonus.c
+*/
+int					graph_bonus(t_player *players, t_arena *arena);
 
 /*
 ** init_players.c
