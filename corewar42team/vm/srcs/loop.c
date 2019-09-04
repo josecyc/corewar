@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 10:55:08 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/03 19:31:05 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/03 20:17:28 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,11 @@ void			loop(t_player *players, t_arena *arena)
 		cur = players;
 		while (cur)
 		{
-			
-			if (cur->inst->counter == -1 && save_inst(cur, arena) == -1) // if it's -1 it means to save inst
+			if (cur->dead)
+				cur = cur->next;
+			if (cur && cur->inst->counter == -1 && save_inst(cur, arena) == -1) // if it's -1 it means to save inst
 				cur->pc++;
-			if (cur->inst->counter == 0)
+			if (cur && cur->inst->counter == 0)
 			{
 				printf("- - - - - - - - -\n");
 				printf("EXECUTING\n");
