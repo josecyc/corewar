@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 10:55:08 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/03 14:51:44 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/03 18:56:03 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ void	clean_process_inst(t_player *process)
 ** The cycles decrease whenever a loop is executed.
 */
 
-// Need to make it go slower?
-
 void			loop(t_player *players, t_arena *arena)
 {
 	t_player		*cur;
@@ -70,6 +68,7 @@ void			loop(t_player *players, t_arena *arena)
 			{
 				printf("- - - - - - - - -\n");
 				printf("EXECUTING\n");
+				printf("MNEMONIC       = %s\n", op_tab[cur->inst->op_code - 1].mnemonic);
 				printf("MNEMONIC       = %s\n", op_tab[cur->inst->op_code - 1].mnemonic);
 				printf("cur->inst->op_code = %d\n", cur->inst->op_code);
 				printf("- - - - - - - - -\n");

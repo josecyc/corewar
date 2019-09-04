@@ -6,7 +6,7 @@
 #    By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/15 19:22:08 by jdiaz             #+#    #+#              #
-#    Updated: 2019/09/03 18:56:48 by jcruz-y-         ###   ########.fr        #
+#    Updated: 2019/09/02 12:06:12 by jcruz-y-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ FLAGS = -Wall -Werror -Wextra -g
 
 INC = -I ./includes/ -I ./$(LIBFT_PATH)
 
-VM_SRC	= srcs/errorh.c \
+SRC	= srcs/errorh.c \
 		  srcs/flags.c \
 		  srcs/init_objs.c \
 		  srcs/init_players.c \
@@ -35,38 +35,36 @@ VM_SRC	= srcs/errorh.c \
 		  ../assembler/srcs/op.c \
 		  srcs/graphics.c \
 		  srcs/windows.c \
-		  srcs/inst_utils.c \
 		  srcs/instructions/inst_live.c \
 		  srcs/instructions/inst_ld.c \
-		  srcs/instructions/inst_ldi.c \
 		  srcs/instructions/inst_st.c \
-		  srcs/instructions/inst_sti.c \
 		  srcs/instructions/inst_add.c \
 		  srcs/instructions/inst_sub.c \
 		  srcs/instructions/inst_and.c \
 		  srcs/instructions/inst_or.c \
 		  srcs/instructions/inst_xor.c \
 		  srcs/instructions/inst_zjmp.c \
+		  srcs/instructions/inst_ldi.c \
 		  srcs/instructions/inst_fork.c \
 		  srcs/instructions/inst_lld.c \
 		  srcs/instructions/inst_lldi.c \
 		  srcs/instructions/inst_lfork.c \
 		  srcs/instructions/inst_aff.c \
 
-		  
-VM_OBJ =  $(VM_SRC:.c=.o)
+
+OBJ = $(SRC:.c=.o)		  
 
 all: $(NAME)
 
-$(NAME): $(VM_OBJ)
+$(NAME): $(OBJ)
 	@make -C $(LIBFT_PATH)
-	@gcc $(FLAGS) $(VM_OBJ) -o $(NAME) -L $(LIBFT_PATH) -lft -lncurses
+	@gcc $(FLAGS) $(OBJ) -o $(NAME) -L $(LIBFT_PATH) -lft -lncurses  
 	@echo "Compiled corewar"
 
 clean:
 	@make -C $(LIBFT_PATH)/ clean
-	@/bin/rm -rf $(VM_OBJ)
-	@echo "Cleaned $(VM_OBJ)"
+	@/bin/rm -rf $(OBJ)
+	@echo "Cleaned objects"
 
 fclean: clean
 	@make -C $(LIBFT_PATH)/ fclean
@@ -74,6 +72,12 @@ fclean: clean
 	@echo "Cleaned $(NAME)"
 
 re: fclean all
+
+noflags: fclean $(OBJ)
+	@make -C $(LIBFT_PATH)
+	@gcc $(OBJ) -o $(NAME) -L $(LIBFT_PATH) -lft -lncurses
+	@echo "Compiled corewar without using flags"
+
 
 de: fclean 
 	make -C $(LIBFT_PATH)
