@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 11:01:01 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/03 14:45:37 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/03 21:28:42 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	print_memory(char memory[MEM_SIZE])
 
 void	print_info(t_arena *arena, t_player *fplayer)
 {
-	t_player	*cur;
+	t_player	*cur = NULL;
 
 	printf("\nARENA INFO\n");
 	printf("NUM PLAYERS     = %d\n", arena->num_plys);
@@ -79,7 +79,8 @@ void	print_info(t_arena *arena, t_player *fplayer)
 		printf("- - - - - - - - -\n");
 		printf("INSTRUCTION\n");
 		printf("- - - - - - - - -\n");
-		printf("MNEMONIC       = %s\n", op_tab[cur->inst->op_code - 1].mnemonic);
+		if (cur->inst->op_code > 0 && cur->inst->op_code < 17) 
+			printf("MNEMONIC       = %s\n", op_tab[cur->inst->op_code - 1].mnemonic);
 		printf("EXECUTE IN     = %d\n", cur->inst->counter);
 		printf("OP_CODE        = %d\n", cur->inst->op_code);
 		printf("E_BYTE         = %x\n", cur->inst->ebyte);

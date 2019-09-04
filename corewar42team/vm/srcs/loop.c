@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 10:55:08 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/03 20:17:28 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/03 21:16:31 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void			loop(t_player *players, t_arena *arena)
 		cur = players;
 		while (cur)
 		{
-			if (cur->dead)
+			while (cur && cur->dead)
 				cur = cur->next;
 			if (cur && cur->inst->counter == -1 && save_inst(cur, arena) == -1) // if it's -1 it means to save inst
 				cur->pc++;
@@ -75,8 +75,11 @@ void			loop(t_player *players, t_arena *arena)
 				inst_functions[cur->inst->op_code - 1](cur, arena);
 				clean_process_inst(cur);
 			}
-			cur->inst->counter != -1 ? cur->inst->counter-- : cur->inst->counter;			
-			cur = cur->next;
+			if (cur)
+			{
+				cur->inst->counter != -1 ? cur->inst->counter-- : cur->inst->counter;
+				cur = cur->next;
+			}
 		}
 		if (arena->cycle_counter == arena->cycle_to_die)
 			if (live_checkup(players, arena) == -1)

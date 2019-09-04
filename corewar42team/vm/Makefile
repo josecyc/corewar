@@ -6,7 +6,7 @@
 #    By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/15 19:22:08 by jdiaz             #+#    #+#              #
-#    Updated: 2019/09/03 18:56:48 by jcruz-y-         ###   ########.fr        #
+#    Updated: 2019/09/03 21:09:18 by jcruz-y-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,9 +80,10 @@ de: fclean
 	gcc -g -o $(NAME) $(FLAGS) $(INC) $(VM_SRC) $(LIBFT_PATH)libft.a
 	echo "Compiled corewar"
 	
-se: fclean 
+se: fclean $(VM_OBJ) 
 	make -C $(LIBFT_PATH)
-	gcc -g -o $(NAME) -fsanitize=address $(FLAGS) $(INC) $(VM_SRC) $(LIBFT_PATH)libft.a
+	@gcc -fsanitize=address $(FLAGS) $(VM_OBJ) -o $(NAME) -L $(LIBFT_PATH) -lft -lncurses
+	#gcc -g -o $(NAME) -fsanitize=address $(FLAGS) $(INC) $(VM_OBJ) $(LIBFT_PATH)libft.a
 	echo "Compiled corewar"
 
 test: fclean
