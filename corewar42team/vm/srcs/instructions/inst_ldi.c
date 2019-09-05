@@ -6,7 +6,7 @@
 /*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 02:27:58 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/04 21:40:15 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/04 21:02:43 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void		inst_ldi(t_player *cur, t_arena *arena)
         }
         args++;
         i -= 2;
+
     }
     adress = get_addr_value(cur, (-cur->inst->size) + ((cur->inst->args[0] + cur->inst->args[1]) % IDX_MOD));
     memory_to_int(&get_byte, arena, adress, 4);
