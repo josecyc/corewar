@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 09:10:29 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/04 20:26:47 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/04 21:09:13 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void		inst_and(t_player *cur, t_arena *arena)
     {
         res[1] = cur->reg[cur->inst->args[1]];
     }
-    if ()
     result = cur->inst->args[0] & cur->inst->args[1];
     cur->carry = (result == 0 ) ? 1 : 0;
     cur->reg[cur->inst->args[2] - 1] = result;

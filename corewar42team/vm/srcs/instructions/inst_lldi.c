@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:22:18 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/03 19:13:00 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/04 21:03:29 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	    	inst_lldi(t_player *cur, t_arena *arena)
     else
     {
         adress = get_addr_value(cur, (-cur->inst->size) + (cur->inst->args[0] % IDX_MOD)); /// CHECK IF IDXMOD FOR IND
-        memory_to_int(&get_byte, arena, adress, 4);
+        memory_to_int(&get_byte, arena, adress, 2);
         adress = get_addr_value(cur, (-cur->inst->size) + (get_byte + cur->inst->args[1]));
         get_byte = 0;
         memory_to_int(&get_byte, arena, adress, 4);
