@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inst_ld.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 02:29:11 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/04 16:11:44 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/04 20:31:27 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,6 @@ void		inst_ld(t_player *cur, t_arena *arena)
     else
     {
         byte = (cur->inst->args[0] % IDX_MOD);
-        // adress = get_addr_value(cur, -2);
-        // arena->memory[adress] = (char)byte;
-        // adress = get_addr_value(cur, -3);
-        // arena->memory[adress] = (char)byte >> 4;
         adress = get_addr_value(cur, ((-cur->inst->size) + byte));
         memory_to_int(&get_byte, arena, adress, 4);
         cur->carry = (get_byte == 0) ? 1 : 0;
