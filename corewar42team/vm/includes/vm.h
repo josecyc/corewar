@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:56:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/03 20:22:56 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/04 12:00:56 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct		s_inst
 	unsigned char	ebyte;
 	int				args[3];
 	int				size;
+	int				fork;  //?
 }					t_inst;
 
 typedef struct		s_player

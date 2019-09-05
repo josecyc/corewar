@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 02:29:11 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/03 19:13:14 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/04 16:11:44 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,16 @@
  
 void		inst_ld(t_player *cur, t_arena *arena)
 {
-    int adress;
-    short byte;
-    int get_byte;
-
-    if(cur->inst->size == 7)
+    int     adress;
+    short   byte;
+    int     get_byte;
+    char    ebyte;
+  
+    ebyte = cur->inst->ebyte >> 6 & 3;
+    if(ebyte == DIR_CODE)
     {
         cur->carry = (cur->inst->args[0] == 0)? 1 : 0;
-        cur->reg[cur->inst->args[1] - 1] = (cur->inst->args[0] % IDX_MOD);
+        cur->reg[cur->inst->args[1] - 1] = (cur->inst->args[0]);
     }
     else
     {

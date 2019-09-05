@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 10:55:08 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/03 21:16:31 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/04 12:08:03 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,11 @@ void			loop(t_player *players, t_arena *arena)
 		cur = players;
 		while (cur)
 		{
-			while (cur && cur->dead)
+			while (cur && (cur->dead || cur->inst->fork))
+			{
+				cur->inst->fork = 0;
 				cur = cur->next;
+			}
 			if (cur && cur->inst->counter == -1 && save_inst(cur, arena) == -1) // if it's -1 it means to save inst
 				cur->pc++;
 			if (cur && cur->inst->counter == 0)
@@ -72,7 +75,11 @@ void			loop(t_player *players, t_arena *arena)
 				printf("MNEMONIC       = %s\n", op_tab[cur->inst->op_code - 1].mnemonic);
 				printf("cur->inst->op_code = %d\n", cur->inst->op_code);
 				printf("- - - - - - - - -\n");
-				inst_functions[cur->inst->op_code - 1](cur, arena);
+				if (cur->inst->ebyte != 255)
+				{
+					inst_functions[cur->inst->op_code - 1](cur, arena);
+					//cur->pc++;
+				}
 				clean_process_inst(cur);
 			}
 			if (cur)
