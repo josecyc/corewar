@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:56:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/04 12:00:56 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/05 10:51:35 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ typedef struct		s_player
 	int				carry;
 	int				life_bl;
 	int				dead;
+	int				write_bl;
+	int				write_addr;
 	//int			xy[2];   //start location
 	int				pc;
 	int				pnum;	

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inst_lldi.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:22:18 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/04 21:03:29 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/04 21:49:33 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void	    	inst_lldi(t_player *cur, t_arena *arena)
     i = 6;
     while(i != 2)
     {
-        if (cur->inst->ebyte >> i & 3 == DIR_CODE) 
+        if ((cur->inst->ebyte >> i & 3) == DIR_CODE) 
             ;
-        else if(cur->inst->ebyte >> i & 3 == REG_CODE)
+        else if((cur->inst->ebyte >> i & 3) == REG_CODE)
             cur->inst->args[args] = cur->reg[cur->inst->args[args] - 1];
         else
         {
