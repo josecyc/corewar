@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 02:27:58 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/04 21:50:50 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/05 14:41:34 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void		inst_ldi(t_player *cur, t_arena *arena)
     int i;
     int args;
 
+    get_byte = 0;
     args = 0;
     i = 6;
     while(i != 2)
@@ -36,7 +37,7 @@ void		inst_ldi(t_player *cur, t_arena *arena)
         else
         {
             adress = get_addr_value(cur, (-cur->inst->size) + (cur->inst->args[0] % IDX_MOD));
-            memory_to_int(&get_byte, arena, adress, 2);
+            memory_to_int(&get_byte, arena, adress, 4);
             cur->inst->args[args] = get_byte;
         }
         args++;

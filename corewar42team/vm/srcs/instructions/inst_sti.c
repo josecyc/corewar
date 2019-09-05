@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inst_sti.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:22:26 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/05 11:24:22 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/05 11:32:08 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ void         inst_sti(t_player *cur, t_arena *arena)
 
     args = 0;
     a = 4;
-    while(a != 0 && args++)
+    while(a != 0 && ++args)
     {
-        if(cur->inst->ebyte >> a & 3 == REG_CODE)
+        if ((cur->inst->ebyte >> a & 3) == REG_CODE)
             cur->inst->args[args] = cur->reg[cur->inst->args[args] - 1];
-        else if(cur->inst->ebyte >> a & 3 == IND_CODE)
+        else if ((cur->inst->ebyte >> a & 3) == IND_CODE)
         {
             cur->write_addr = get_addr_value(cur, (-cur->inst->size) + \
              (cur->inst->args[1] % IDX_MOD));

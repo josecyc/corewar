@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 10:55:08 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/05 11:03:32 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/05 13:04:46 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void			loop(t_player *players, t_arena *arena)
 				{
 					printf("- - - - - - - - -\n");
 					printf("EXECUTING\n");
-					printf("MNEMONIC       = %s\n", op_tab[cur->inst->op_code - 1].mnemonic);
+					printf("MNEMONIC           = %s\n", op_tab[cur->inst->op_code - 1].mnemonic);
 					printf("cur->inst->op_code = %d\n", cur->inst->op_code);
 					printf("- - - - - - - - -\n");
 					if (cur->inst->ebyte != 255)

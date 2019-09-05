@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 18:23:21 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/04 15:13:00 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/05 13:02:44 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static int		valid_reg(t_arena *arena, t_player *player, int step)
 	if (arena->memory[player->pc + step] > REG_NUMBER || arena->memory[player->pc + step] <= 0)
 	{
 		printf("arena->memory[player->pc + 1] %x\n", arena->memory[player->pc + 1]);
-		advance_proc_pc(&player, step);
+		//advance_proc_pc(&player, step);
 		printf("INVALID REG\n");
 		return (-1);
 	}

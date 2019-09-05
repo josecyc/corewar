@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inst_or.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 10:37:49 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/04 21:42:50 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/05 15:21:14 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void		inst_or(t_player *cur, t_arena *arena)
              memory_to_int(&cur->inst->args[args], arena, addrs, 4);
         }
         else if ((cur->inst->ebyte >> i & 3) == REG_CODE)
-          cur->inst->args[args] = cur->reg[cur->inst->args[0]];
+          cur->inst->args[args] = cur->reg[cur->inst->args[args] - 1];
         else 
             ;
         i -= 2;
