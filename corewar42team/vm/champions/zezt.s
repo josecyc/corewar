@@ -1,6 +1,8 @@
 .name "zezting"
 .comment "da zezt"
 
+live %199999
+
 add r1, r2, r3
 sub r1, r2, r3
 aff r8

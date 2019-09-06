@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 12:20:00 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/04 12:01:23 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/05 21:45:03 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ void     inst_fork(t_player *player, t_arena *arena)
     }
     new_process->pc = player->pc;
     advance_proc_pc(&new_process, -player->inst->size);
-    printf("player->pc %d\n", player->pc);
-    printf("new_process->pc %d\n", new_process->pc);
-    printf("SIZEEEE %d\n", player->inst->size);
-    printf("arg1  IDX %d\n", player->inst->args[0] % IDX_MOD);
+    //printf("player->pc %d\n", player->pc);
+    //printf("new_process->pc %d\n", new_process->pc);
+    //printf("SIZEEEE %d\n", player->inst->size);
+    //printf("arg1  IDX %d\n", player->inst->args[0] % IDX_MOD);
     advance_proc_pc(&new_process, player->inst->args[0] % IDX_MOD);
-    printf("new_process->pc %d\n", new_process->pc);
+    //printf("new_process->pc %d\n", new_process->pc);
 } 

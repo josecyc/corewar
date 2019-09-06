@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inst_st.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:21:56 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/05 11:25:55 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/05 21:38:42 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ void         inst_st(t_player *cur, t_arena *arena)
         cur->write_addr = adress;
         while (i >= 0)
         {
+            adress = (adress == MEM_SIZE) ? 0 : adress;     
             arena->memory[adress] = (char)(reg_value >> i);
             adress++;
             i -= 8;   
-            adress = (adress == MEM_SIZE) ? 0 : adress;     
         }
         cur->write_bl = 1;
     }
