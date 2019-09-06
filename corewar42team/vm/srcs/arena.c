@@ -6,7 +6,7 @@
 /*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 13:48:07 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/08/26 20:17:52 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/05 17:21:04 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int		init_arena(t_arena *arena, t_player **fplayer)
 	while (i > 0)
 	{
 		elem->pc = (i - 1) * (MEM_SIZE / arena->num_plys);
+		elem->pc_inter = elem->pc;	
 		ft_printf("%s starting at %d\n", elem->name, elem->pc);
 		write_player(arena, elem);
 		elem = elem->next;

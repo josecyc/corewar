@@ -6,18 +6,25 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:56:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/05 10:51:35 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/05 17:18:35 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VM_H
 # define VM_H
+
+# define HEIGHT_DOWN 10
+# define WINDOW_TOO_SMALL 1
+# define NO_COLORS 2
+# define TOO_MUCH_PPL 3
 # include "../../assembler/includes/op.h"
 # include "../../assembler/includes/assembler.h"
 # include <ncurses.h>
 # include "../../libft/libft.h"
 # define FLAGSC "id"
 # define OPTIONS "OPTIONS ARE:\n-i for interactive mode\n-n [desired_player_num] [player]\n-dump [cycles] for dumping arena memory\n"
+
+int					g_var;
 
 typedef struct		s_flag
 {
@@ -58,7 +65,28 @@ typedef struct		s_player
 	char			*prog;
 	struct s_player *next;
 	int				first;  //?
+	int				oldpc;
+	int				coord[4]; //1 -2 pc ; 3-4 oldpc
+	int				pc_inter;
 }					t_player;
+
+typedef struct		s_window
+{
+	WINDOW	*big;
+	WINDOW	*side;
+	WINDOW	*down;
+	int		w;
+}					t_window;
+
+typedef struct		s_data
+{
+	int				power;
+	int				x;
+	int				y;
+	int				addr;
+	int				tmp;
+	int 			color;
+}					t_data;
 
 typedef struct		s_arena
 {
@@ -77,6 +105,7 @@ typedef struct		s_arena
 
 typedef struct		s_win
 {
+	
 	WINDOW			*win;
 	struct s_win	*next;
 }					t_wins;
@@ -153,6 +182,17 @@ int					memory_to_int(int *dest, t_arena *arena, int src_addr, int bytes);
 ** windows.c
 */
 void				init_windows(t_wins **window_head);
+
+/*
+** Interactive folder
+*/
+void				interactive(t_player *players, t_arena *arena, t_window *win);
+void				write_mem(WINDOW *big_win, t_arena *arena, t_player *player);
+t_window			*init_interactive_mode(void);
+void				getch_theses(WINDOW *win);
+void				close_win(void);
+void				sides_infos();
+void				down_infos(WINDOW *win, t_arena *arena);
 
 /*
 ** init_players.c

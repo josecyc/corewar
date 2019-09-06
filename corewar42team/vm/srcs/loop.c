@@ -54,7 +54,9 @@ void	clean_process_inst(t_player *process)
 void			loop(t_player *players, t_arena *arena)
 {
 	t_player		*cur;
+	t_window		*win;
 
+	win = init_interactive_mode();
 	printf("cycle_to_die = %d\n", arena->cycle_to_die);
 	while (arena->cycle_to_die >= 0)
 	{
@@ -91,18 +93,12 @@ void			loop(t_player *players, t_arena *arena)
 		if (arena->cycle_counter == arena->cycle_to_die)
 			if (live_checkup(players, arena) == -1)
 				return ;
+		interactive(players, arena, win);
 		//graphics(arena, players); //Victor cleans the write bl and address here
 		if (arena->flags->dump_bl && arena->flags->dump_cycles == arena->total_cycles)
-		{
-			print_memory(arena->memory);
 			break;
-		}
-		//print_memory(arena->memory);
-		print_info(arena, players);
-		//if (!arena->flags->dump_bl)
-			//sleep(1);
-		//break;
 		arena->cycle_counter++;
 		arena->total_cycles++;
 	}
-}
+	close_win();
+ }

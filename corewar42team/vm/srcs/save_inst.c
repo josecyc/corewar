@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 18:23:21 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/05 13:02:44 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/04 10:26:23 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,6 @@ static int		ebyte_to_args(t_player *player, t_arena *arena, int *step)
 
 	i = 6;
 	j = 0;
-	printf("\n\nEBYTE TO ARGS\n");
 	while (j < op_tab[player->inst->op_code - 1].num_args)
 	{
 		e_pair = player->inst->ebyte >> i & 3;
@@ -127,18 +126,15 @@ static int		ebyte_to_args(t_player *player, t_arena *arena, int *step)
 		else if (e_pair == IND_CODE && valid_ebyte(e_pair, valid_arg_types))
 		{
 			*step += memory_to_int(&player->inst->args[j], arena, player->pc + *step, 2);
-			printf("IND STEP %d\n", *step);
 		}
 		else if (e_pair == DIR_CODE && op_tab[player->inst->op_code - 1].indexed &&
 				 valid_ebyte(e_pair, valid_arg_types))
 		{
 			*step += memory_to_int(&player->inst->args[j], arena, player->pc + *step, 2);
-			printf("INDEX STEP %d\n", *step);
 		}
 		else if (e_pair == DIR_CODE && valid_ebyte(e_pair, valid_arg_types))
 		{
 			*step += memory_to_int(&player->inst->args[j], arena, player->pc + *step, 4);
-			printf("DIR STEP %d\n", *step);
 		}
 		else
 			return (-1);
@@ -173,8 +169,6 @@ int				save_inst(t_player *player, t_arena *arena)
 	if (player->inst->op_code < 1 || player->inst->op_code > 17)
 		return (-1);
 	advance_proc_pc(&player, 1);  //advance to encoding byte or first arg
-	printf("- - - - - - - - - - - \n");
-	printf("SAAVING INSTRUCTION\n");
 	if (op_tab[player->inst->op_code - 1].encoding_byte == 1) 
 	{
 		player->inst->ebyte = (char)arena->memory[player->pc];
@@ -201,7 +195,6 @@ int				save_inst(t_player *player, t_arena *arena)
 	advance_proc_pc(&player, step);
 	player->inst->size = op_tab[player->inst->op_code - 1].encoding_byte ? step + 1 : step + 1;
 	player->inst->counter = op_tab[player->inst->op_code - 1].num_cycles - 1;
-	printf("- - - - - - - - - - - \n");
 	//print_info(arena, player);
 	return (1);
 }
