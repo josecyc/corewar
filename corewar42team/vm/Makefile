@@ -6,7 +6,7 @@
 #    By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/15 19:22:08 by jdiaz             #+#    #+#              #
-#    Updated: 2019/09/03 21:46:02 by viclucas         ###   ########.fr        #
+#    Updated: 2019/09/04 15:05:30 by viclucas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,10 @@ FLAGS = -Wall -Werror -Wextra -g
 
 INC = -I ./includes/ -I ./$(LIBFT_PATH)
 
-VM_SRC	= srcs/graph_bonus.c \
+VM_SRC	= srcs/interactive/interactive.c \
+		  srcs/interactive/write_mem.c \
+		  srcs/interactive/getch_theses.c \
+		  srcs/interactive/init_interactive_mode.c \
 		  srcs/errorh.c \
 		  srcs/flags.c \
 		  srcs/init_objs.c \
@@ -61,7 +64,7 @@ all: $(NAME)
 
 $(NAME): $(VM_OBJ)
 	@make -C $(LIBFT_PATH)
-	@gcc $(FLAGS) $(INC) $(VM_OBJ) -o $(NAME) -L $(LIBFT_PATH) -lft -lncurses
+	@gcc $(FLAGS) -fsanitize=address $(INC) $(VM_OBJ) -o $(NAME) -L $(LIBFT_PATH) -lft -lncurses
 	@echo "Compiled corewar"
 
 clean:

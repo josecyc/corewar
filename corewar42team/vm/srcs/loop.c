@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 10:55:08 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/03 22:07:27 by viclucas         ###   ########.fr       */
+/*   Updated: 2019/09/05 15:49:42 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ void	clean_process_inst(t_player *process)
 void			loop(t_player *players, t_arena *arena)
 {
 	t_player		*cur;
+	t_window		*win;
 
+	win = init_interactive_mode();
 	printf("cycle_to_die = %d\n", arena->cycle_to_die);
 	while (arena->cycle_to_die >= 0)
 	{
@@ -67,11 +69,6 @@ void			loop(t_player *players, t_arena *arena)
 				cur->pc++;
 			if (cur && cur->inst->counter == 0)
 			{
-				printf("- - - - - - - - -\n");
-				printf("EXECUTING\n");
-				printf("MNEMONIC       = %s\n", op_tab[cur->inst->op_code - 1].mnemonic);
-				printf("cur->inst->op_code = %d\n", cur->inst->op_code);
-				printf("- - - - - - - - -\n");
 				inst_functions[cur->inst->op_code - 1](cur, arena);
 				clean_process_inst(cur);
 			}
@@ -84,20 +81,11 @@ void			loop(t_player *players, t_arena *arena)
 		if (arena->cycle_counter == arena->cycle_to_die)
 			if (live_checkup(players, arena) == -1)
 				return ;
-		//if (arena->flags->interactive)
-		graph_bonus(players, arena);
-		//graphics(arena, players);
+		interactive(players, arena, win);
 		if (arena->flags->dump_bl && arena->flags->dump_cycles == arena->total_cycles)
-		{
-			print_memory(arena->memory);
 			break;
-		}
-		//print_memory(arena->memory);
-		print_info(arena, players);
-		//if (!arena->flags->dump_bl)
-			//sleep(1);
-		//break;
 		arena->cycle_counter++;
 		arena->total_cycles++;
 	}
-}
+	close_win();
+ }

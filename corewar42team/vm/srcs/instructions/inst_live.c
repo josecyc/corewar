@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 21:39:55 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/02 20:18:22 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/04 10:36:36 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void		    inst_live(t_player *cur, t_arena *arena)
         {
             if(number_player == cur->pnum)
             {
-                ft_printf("A process shows that Player [%d] named [%s] is alive", number_player, cur->name);
                 cur->life_bl = 1;
                 arena->live_counter++;
                 arena->last_alive = number_player;
@@ -42,7 +41,6 @@ void		    inst_live(t_player *cur, t_arena *arena)
         cur->life_bl = 1;
         arena->live_counter++;
         arena->last_alive = number_player;
-        ft_printf("A process shows that Player [%d] named [%s] is alive", number_player, cur->name);
     }
     else 
         return ;
