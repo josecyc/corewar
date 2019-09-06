@@ -69,7 +69,9 @@ int		memory_to_int(int *dest, t_arena *arena, int src_addr, int bytes)
 
 static int		valid_ebyte(char e_pair, char valid_arg_types)
 {
-	if ((e_pair & valid_arg_types) == e_pair)
+	printf("e_pair %d, valid_arg_types %d\n", e_pair, valid_arg_types);
+	printf("e_pair %d, e_pair & valid_arg_types %d\n", e_pair, valid_arg_types & e_pair);
+	if ((e_pair & valid_arg_types) == e_pair || (e_pair == 3 && ((valid_arg_types & 4) == 4)))
 		return (1);
 	else
 		return (0);
@@ -80,9 +82,11 @@ static int		valid_ebyte(char e_pair, char valid_arg_types)
 */
 static int		valid_reg(t_arena *arena, t_player *player, int step)
 {
-	if (arena->memory[player->pc + 1] > REG_NUMBER || arena->memory[player->pc + 1] <= 0)
+	if (arena->memory[player->pc + step] > REG_NUMBER || arena->memory[player->pc + step] <= 0)
 	{
-		advance_proc_pc(&player, step);
+		printf("arena->memory[player->pc + 1] %x\n", arena->memory[player->pc + 1]);
+		//advance_proc_pc(&player, step);
+		printf("INVALID REG\n");
 		return (-1);
 	}
 	else
@@ -112,6 +116,7 @@ static int		ebyte_to_args(t_player *player, t_arena *arena, int *step)
 	{
 		e_pair = player->inst->ebyte >> i & 3;
 		valid_arg_types = op_tab[player->inst->op_code - 1].arg_types[j];
+		printf("e_pair %d, valid_arg_types %d\n", e_pair, valid_arg_types);
 		if (e_pair == REG_CODE && valid_ebyte(e_pair, valid_arg_types) &&
 		valid_reg(arena, player, *step)) //&& advance_proc_pc(&player, 1))  if invalid reg advance pc
 		{
@@ -170,8 +175,10 @@ int				save_inst(t_player *player, t_arena *arena)
 		step++;   //pc + step is now at arg1
 		if (ebyte_to_args(player, arena, &step) == -1) //ebyte when more than 1 arg -> must advance step
 		{
-			advance_proc_pc(&player, step);
-			return (-1);
+			printf("ERROR ----> INVALID EBYTE\n");
+			player->inst->ebyte = 255;
+			//advance_proc_pc(&player, step);
+			//return (-1);
 		}
 	}
 	else //1 arg , check reg_num is valid
@@ -186,7 +193,7 @@ int				save_inst(t_player *player, t_arena *arena)
 			return (-1); // this only happens when invalid reg num must advance one step
 	}
 	advance_proc_pc(&player, step);
-	player->inst->size = op_tab[player->inst->op_code - 1].encoding_byte ? step + 1 : step;
+	player->inst->size = op_tab[player->inst->op_code - 1].encoding_byte ? step + 1 : step + 1;
 	player->inst->counter = op_tab[player->inst->op_code - 1].num_cycles - 1;
 	//print_info(arena, player);
 	return (1);

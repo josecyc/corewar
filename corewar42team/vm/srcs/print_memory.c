@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 11:01:01 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/03 21:28:42 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/05 13:01:40 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void	print_info(t_arena *arena, t_player *fplayer)
 		printf("ARG 2          = %d\n", cur->inst->args[1]);
 		printf("ARG 3 (hex)    = %x\n", cur->inst->args[2]);
 		printf("ARG 3          = %d\n", cur->inst->args[2]);
+		printf("SIZE           = %d\n", cur->inst->size);
 		cur = cur->next;
 	}
 	printf("\033[0m");

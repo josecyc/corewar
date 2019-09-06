@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inst_st.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:21:56 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/03 20:57:27 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/05 11:25:55 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void         inst_st(t_player *cur, t_arena *arena)
         cur->reg[cur->inst->args[1] - 1] = reg_value;      
     else
     {
-        adress = get_addr_value(cur, (-cur->inst->size) + (cur->inst->args[1] % IDX_MOD));
+        adress = get_addr_value(cur, (-cur->inst->size) + (cur->inst->args[1] % IDX_MOD)); 
+        cur->write_addr = adress;
         while (i >= 0)
         {
             arena->memory[adress] = (char)(reg_value >> i);
@@ -41,5 +42,6 @@ void         inst_st(t_player *cur, t_arena *arena)
             i -= 8;   
             adress = (adress == MEM_SIZE) ? 0 : adress;     
         }
+        cur->write_bl = 1;
     }
 }

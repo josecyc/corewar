@@ -22,21 +22,22 @@ void		    inst_live(t_player *cur, t_arena *arena)
     int number_player;
 
     number_player = cur->inst->args[0]; // ---> REG[0] can change during the execution, we have to save the number in another way
-    if(number_player != cur->pnum)
+    if (number_player != cur->pnum)
     {
-        while(cur)
+        while (cur)
         {
-            if(number_player == cur->pnum)
+            if (number_player == cur->pnum)
             {
                 cur->life_bl = 1;
                 arena->live_counter++;
                 arena->last_alive = number_player;
+                sleep (10);
                 return ;
             }
             cur = cur->next;
         }
     }
-    else if(number_player == cur->pnum)
+    else if (number_player == cur->pnum)
     {
         cur->life_bl = 1;
         arena->live_counter++;

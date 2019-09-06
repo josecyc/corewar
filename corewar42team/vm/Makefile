@@ -64,7 +64,7 @@ all: $(NAME)
 
 $(NAME): $(VM_OBJ)
 	@make -C $(LIBFT_PATH)
-	@gcc $(FLAGS) -fsanitize=address $(INC) $(VM_OBJ) -o $(NAME) -L $(LIBFT_PATH) -lft -lncurses
+	@gcc $(FLAGS) $(INC) $(VM_OBJ) -o $(NAME) -L $(LIBFT_PATH) -lft -lncurses
 	@echo "Compiled corewar"
 
 clean:
@@ -87,7 +87,6 @@ de: fclean
 se: fclean $(VM_OBJ) 
 	make -C $(LIBFT_PATH)
 	@gcc -fsanitize=address $(FLAGS) $(VM_OBJ) -o $(NAME) -L $(LIBFT_PATH) -lft -lncurses
-	#gcc -g -o $(NAME) -fsanitize=address $(FLAGS) $(INC) $(VM_OBJ) $(LIBFT_PATH)libft.a
 	echo "Compiled corewar"
 
 test: fclean

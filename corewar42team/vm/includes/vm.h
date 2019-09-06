@@ -42,6 +42,7 @@ typedef struct		s_inst
 	unsigned char	ebyte;
 	int				args[3];
 	int				size;
+	int				fork;  //?
 }					t_inst;
 
 typedef struct		s_player
@@ -50,6 +51,8 @@ typedef struct		s_player
 	int				carry;
 	int				life_bl;
 	int				dead;
+	int				write_bl;
+	int				write_addr;
 	//int			xy[2];   //start location
 	int				pc;
 	int				pnum;	

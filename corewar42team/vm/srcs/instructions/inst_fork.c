@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 12:20:00 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/02 20:14:28 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/04 12:01:23 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,19 @@ void     inst_fork(t_player *player, t_arena *arena)
     
     i = 0;
     new_process = add_process_last(&player);
-    new_process->pnum = player->pnum;
+    new_process->pnum = player->pnum; // when checking for winner, maybe delete line?
+    new_process->inst->fork = 1;
     while (i < REG_NUMBER)
     {
         new_process->reg[i] = player->reg[i];
         i++;
     }
     new_process->pc = player->pc;
+    advance_proc_pc(&new_process, -player->inst->size);
+    printf("player->pc %d\n", player->pc);
+    printf("new_process->pc %d\n", new_process->pc);
+    printf("SIZEEEE %d\n", player->inst->size);
+    printf("arg1  IDX %d\n", player->inst->args[0] % IDX_MOD);
     advance_proc_pc(&new_process, player->inst->args[0] % IDX_MOD);
+    printf("new_process->pc %d\n", new_process->pc);
 } 
