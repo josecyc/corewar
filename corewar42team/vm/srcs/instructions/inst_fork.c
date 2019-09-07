@@ -6,7 +6,7 @@
 /*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 12:20:00 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/07 12:07:13 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/07 15:53:22 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,32 +23,36 @@
 t_player        *add_process_last(t_player **any_process)
 {
     t_player *new;
+    t_player *tmp;
 
+    tmp = *any_process;
     int i  = 0 ;
     new = create_player();
-    new->inst->fork = 1;
-    new->pnum = (*any_process)->pnum;
-    new->carry = (*any_process)->carry;
-    new->life_bl = (*any_process)->life_bl;
-    new->name = (*any_process)->name;
+    tmp->inst->fork = 1;
+    new->pnum = tmp->pnum;
+    new->carry = tmp->carry;
+    new->life_bl = tmp->life_bl;
+    new->name = tmp->name;
+    new->pc_inter = tmp->pc_inter;
+    new->dead = new->dead;
     while (i < REG_NUMBER)
     {
-        new->reg[i] = (*any_process)->reg[i];
+        new->reg[i] = tmp->reg[i];
         i++;
     }
-    new->pc = (*any_process)->pc;
-    advance_proc_pc(&new, -(*any_process)->inst->size);
-    advance_proc_pc(&new, (*any_process)->inst->args[0] % IDX_MOD);
+    new->pc = tmp->pc;
+    advance_proc_pc(&new, (-tmp->inst->size) + (tmp->inst->args[0] % IDX_MOD));
 
-    while((*any_process)->prev)
+    while(tmp->prev)
     {
-        (*any_process) = (*any_process)->prev;
+        tmp = tmp->prev;
         i++;
     }
-    (*any_process)->prev = new;
-    new->next = (*any_process);
+    tmp->prev = new;
+    new->next = tmp;
+    //*any_process;
   //  (*any_process) = new;
-    return(new);
+    return(*any_process);
 }
 
 void     inst_fork(t_player *player, t_arena *arena)
