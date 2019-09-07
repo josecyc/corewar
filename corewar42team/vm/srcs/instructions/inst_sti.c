@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inst_sti.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:22:26 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/05 22:52:26 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/07 15:51:24 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ static  void        write_data(t_player *cur, t_arena *arena)
     while (i >= 0)
     {
         adress = (adress == MEM_SIZE) ? 0 : adress;     
-        arena->memory[adress++] = (char)(data >> i);
-        i -= 8;        
+        arena->memory[adress] = (unsigned char)(data >> i);
+        i -= 8;
+        adress++;        
     } 
 }
 
@@ -39,23 +40,24 @@ void         inst_sti(t_player *cur, t_arena *arena)
 {
     int a; 
     int args;
+    int result;
 
     args = 0;
     a = 4;
-    while(a != 0 && ++args)
+    while(a > 0 && ++args)
     {
         if ((cur->inst->ebyte >> a & 3) == REG_CODE)
             cur->inst->args[args] = cur->reg[cur->inst->args[args] - 1];
         else if ((cur->inst->ebyte >> a & 3) == IND_CODE)
         {
-            cur->write_addr = get_addr_value(cur, (-cur->inst->size) + \
-             (cur->inst->args[1] % IDX_MOD));
+            result = get_addr_value(cur, (-cur->inst->size));
+            cur->write_addr = get_addr_value(cur, cur->inst->args[args] % IDX_MOD + result);
             memory_to_int(&cur->inst->args[args], arena, cur->write_addr, 4);
         }
         a -= 2;
     }
-    cur->write_addr = get_addr_value(cur, (-cur->inst->size) + \
-     (cur->inst->args[1] + cur->inst->args[2] % IDX_MOD));
+    result = ((cur->inst->args[1] + cur->inst->args[2]) % IDX_MOD);
+    cur->write_addr = get_addr_value(cur, (-cur->inst->size) + result);
      cur->write_bl = 1;
     write_data(cur, arena);
 }

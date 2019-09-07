@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 10:55:08 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/05 22:57:25 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/07 14:23:03 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../includes/vm.h"
 
@@ -55,17 +56,18 @@ void			loop(t_player *players, t_arena *arena)
 {
 	t_player		*cur;
 	t_window		*win;
-
+	t_player		*tmp;
 	//win = init_interactive_mode();
 	//printf("cycle_to_die = %d\n", arena->cycle_to_die);
 	while (arena->cycle_to_die >= 0)
 	{
+		//while(players->prev != NULL)
+			//players = players->prev;
 		cur = players;
 		while (cur)
 		{
-			while (cur && (cur->dead || cur->inst->fork))
+			while (cur && (cur->dead))
 			{
-				cur->inst->fork = 0;
 				cur = cur->next;
 			}
 			if (cur)
@@ -82,6 +84,14 @@ void			loop(t_player *players, t_arena *arena)
 					if (cur->inst->ebyte != 255)
 					{
 						inst_functions[cur->inst->op_code - 1](cur, arena);
+						if(cur->inst->fork == 1)
+						{
+							tmp = cur;
+							while(tmp->prev)
+								tmp = tmp->prev;
+							players = tmp;
+							cur->inst->fork = 0;
+						}
 						//cur->pc++;
 					}
 					clean_process_inst(cur);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:56:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/05 17:18:35 by viclucas         ###   ########.fr       */
+/*   Updated: 2019/09/06 22:44:17 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,12 @@ typedef struct		s_player
 	char			*name;
 	char			*comment;
 	char			*prog;
-	struct s_player *next;
-	int				first;  //?
 	int				oldpc;
 	int				coord[4]; //1 -2 pc ; 3-4 oldpc
 	int				pc_inter;
+	struct s_player *next;
+	struct s_player *prev;
+
 }					t_player;
 
 typedef struct		s_window
@@ -88,8 +89,16 @@ typedef struct		s_data
 	int 			color;
 }					t_data;
 
+struct node
+{
+    int nb_item;
+    struct node *tail;;
+    struct node *head;
+};
+
 typedef struct		s_arena
 {
+	t_player		*first;
 	int				argc;
 	char			**argv;
 	char			memory[MEM_SIZE];
@@ -223,7 +232,7 @@ void				inst_zjmp(t_player *fplayer, t_arena *arena);
 void				inst_ldi(t_player *fplayer, t_arena *arena);
 void				inst_sti(t_player *fplayer, t_arena *arena);
 void				inst_fork(t_player *fplayer, t_arena *arena);
-t_player    		*add_process_last(t_player **any_process);
+t_player		   	*add_process_last(t_player **any_process);
 void				inst_lld(t_player *fplayer, t_arena *arena);
 void				inst_lldi(t_player *fplayer, t_arena *arena);
 void				inst_lfork(t_player *fplayer, t_arena *arena);
