@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inst_lfork.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 10:34:12 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/03 20:22:00 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/06 19:27:34 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,20 @@
 
 void     inst_lfork(t_player *player, t_arena *arena)
 {
-    int         i;    
-    t_player    *new_process;
+      int         i;    
+    t_player    *new;
     
     i = 0;
-    new_process = add_process_last(&player);
-    new_process->pnum = player->pnum;
+    new = create_player();
+    new->pnum = player->pnum; // when checking for winner, maybe delete line?
+    new->inst->fork = 1;
     while (i < REG_NUMBER)
     {
-        new_process->reg[i] = player->reg[i];
+        new->reg[i] = player->reg[i];
         i++;
     }
-    new_process->pc = player->pc;
-    advance_proc_pc(&new_process, player->inst->args[0]);
-} 
+    new->pc = player->pc;
+    advance_proc_pc(&new, -player->inst->size);
+    advance_proc_pc(&new, player->inst->args[0]);
+    add_process_last(&player, new);
+}  

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_players.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 20:16:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/04 12:05:53 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/06 23:21:13 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ t_player	*create_player(void)
 		player->reg[i++] = 0;
 	inst = init_instruction();
 	player->inst = inst;
+	// player->next = NULL;
+	// player->prev = NULL;	
 	return (player);
 }
 
@@ -79,6 +81,10 @@ t_player	*add_player(t_player **head)
 
 	elem = create_player();
 	elem->next = *head;
+	// if (!(tmp = *head))
+	// 	elem->prev = NULL;
+	if(elem->next != NULL)
+		elem->next->prev = elem;
 	return (elem);
 }
 
