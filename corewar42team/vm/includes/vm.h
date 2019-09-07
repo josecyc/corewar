@@ -6,13 +6,19 @@
 /*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:56:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/06 22:44:17 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/07 12:12:49 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VM_H
 # define VM_H
 
+
+# define MAX_X 192
+# define MAX_Y 64
+# define MIN_UNIT_SLEEP 100000
+# define MAX_UNIT_SLEEP 10000
+# define INIT_SPEED 1
 # define HEIGHT_DOWN 10
 # define WINDOW_TOO_SMALL 1
 # define NO_COLORS 2
@@ -24,7 +30,7 @@
 # define FLAGSC "id"
 # define OPTIONS "OPTIONS ARE:\n-i for interactive mode\n-n [desired_player_num] [player]\n-dump [cycles] for dumping arena memory\n"
 
-int					g_var;
+int					debug;
 
 typedef struct		s_flag
 {
@@ -76,7 +82,10 @@ typedef struct		s_window
 	WINDOW	*big;
 	WINDOW	*side;
 	WINDOW	*down;
-	int		w;
+	int		first_loop;
+	int		first_round;
+	int		sleep_cursor;
+	int		sleep;
 }					t_window;
 
 typedef struct		s_data
@@ -87,6 +96,8 @@ typedef struct		s_data
 	int				addr;
 	int				tmp;
 	int 			color;
+	int				color_bool;
+	int				empty_turn;
 }					t_data;
 
 struct node
@@ -111,13 +122,6 @@ typedef struct		s_arena
 	t_flag			*flags;
 	int				last_alive;
 }					t_arena;
-
-typedef struct		s_win
-{
-	
-	WINDOW			*win;
-	struct s_win	*next;
-}					t_wins;
 
 typedef	void		(*t_inst_funct)(t_player *player, t_arena *arena);
 
@@ -190,18 +194,27 @@ int					memory_to_int(int *dest, t_arena *arena, int src_addr, int bytes);
 /*
 ** windows.c
 */
-void				init_windows(t_wins **window_head);
+//void				init_windows(t_wins **window_head);
 
 /*
 ** Interactive folder
 */
-void				interactive(t_player *players, t_arena *arena, t_window *win);
-void				write_mem(WINDOW *big_win, t_arena *arena, t_player *player);
-t_window			*init_interactive_mode(void);
-void				getch_theses(WINDOW *win);
+t_window			*interactive(t_player *players, t_arena *arena, t_window *win);
+void				write_mem(t_window *win, t_arena *arena, t_player *player);
+t_window			*init_interactive_mode(t_window *win);
+void				getch_theses(t_window *win);
 void				close_win(void);
 void				sides_infos();
-void				down_infos(WINDOW *win, t_arena *arena);
+void				down_infos(t_window *win, t_arena *arena);
+int					init_print(t_window *win, t_player *p, t_arena *arena);
+void				getcha();
+void				print_color(t_window *win, t_player *p, t_arena *arena, t_data data);
+void				print_map(WINDOW *win, t_data *data, t_player *tmp, t_arena *arena);
+void				ft_update_coord(t_data *data, t_player *player, t_arena *arena, t_window *win);
+void				write_mem(t_window *win, t_arena *arena, t_player *p);
+void				delete_old(t_window *win, t_arena *arena, t_player *tmp);
+void				loop_first_round(t_window *win, t_arena *arena, t_player *p);
+void	side_informations(t_window *win, t_arena *arena, t_player *players);
 
 /*
 ** init_players.c
@@ -209,6 +222,7 @@ void				down_infos(WINDOW *win, t_arena *arena);
 int					init_player(int fd, t_arena *arena, t_player **fplayer);
 int					verify_program(t_player **fplayer, char *prog, int size);
 int					assign_number(t_player *fplayer, int cur_pl_num);
+void		color_pc(t_window *win, t_arena *arena, t_player *tmp);
 
 /*
 ** inst_utils.c

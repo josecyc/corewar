@@ -55,10 +55,11 @@ void	clean_process_inst(t_player *process)
 void			loop(t_player *players, t_arena *arena)
 {
 	t_player		*cur;
-	t_window		*win;
+
+	t_window		win;
+	//init_interactive_mode(&win);
 	t_player		*tmp;
-	//win = init_interactive_mode();
-	//printf("cycle_to_die = %d\n", arena->cycle_to_die);
+
 	while (arena->cycle_to_die >= 0)
 	{
 		//while(players->prev != NULL)
@@ -81,6 +82,7 @@ void			loop(t_player *players, t_arena *arena)
 					//printf("MNEMONIC           = %s\n", op_tab[cur->inst->op_code - 1].mnemonic);
 					//printf("cur->inst->op_code = %d\n", cur->inst->op_code);
 					//printf("- - - - - - - - -\n");
+
 					if (cur->inst->ebyte != 255)
 					{
 						inst_functions[cur->inst->op_code - 1](cur, arena);
@@ -100,6 +102,7 @@ void			loop(t_player *players, t_arena *arena)
 				cur = cur->next;
 			}
 		}
+		//interactive(players, arena, &win);
 		if (arena->cycle_counter == arena->cycle_to_die)
 			if (live_checkup(players, arena) == -1)
 				return ;
@@ -115,4 +118,4 @@ void			loop(t_player *players, t_arena *arena)
 		arena->total_cycles++;
 	}
 	//close_win();
- }
+

@@ -6,7 +6,7 @@
 /*   By: viclucas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 07:12:56 by viclucas          #+#    #+#             */
-/*   Updated: 2019/09/05 16:20:33 by viclucas         ###   ########.fr       */
+/*   Updated: 2019/09/07 07:30:17 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,8 @@ void			set_up_colors()
 	init_pair(7, COLOR_WHITE, COLOR_BLACK);
 }
 
-t_window		*init_interactive_mode(void)
+t_window		*init_interactive_mode(t_window *win)
 {
-	t_window	*win;
 	int x;
 
 	initscr();
@@ -65,15 +64,14 @@ t_window		*init_interactive_mode(void)
 		error_handler_inter(NO_COLORS);
 	else if (MAX_PLAYERS > 7)
 		error_handler_inter(TOO_MUCH_PPL);
-	if (!(win = malloc(sizeof(t_window*))))
-	{
-		close_win();
-		exit(1);
-	}
-	win->big = create_newwin(LINES * 0.84, COLS * 0.85, LINES - LINES + 1,
+	win->sleep = MIN_UNIT_SLEEP - (5 * MAX_UNIT_SLEEP);
+	win->sleep_cursor = 5;
+	win->first_round = 1;
+	win->first_loop = 1;
+	win->big = create_newwin(LINES * 0.84, COLS * 0.80, LINES - LINES + 1,
 			COLS - COLS + 1, "ARENA");
-	win->side = create_newwin(LINES * 0.84, COLS * 0.15, LINES - LINES + 1,
-			(COLS * 0.85) + 1, "DATA");
+	win->side = create_newwin(LINES * 0.84, COLS * 0.20, LINES - LINES + 1,
+			(COLS * 0.80) + 1, "DATA");
 	win->down = create_newwin(LINES * 0.16, COLS - 1, LINES - (LINES * 0.16 - 1),
 			(COLS - COLS + 1), "EXTRA_DATA");
 	return (win);

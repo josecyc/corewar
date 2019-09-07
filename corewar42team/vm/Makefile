@@ -21,7 +21,10 @@ FLAGS = -Wall -Werror -Wextra -fsanitize=address -g
 
 INC = -I ./includes/ -I ./$(LIBFT_PATH)
 
-VM_SRC	= srcs/interactive/interactive.c \
+VM_SRC	= srcs/interactive/getcha.c \
+		  srcs/interactive/side_informations.c \
+		  srcs/interactive/colors_are_fun.c	\
+		  srcs/interactive/interactive.c \
 		  srcs/interactive/write_mem.c \
 		  srcs/interactive/getch_theses.c \
 		  srcs/interactive/init_interactive_mode.c \
@@ -37,8 +40,6 @@ VM_SRC	= srcs/interactive/interactive.c \
 		  srcs/loop.c \
 		  srcs/save_inst.c \
 		  ../assembler/srcs/op.c \
-		  srcs/graphics.c \
-		  srcs/windows.c \
 		  srcs/inst_utils.c \
 		  srcs/instructions/inst_live.c \
 		  srcs/instructions/inst_ld.c \
@@ -64,7 +65,7 @@ all: $(NAME)
 
 $(NAME): $(VM_OBJ)
 	@make -C $(LIBFT_PATH)
-	@gcc $(FLAGS) $(INC) $(VM_OBJ) -o $(NAME) -L $(LIBFT_PATH) -lft -lncurses
+	@gcc $(INC) $(VM_OBJ) -o $(NAME) -L $(LIBFT_PATH) -lft -lncurses $(FLAGS) 
 	@echo "Compiled corewar"
 
 clean:
