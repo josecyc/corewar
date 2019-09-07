@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 18:23:21 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/04 10:26:23 by viclucas         ###   ########.fr       */
+/*   Updated: 2019/09/06 16:38:25 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ int		memory_to_int(int *dest, t_arena *arena, int src_addr, int bytes)
 
 static int		valid_ebyte(char e_pair, char valid_arg_types)
 {
-	printf("e_pair %d, valid_arg_types %d\n", e_pair, valid_arg_types);
-	printf("e_pair %d, e_pair & valid_arg_types %d\n", e_pair, valid_arg_types & e_pair);
+//	printf("e_pair %d, valid_arg_types %d\n", e_pair, valid_arg_types);
+//	printf("e_pair %d, e_pair & valid_arg_types %d\n", e_pair, valid_arg_types & e_pair);
 	if ((e_pair & valid_arg_types) == e_pair || (e_pair == 3 && ((valid_arg_types & 4) == 4)))
 		return (1);
 	else
@@ -116,7 +116,7 @@ static int		ebyte_to_args(t_player *player, t_arena *arena, int *step)
 	{
 		e_pair = player->inst->ebyte >> i & 3;
 		valid_arg_types = op_tab[player->inst->op_code - 1].arg_types[j];
-		printf("e_pair %d, valid_arg_types %d\n", e_pair, valid_arg_types);
+//		printf("e_pair %d, valid_arg_types %d\n", e_pair, valid_arg_types);
 		if (e_pair == REG_CODE && valid_ebyte(e_pair, valid_arg_types) &&
 		valid_reg(arena, player, *step)) //&& advance_proc_pc(&player, 1))  if invalid reg advance pc
 		{

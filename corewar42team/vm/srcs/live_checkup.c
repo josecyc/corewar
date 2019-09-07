@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 09:04:14 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/04 14:26:12 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/06 09:28:11 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ static int	check_dead(t_player *fprocess, t_arena *arena)
 		cur = cur->next;
 		proc_count++;
 	}
-	printf(" - - - - - - - - -\n");
-	printf("DEEAAADDDD %d\n", dead_count);
-	printf("PROC COUNT %d\n", proc_count);
+	//printf(" - - - - - - - - -\n");
+	//printf("DEEAAADDDD %d\n", dead_count);
+	//printf("PROC COUNT %d\n", proc_count);
 	//return (-1);
 	if (dead_count == proc_count)
 		return (-1);
