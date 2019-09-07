@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 16:16:48 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/02 11:13:09 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/05 21:53:36 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ static int		check_size(t_player **fplayer, char *prog)
 	addr = COMMENT_LENGTH + PROG_NAME_LENGTH + 16;
 	actual_size = (*fplayer)->total_size - PROG_NAME_LENGTH - 16 -
 	COMMENT_LENGTH;
-	ft_printf("actual weight: %d bytes\n", actual_size);
-	ft_printf("total weight: %d bytes\n\n", (*fplayer)->total_size);
+	//ft_printf("actual weight: %d bytes\n", actual_size);
+	//ft_printf("total weight: %d bytes\n\n", (*fplayer)->total_size);
 	if (!((*fplayer)->prog = (char *)malloc(sizeof(char) * actual_size)))
 		exit (1);
-	ft_printf("instruction program\n");
+	//ft_printf("instruction program\n");
 	while (i < actual_size)
 	{
 		(*fplayer)->prog[i++] = prog[addr++];
-		ft_printf("%.2x ", (*fplayer)->prog[i - 1]);
+		//ft_printf("%.2x ", (*fplayer)->prog[i - 1]);
 	}
-	ft_printf("\n");
+	//ft_printf("\n");
 	return (1);
 }
 
@@ -51,8 +51,8 @@ int		verify_program(t_player **fplayer, char *prog, int size)
 	mem_to_int(&(*fplayer)->prog_size, 136, prog, 4);
 	(*fplayer)->comment = ft_strdup(prog + 128 + 12);
 	(*fplayer)->total_size = size;
-	ft_printf("in this corner we have: %s\n", (*fplayer)->name);
-	ft_printf("comment?: %s\n", (*fplayer)->comment);
+	//ft_printf("in this corner we have: %s\n", (*fplayer)->name);
+	//ft_printf("comment?: %s\n", (*fplayer)->comment);
 	if (check_size(fplayer, prog) == -1)
 		return (-1);
 	return (0);

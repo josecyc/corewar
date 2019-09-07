@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 11:01:01 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/05 13:01:40 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/05 23:23:55 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	print_memory(char memory[MEM_SIZE])
 			printf("%#.4x :", addr);
 		printf(" %.2x", memory[addr] & 255);
 		if ((addr + 1) % 64 == 0)
-			printf("\n");
+			printf(" \n");
 		addr++;
 	}
 }
@@ -33,19 +33,7 @@ void	print_info(t_arena *arena, t_player *fplayer)
 {
 	t_player	*cur = NULL;
 
-	printf("\nARENA INFO\n");
-	printf("NUM PLAYERS     = %d\n", arena->num_plys);
-	printf("CYCLE_TO_DIE    = %d\n", arena->cycle_to_die);
-	printf("TOTAL CYCLES    = %d\n", arena->total_cycles);
-	printf("CYCLE COUNTER   = %d\n", arena->cycle_counter);
-	printf("CHECKUP COUNTER = %d\n", arena->checkup_counter);
-	printf("LIVE COUNTER    = %d\n", arena->live_counter);
-	printf("LAST ALIVE      = %d\n\n", arena->last_alive);
-	printf("FLAGS INFO\n");
-	printf("DUMP FLAG       = %d\n", arena->flags->dump_bl);
-	if (arena->flags->dump_bl)
-		printf("DUMP CYCLES     = %d\n", arena->flags->dump_cycles);
-	printf("INTERACTIVE     = %d\n", arena->flags->interactive);
+	
 	cur = fplayer;
 	while (cur)
 	{
@@ -55,7 +43,7 @@ void	print_info(t_arena *arena, t_player *fplayer)
 		printf("PROCESS DEAD    = %d\n", cur->dead);
 		printf("PLAYER NUM      = %d\n", cur->pnum);
 		printf("PROG COUNTER    = %d\n", cur->pc);
-		printf("LIVE            = %d\n", cur->life_bl);
+		printf("LIVE_BL         = %d\n", cur->life_bl);
 		printf("CARRY           = %d\n", cur->carry);
 		printf("- - - - - - - - -\n");
 		printf("REGISTERS\n");
@@ -94,4 +82,17 @@ void	print_info(t_arena *arena, t_player *fplayer)
 		cur = cur->next;
 	}
 	printf("\033[0m");
+	printf("\nARENA INFO\n");
+	printf("NUM PLAYERS     = %d\n", arena->num_plys);
+	printf("CYCLE_TO_DIE    = %d\n", arena->cycle_to_die);
+	printf("TOTAL CYCLES    = %d\n", arena->total_cycles);
+	printf("CYCLE COUNTER   = %d\n", arena->cycle_counter);
+	printf("CHECKUP COUNTER = %d\n", arena->checkup_counter);
+	printf("LIVE COUNTER    = %d\n", arena->live_counter);
+	printf("LAST ALIVE      = %d\n\n", arena->last_alive);
+	printf("FLAGS INFO\n");
+	printf("DUMP FLAG       = %d\n", arena->flags->dump_bl);
+	if (arena->flags->dump_bl)
+		printf("DUMP CYCLES     = %d\n", arena->flags->dump_cycles);
+	printf("INTERACTIVE     = %d\n", arena->flags->interactive);
 }

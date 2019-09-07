@@ -3,10 +3,11 @@
 /*                                                        :::      ::::::::   */
 /*   inst_fork.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 12:20:00 by jcruz-y-          #+#    #+#             */
 /*   Updated: 2019/09/06 17:12:50 by viclucas         ###   ########.fr       */
+/*   Updated: 2019/09/07 15:53:22 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,41 +21,71 @@
 ** argument indicates
 */
 
-t_player    *add_process_last(t_player **any_process)
+t_player        *add_process_last(t_player **any_process)
 {
-    t_player    *elem;
+    t_player *new;
+    t_player *tmp;
 
-    elem = *any_process;
-    while (elem->next)
+    tmp = *any_process;
+    int i  = 0 ;
+    new = create_player();
+    tmp->inst->fork = 1;
+    new->pnum = tmp->pnum;
+    new->carry = tmp->carry;
+    new->life_bl = tmp->life_bl;
+    new->name = tmp->name;
+    new->pc_inter = tmp->pc_inter;
+    new->dead = new->dead;
+    while (i < REG_NUMBER)
     {
-        elem = elem->next;
+        new->reg[i] = tmp->reg[i];
+        i++;
     }
-    elem->next = create_player();
-    return (elem->next);
+    new->pc = tmp->pc;
+    advance_proc_pc(&new, (-tmp->inst->size) + (tmp->inst->args[0] % IDX_MOD));
+
+    while(tmp->prev)
+    {
+        tmp = tmp->prev;
+        i++;
+    }
+    tmp->prev = new;
+    new->next = tmp;
+    //*any_process;
+  //  (*any_process) = new;
+    return(*any_process);
 }
 
 void     inst_fork(t_player *player, t_arena *arena)
 {
-    int         i;    
-    t_player    *new_process;
-    
-    i = 0;
-    new_process = add_process_last(&player);
-    new_process->pnum = player->pnum; // when checking for winner, maybe delete line?
-    new_process->inst->fork = 1;
-    while (i < REG_NUMBER)
-    {
-        new_process->reg[i] = player->reg[i];
-        i++;
-    }
-    new_process->pc = player->pc;
-    advance_proc_pc(&new_process, -player->inst->size);
-/*
-	printf("player->pc %d\n", player->pc);
-    printf("new_process->pc %d\n", new_process->pc);
-    printf("SIZEEEE %d\n", player->inst->size);
-    printf("arg1  IDX %d\n", player->inst->args[0] % IDX_MOD);
-  */
-  	advance_proc_pc(&new_process, player->inst->args[0] % IDX_MOD);
-   // printf("new_process->pc %d\n", new_process->pc);
+
+    t_player    *new;
+ //   t_player        *tmp; 
+//    tmp = player;
+    //  while(tmp)
+    // {
+    //     if(tmp->next != NULL)
+    //         x++;
+    //     tmp = tmp->next;
+    // }  
+    new = add_process_last(&player);
+    //  tmp = player;
+    //  while(tmp)
+    // {
+    //     if(tmp->next != NULL)
+    //         x++;
+    //     tmp = tmp->next;
+    // } 
+    // printf("--------------[%d]-----------------\n", x);
+    // x = 0;
+    // add_process_last(&player, new);
+    // tmp = player;
+    // while(tmp)
+    // {
+    //     if(tmp->next != NULL)
+    //         x++;
+    //     tmp = tmp->next;
+    // }
+    // player = player->next;
+    // printf("--------------[%d]-----------------\n", x);
 } 

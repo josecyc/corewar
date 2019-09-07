@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+         #
+#    By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/15 19:22:08 by jdiaz             #+#    #+#              #
-#    Updated: 2019/09/07 13:11:07 by viclucas         ###   ########.fr        #
+#    Updated: 2019/09/06 21:09:39 by viduvern         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRCS_PATH = srcs/
 OBJ_PATH  = obj/
 LIBFT_PATH = ../libft/
 
-FLAGS = -Wall -Werror -Wextra -g
+FLAGS = -Wall -Werror -Wextra -fsanitize=address -g
 
 INC = -I ./includes/ -I ./$(LIBFT_PATH)
 

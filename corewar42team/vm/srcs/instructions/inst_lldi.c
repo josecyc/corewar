@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:22:18 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/04 21:49:33 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/05 22:44:55 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ void	    	inst_lldi(t_player *cur, t_arena *arena)
     }
     adress = get_addr_value(cur, (-cur->inst->size) + (cur->inst->args[0] + cur->inst->args[1]));
     memory_to_int(&get_byte, arena, adress, 4);
+    cur->carry = (get_byte == 0) ? 1 : 0;
     cur->reg[cur->inst->args[2] - 1] = get_byte;    
 }
