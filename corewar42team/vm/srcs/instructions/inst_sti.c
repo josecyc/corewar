@@ -6,10 +6,10 @@
 /*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:22:26 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/07 14:37:05 by viclucas         ###   ########.fr       */
-/*   Updated: 2019/09/07 15:51:24 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/09 00:45:26 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../../includes/vm.h"
 
@@ -52,12 +52,15 @@ void         inst_sti(t_player *cur, t_arena *arena)
         else if ((cur->inst->ebyte >> a & 3) == IND_CODE)
         {
             result = get_addr_value(cur, (-cur->inst->size));
-            cur->write_addr = get_addr_value(cur, cur->inst->args[args] % IDX_MOD + result);
+            cur->write_addr = get_addr_value(cur, (cur->inst->args[args] % IDX_MOD) + result);
             memory_to_int(&cur->inst->args[args], arena, cur->write_addr, 4);
         }
+        else 
+            ;
         a -= 2;
     }
-    result = ((cur->inst->args[1] + cur->inst->args[2]) % IDX_MOD);
+    result = cur->inst->args[1] + cur->inst->args[2];
+    result %= IDX_MOD;
     cur->write_addr = get_addr_value(cur, (-cur->inst->size) + result);
      cur->write_bl = 1;
     write_data(cur, arena);
