@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:56:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/09 10:52:40 by viclucas         ###   ########.fr       */
+/*   Updated: 2019/09/09 11:32:33 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,6 +189,7 @@ void				loop(t_player *players, t_arena *arena);
 /*
 **	save_inst
 */
+int					put_cycle(t_player *player, t_arena *arena);
 int					save_inst(t_player *player, t_arena *arena);
 int					memory_to_int(int *dest, t_arena *arena, int src_addr, int bytes);
 
@@ -247,7 +248,7 @@ void				inst_zjmp(t_player *fplayer, t_arena *arena);
 void				inst_ldi(t_player *fplayer, t_arena *arena);
 void				inst_sti(t_player *fplayer, t_arena *arena);
 void				inst_fork(t_player *fplayer, t_arena *arena);
-t_player		   	*add_process_last(t_player **any_process);
+t_player		   	*add_process_last(t_player **any_process, t_arena *arena);
 void				inst_lld(t_player *fplayer, t_arena *arena);
 void				inst_lldi(t_player *fplayer, t_arena *arena);
 void				inst_lfork(t_player *fplayer, t_arena *arena);

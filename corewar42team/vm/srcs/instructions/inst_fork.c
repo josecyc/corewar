@@ -6,10 +6,10 @@
 /*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 12:20:00 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/06 17:12:50 by viclucas         ###   ########.fr       */
-/*   Updated: 2019/09/07 15:53:22 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/09 00:09:33 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../../includes/vm.h"
 
@@ -21,7 +21,7 @@
 ** argument indicates
 */
 
-t_player        *add_process_last(t_player **any_process)
+t_player        *add_process_last(t_player **any_process, t_arena *arena)
 {
     t_player *new;
     t_player *tmp;
@@ -29,7 +29,7 @@ t_player        *add_process_last(t_player **any_process)
     tmp = *any_process;
     int i  = 0 ;
     new = create_player();
-    tmp->inst->fork = 1;
+    (*any_process)->inst->fork = 1;
     new->pnum = tmp->pnum;
     new->carry = tmp->carry;
     new->life_bl = tmp->life_bl;
@@ -51,6 +51,8 @@ t_player        *add_process_last(t_player **any_process)
     }
     tmp->prev = new;
     new->next = tmp;
+    while(put_cycle(new, arena) == 0)
+        new->pc++;
     //*any_process;
   //  (*any_process) = new;
     return(*any_process);
@@ -58,34 +60,7 @@ t_player        *add_process_last(t_player **any_process)
 
 void     inst_fork(t_player *player, t_arena *arena)
 {
-
     t_player    *new;
- //   t_player        *tmp; 
-//    tmp = player;
-    //  while(tmp)
-    // {
-    //     if(tmp->next != NULL)
-    //         x++;
-    //     tmp = tmp->next;
-    // }  
-    new = add_process_last(&player);
-    //  tmp = player;
-    //  while(tmp)
-    // {
-    //     if(tmp->next != NULL)
-    //         x++;
-    //     tmp = tmp->next;
-    // } 
-    // printf("--------------[%d]-----------------\n", x);
-    // x = 0;
-    // add_process_last(&player, new);
-    // tmp = player;
-    // while(tmp)
-    // {
-    //     if(tmp->next != NULL)
-    //         x++;
-    //     tmp = tmp->next;
-    // }
-    // player = player->next;
-    // printf("--------------[%d]-----------------\n", x);
+ 
+    new = add_process_last(&player, arena);
 } 

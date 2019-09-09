@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 19:45:01 by jdiaz             #+#    #+#             */
-/*   Updated: 2019/01/30 10:19:02 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/09 11:11:19 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,22 @@ static int		check_max_sizes(t_vars *ob)
 {
 	if (ob->player_name && ft_strlen(ob->player_name) > 128)
 	{
-		printf("Champion Name too long (Max length 128)\n");
+		ft_printf("Champion Name too long (Max length 128).\n");
 		return (-1);
+	}
+	if (ft_strlen(ob->player_name) == 0)
+	{
+		ft_printf("No header name, please write one to assemble.\n");
+		return (-1);	
 	}
 	if (ob->comment && ft_strlen(ob->comment) > 2048)
 	{
-		printf("Comment too long (Max length 2048)\n");
+		ft_printf("Comment too long (Max length 2048).\n");
+		return (-1);
+	}
+	if (ob->comment && ft_strlen(ob->comment) == 0)
+	{
+		ft_printf("No header comment, please write one to assemble.\n");
 		return (-1);
 	}
 	return (1);

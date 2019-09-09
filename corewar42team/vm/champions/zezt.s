@@ -1,7 +1,7 @@
-.name "zezting"
+.name "zzezting"
 .comment "da zezt"
 
-live %199999
+live %:live   
 
 add r1, r2, r3
 sub r1, r2, r3
@@ -30,7 +30,7 @@ add r10, r2, r3
 sub r3, r4, r8
 aff r8
 
-ld  %-1235102394, r18
+ld  %-1235102394, r14
 ld   -3, r2 
 
 ldi 1, r2, r6

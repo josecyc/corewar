@@ -2,10 +2,12 @@
 .comment	"And the winner is ..."
 
 
-		sti	r1,%:live,%1
-		sti	r1,%:live,%6
-		sti	r1,%:live,%11
-		sti	r1,%:live,%16
+		st	r1,r8
+		st	r1,r12
+		st	r1,r11
+		st	r8,r2
+		zjmp %9
+		ldi %88,r10,r5
 		sti	r1,%:live,%21
 		sti	r1,%:live,%26
 		sti	r1,%:live,%31
@@ -17,14 +19,20 @@
 		sti	r1,%:live,%61
 		sti	r1,%:live,%66
 		sti	r1,%:live,%71
+		zjmp %58
 		sti	r1,%:live,%76
 		sti	r1,%:live,%81
 		sti	r1,%:live,%86
+		ldi %88,r10,r5
+		sti	r1,%:live,%21
 		sti	r1,%:live,%91
 		sti	r1,%:live,%96
-		sti	r1,%:live,%101	
+		sti	r1,%:live,%101
+		zjmp %54
 		sti	r1,%:live,%106
 		sti	r1,%:live,%111
+		ldi %88,r2,r5
+		sti	r1,%:live,%21
 		sti	r1,%:live,%116
 live:	live	%42
 		live	%42
