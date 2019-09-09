@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 18:09:01 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/09 10:42:16 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/09 13:36:29 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ static char		*set_output_name(char *old_name, t_vars *ob)
 	ft_strncpy(new_name, old_name, len - 1);
 	new_name[len - 1] = '\0';
 	ft_strcat(new_name, "cor");
-	ob->player_name = new_name;
+	//ob->player_name = new_name;
+	ob->output_name = new_name;
 	return (new_name);
 }
 
