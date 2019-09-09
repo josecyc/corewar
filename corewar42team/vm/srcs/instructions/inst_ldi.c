@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inst_ldi.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 02:27:58 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/05 14:41:34 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/09 00:54:37 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void		inst_ldi(t_player *cur, t_arena *arena)
     int get_byte;
     int i;
     int args;
-
+    int result;
     get_byte = 0;
     args = 0;
     i = 6;
-    while(i != 2)
+    while(i > 2)
     {
         if ((cur->inst->ebyte >> i & 3) == DIR_CODE) 
             ;
@@ -36,7 +36,8 @@ void		inst_ldi(t_player *cur, t_arena *arena)
             cur->inst->args[args] = cur->reg[cur->inst->args[args] - 1];
         else
         {
-            adress = get_addr_value(cur, (-cur->inst->size) + (cur->inst->args[0] % IDX_MOD));
+            result = (cur->inst->args[0] % IDX_MOD); 
+            adress = get_addr_value(cur, (-cur->inst->size));
             memory_to_int(&get_byte, arena, adress, 4);
             cur->inst->args[args] = get_byte;
         }
@@ -44,7 +45,8 @@ void		inst_ldi(t_player *cur, t_arena *arena)
         i -= 2;
 
     }
-    adress = get_addr_value(cur, (-cur->inst->size) + ((cur->inst->args[0] + cur->inst->args[1]) % IDX_MOD));
+    result = (cur->inst->args[0] + cur->inst->args[1]) % IDX_MOD; 
+    adress = get_addr_value(cur, (-cur->inst->size) + result);
     memory_to_int(&get_byte, arena, adress, 4);
     cur->reg[cur->inst->args[2] - 1] = get_byte;    
 }

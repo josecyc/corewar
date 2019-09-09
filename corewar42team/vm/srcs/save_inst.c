@@ -6,7 +6,7 @@
 /*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 18:23:21 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/08 23:40:51 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/09 00:39:04 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,27 @@
 
 static 	int			jump_next_op(int nbr)
 {
-	ft_putendl("laaa");
-	if(nbr == 1 || nbr == 9 || nbr == 12 || nbr == 15)
-		return(4);
-	else if(nbr == 2 || nbr == 10 || nbr == 11 || nbr == 13 || nbr == 14)
-		return(5);	
-	else if(nbr == 3 || nbr == 4 || nbr == 5)
-		return(3);
-	else if(nbr == 6 || nbr == 7 || nbr == 8)
-		return(9);
-	else if(nbr == 16)
-		return(1);
-	else
-		return(0);
-	ft_putendl("passs");
-	// if(nbr == 1 || nbr == 9 || nbr == 12 || nbr == 15 || nbr == 16)
-	// 	return(1);
-	// else if(nbr == 2 || nbr == 3 || nbr == 13)
-	// 	return(2);
-	// else if(nbr == 4 || nbr == 5 || nbr == 6 || nbr == 7 || nbr == 8 || nbr == 10 || \
-	// nbr == 11 || nbr == 14)
+	// ft_putendl("laaa");
+	// if(nbr == 1 || nbr == 9 || nbr == 12 || nbr == 15)
+	// 	return(4);
+	// else if(nbr == 2 || nbr == 10 || nbr == 11 || nbr == 13 || nbr == 14)
+	// 	return(5);	
+	// else if(nbr == 3 || nbr == 4 || nbr == 5)
 	// 	return(3);
+	// else if(nbr == 6 || nbr == 7 || nbr == 8)
+	// 	return(9);
+	// else if(nbr == 16)
+	// 	return(1);
+	// else
+	// 	return(0);
+	ft_putendl("passs");
+	if(nbr == 1 || nbr == 9 || nbr == 12 || nbr == 15 || nbr == 16)
+		return(1);
+	else if(nbr == 2 || nbr == 3 || nbr == 13)
+		return(2);
+	else if(nbr == 4 || nbr == 5 || nbr == 6 || nbr == 7 || nbr == 8 || nbr == 10 || \
+	nbr == 11 || nbr == 14)
+		return(3);
 	return(0);
 }
 /*
@@ -214,7 +214,7 @@ int				save_inst(t_player *player, t_arena *arena)
 			step = 0;
 			step += jump_next_op(player->inst->op_code);
 			advance_proc_pc(&player, step);
-			player->inst->size = step + 1;
+			//player->inst->size = step + 1;
 		//	ft_putnbr(player->pc);
 		//	ft_putchar('\n');
 		//	ft_putnbr(step);
@@ -233,7 +233,7 @@ int				save_inst(t_player *player, t_arena *arena)
 		{
 			step += jump_next_op(player->inst->op_code);
 			advance_proc_pc(&player, step);
-			player->inst->size = step + 1;
+		//	player->inst->size = step + 1;
 		//	ft_putnbr(player->pc);
 		//	ft_putchar('\n');
 		//	ft_putnbr(step);

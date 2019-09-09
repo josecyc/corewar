@@ -6,7 +6,7 @@
 /*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 10:55:08 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/09 00:11:46 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/09 09:59:38 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,6 @@ void			loop(t_player *players, t_arena *arena)
 					while(tmp->prev)
 						tmp = tmp->prev;
 					players = tmp;
-				//	break;
-				//	players->inst->counter = -1;
 				}
 				else
 					clean_process_inst(cur);
