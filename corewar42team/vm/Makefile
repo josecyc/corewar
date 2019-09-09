@@ -6,7 +6,7 @@
 #    By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/15 19:22:08 by jdiaz             #+#    #+#              #
-#    Updated: 2019/09/06 21:09:39 by viduvern         ###   ########.fr        #
+#    Updated: 2019/09/09 10:47:23 by viclucas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,11 @@ SRCS_PATH = srcs/
 OBJ_PATH  = obj/
 LIBFT_PATH = ../libft/
 
-FLAGS = -Wall -Werror -Wextra -fsanitize=address -g
+FLAGS = -Wall -Werror -Wextra -g
 
 INC = -I ./includes/ -I ./$(LIBFT_PATH)
 
-VM_SRC	= srcs/interactive/getcha.c \
-		  srcs/interactive/side_informations.c \
-		  srcs/interactive/colors_are_fun.c	\
+VM_SRC	= srcs/interactive/side_informations.c \
 		  srcs/interactive/interactive.c \
 		  srcs/interactive/write_mem.c \
 		  srcs/interactive/getch_theses.c \

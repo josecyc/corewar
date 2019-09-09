@@ -6,7 +6,7 @@
 /*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:56:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/07 12:12:49 by viclucas         ###   ########.fr       */
+/*   Updated: 2019/09/09 10:52:40 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ typedef struct		s_player
 	char			*comment;
 	char			*prog;
 	int				oldpc;
-	int				coord[4]; //1 -2 pc ; 3-4 oldpc
 	int				pc_inter;
 	struct s_player *next;
 	struct s_player *prev;
@@ -82,6 +81,8 @@ typedef struct		s_window
 	WINDOW	*big;
 	WINDOW	*side;
 	WINDOW	*down;
+	int		tab[MEM_SIZE];
+	int		index; 			//not used for now
 	int		first_loop;
 	int		first_round;
 	int		sleep_cursor;
@@ -96,8 +97,8 @@ typedef struct		s_data
 	int				addr;
 	int				tmp;
 	int 			color;
-	int				color_bool;
 	int				empty_turn;
+	int				update_coord;
 }					t_data;
 
 struct node
@@ -202,19 +203,19 @@ int					memory_to_int(int *dest, t_arena *arena, int src_addr, int bytes);
 t_window			*interactive(t_player *players, t_arena *arena, t_window *win);
 void				write_mem(t_window *win, t_arena *arena, t_player *player);
 t_window			*init_interactive_mode(t_window *win);
-void				getch_theses(t_window *win);
+void				getch_theses(t_window *win, int index);
 void				close_win(void);
 void				sides_infos();
-void				down_infos(t_window *win, t_arena *arena);
+void				down_infos(t_window *win, t_arena *a, t_player *p);
 int					init_print(t_window *win, t_player *p, t_arena *arena);
-void				getcha();
-void				print_color(t_window *win, t_player *p, t_arena *arena, t_data data);
+void				print_color(t_window *win, t_arena *arena, t_data data);
 void				print_map(WINDOW *win, t_data *data, t_player *tmp, t_arena *arena);
-void				ft_update_coord(t_data *data, t_player *player, t_arena *arena, t_window *win);
+void				ft_update_coord(t_data *data, int value, WINDOW *win);
 void				write_mem(t_window *win, t_arena *arena, t_player *p);
 void				delete_old(t_window *win, t_arena *arena, t_player *tmp);
 void				loop_first_round(t_window *win, t_arena *arena, t_player *p);
-void	side_informations(t_window *win, t_arena *arena, t_player *players);
+void	side_informations(t_window *win, t_player *players);
+void		print_board(t_window *win);
 
 /*
 ** init_players.c
