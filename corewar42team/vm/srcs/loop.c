@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 10:55:08 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/09 11:34:11 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/09 13:06:44 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,8 +130,7 @@ void			loop(t_player *players, t_arena *arena)
 		return;
 	}
 	close_win();
-}
+	}
 	arena->cycle_counter++;
 	arena->total_cycles++;
-	}
 }
