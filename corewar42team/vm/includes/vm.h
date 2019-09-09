@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:56:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/09 14:06:51 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/09 16:41:35 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ typedef struct		s_window
 	int		index; 			//not used for now
 	int		first_loop;
 	int		first_round;
-	int		sleep_cursor;
+	int		sleepc;
 	int		sleep;
 }					t_window;
 
@@ -197,6 +197,7 @@ int					memory_to_int(int *dest, t_arena *arena, int src_addr, int bytes);
 /*
 ** Interactive folder
 */
+void				change_pc(t_data data, t_player *tmp, t_arena *arena, t_window *win);
 t_window			*interactive(t_player *players, t_arena *arena, t_window *win);
 void				write_mem(t_window *win, t_arena *arena, t_player *player);
 t_window			*init_interactive_mode(t_window *win);
@@ -212,7 +213,6 @@ void				write_mem(t_window *win, t_arena *arena, t_player *p);
 void				delete_old(t_window *win, t_arena *arena, t_player *tmp);
 void				loop_first_round(t_window *win, t_arena *arena, t_player *p);
 void				side_informations(t_window *win, t_player *players);
-void				print_board(t_window *win);
 
 /*
 ** init_players.c
