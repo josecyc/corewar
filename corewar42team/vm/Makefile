@@ -6,7 +6,7 @@
 #    By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/15 19:22:08 by jdiaz             #+#    #+#              #
-#    Updated: 2019/09/09 10:47:23 by viclucas         ###   ########.fr        #
+#    Updated: 2019/09/09 11:03:29 by viclucas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,8 @@ all: $(NAME)
 
 $(NAME): $(VM_OBJ)
 	@make -C $(LIBFT_PATH)
-	@gcc $(INC) $(VM_OBJ) -o $(NAME) -L $(LIBFT_PATH) -lft -lncurses $(FLAGS) 
+	@gcc -c $(INC) $(FLAGS) $(VM_SRC)
+	@gcc $(VM_OBJ) -o $(NAME) -L $(LIBFT_PATH) -lft -lncurses $(FLAGS) 
 	@echo "Compiled corewar"
 
 clean:
