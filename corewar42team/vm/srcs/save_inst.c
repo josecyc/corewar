@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_inst.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 18:23:21 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/09 00:39:04 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/09 15:36:26 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ static 	int			jump_next_op(int nbr)
 	// 	return(1);
 	// else
 	// 	return(0);
-	ft_putendl("passs");
 	if(nbr == 1 || nbr == 9 || nbr == 12 || nbr == 15 || nbr == 16)
 		return(1);
 	else if(nbr == 2 || nbr == 3 || nbr == 13)
