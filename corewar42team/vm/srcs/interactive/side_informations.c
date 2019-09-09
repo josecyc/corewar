@@ -25,6 +25,7 @@ void	basic_infos(t_window *win, t_data data, t_player *tmp)
 
 void	side_informations(t_window *win, t_player *players)
 {
+	(void)arena;
 	t_player	*tmp;
 	t_data		data;
 

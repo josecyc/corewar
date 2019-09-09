@@ -37,6 +37,7 @@ VM_SRC	= srcs/interactive/side_informations.c \
 		  srcs/print_memory.c \
 		  srcs/live_checkup.c \
 		  srcs/loop.c \
+		  srcs/save_utils.c \
 		  srcs/save_inst.c \
 		  ../assembler/srcs/op.c \
 		  srcs/inst_utils.c \

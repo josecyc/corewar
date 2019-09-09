@@ -14,7 +14,7 @@
 
 void			error_handler_inter(int error)
 {
-	int token;
+	//int token;
 
 	endwin();
 	if (error == 1)

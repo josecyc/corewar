@@ -80,8 +80,9 @@ void			loop(t_player *players, t_arena *arena)
 {
 	t_player		*cur;
 
-	t_window		win;
-	init_interactive_mode(&win);
+
+//	t_window		win;
+//	init_interactive_mode(&win);
 	t_player		*tmp;
 
 	while (arena->cycle_to_die >= 0)
@@ -92,7 +93,7 @@ void			loop(t_player *players, t_arena *arena)
 			while(cur && cur->dead == 1)
 				cur = cur->next;
 			if(!cur)
-				break ;
+				break;
 			if (cur->inst->counter == -1)
 				while(put_cycle(cur, arena) == 0)
 					cur->pc++;
