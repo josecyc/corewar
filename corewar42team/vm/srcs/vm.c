@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 19:58:22 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/08 23:16:23 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/09 14:42:08 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,11 @@ int		main(int argc, char **argv)
 {
 	t_arena		arena;
 	t_player	*fplayer;
+	t_window		win;
 
 //	printf("Introducing contestants...\n* Player 1, weighing 670 bytes, \"King Sombra\" (\"Crystal empire is mine!\") !\n");
 	init_arena_ob(&arena, argc, argv);
+	init_interactive_mode(&win);
 	fplayer = NULL;
 	if (init_state(&arena, &fplayer) == -1)
 		return (-1);
@@ -62,5 +64,7 @@ int		main(int argc, char **argv)
 	//print_memory(arena.memory);
 	//announce_winner(&arena, fplayer);
 //	system("leaks corewar");
+	winner_print(fplayer, &arena, &win);
+	//close_win();
 	return (0);
 }

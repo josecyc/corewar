@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 10:55:08 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/09 11:34:11 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/09 14:05:20 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void			loop(t_player *players, t_arena *arena)
 	t_player		*cur;
 
 	t_window		win;
-	init_interactive_mode(&win);
+	//init_interactive_mode(&win);
 	t_player		*tmp;
 
 	while (arena->cycle_to_die >= 0)
@@ -112,25 +112,24 @@ void			loop(t_player *players, t_arena *arena)
 					clean_process_inst(cur);
 			}
 			cur->inst->counter != -1 ? cur->inst->counter-- : cur->inst->counter;
+			ft_printf("player name: %s\n", cur->name);
 			cur = cur->next;
 		}
 	
 		if (arena->cycle_counter == arena->cycle_to_die)
 			if (live_checkup(players, arena) == -1)
 			{
-				winner_print(players, arena, &win);
 				return ;
 			}
 				//print_info(arena, players);
-		interactive(players, arena, &win);
+		//interactive(players, arena, &win);
 		//graphics(arena, players); //Victor cleans the write bl and address here
 	if (arena->flags->dump_bl && arena->flags->dump_cycles == arena->total_cycles)
 	{
 		print_memory(arena->memory);
 		return;
 	}
-	close_win();
-}
+	//close_win();
 	arena->cycle_counter++;
 	arena->total_cycles++;
 	}

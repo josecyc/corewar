@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:56:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/09 11:32:33 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/09 14:06:51 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,7 @@ void				print_info(t_arena *arena, t_player *fplayer);
 ** graphics.c
 */
 void				graphics(t_arena *arena, t_player *fplayer);
+void				winner_print(t_player *p, t_arena *arena, t_window *win);
 
 /*
 ** live_checkup.c
@@ -194,11 +195,6 @@ int					save_inst(t_player *player, t_arena *arena);
 int					memory_to_int(int *dest, t_arena *arena, int src_addr, int bytes);
 
 /*
-** windows.c
-*/
-//void				init_windows(t_wins **window_head);
-
-/*
 ** Interactive folder
 */
 t_window			*interactive(t_player *players, t_arena *arena, t_window *win);
@@ -215,8 +211,8 @@ void				ft_update_coord(t_data *data, int value, WINDOW *win);
 void				write_mem(t_window *win, t_arena *arena, t_player *p);
 void				delete_old(t_window *win, t_arena *arena, t_player *tmp);
 void				loop_first_round(t_window *win, t_arena *arena, t_player *p);
-void	side_informations(t_window *win, t_player *players);
-void		print_board(t_window *win);
+void				side_informations(t_window *win, t_player *players);
+void				print_board(t_window *win);
 
 /*
 ** init_players.c
