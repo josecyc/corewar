@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+         #
+#    By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/15 19:22:08 by jdiaz             #+#    #+#              #
-#    Updated: 2019/09/08 22:29:30 by viduvern         ###   ########.fr        #
+#    Updated: 2019/09/09 11:31:49 by jcruz-y-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,7 @@ FLAGS = -Wall -Werror -Wextra
 
 INC = -I ./includes/ -I ./$(LIBFT_PATH)
 
-VM_SRC	= srcs/interactive/getcha.c \
-		  srcs/interactive/side_informations.c \
-		  srcs/interactive/colors_are_fun.c	\
+VM_SRC	= srcs/interactive/side_informations.c \
 		  srcs/interactive/interactive.c \
 		  srcs/interactive/write_mem.c \
 		  srcs/interactive/getch_theses.c \
@@ -65,7 +63,8 @@ all: $(NAME)
 
 $(NAME): $(VM_OBJ)
 	@make -C $(LIBFT_PATH)
-	@gcc $(INC) $(VM_OBJ) -o $(NAME) -L $(LIBFT_PATH) -lft -lncurses $(FLAGS) 
+	@gcc -c $(INC) $(FLAGS) $(VM_SRC)
+	@gcc $(VM_OBJ) -o $(NAME) -L $(LIBFT_PATH) -lft -lncurses $(FLAGS) 
 	@echo "Compiled corewar"
 
 clean:
