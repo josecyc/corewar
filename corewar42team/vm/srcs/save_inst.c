@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   save_inst.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 18:23:21 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/09 15:24:24 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/09 15:36:26 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vm.h"
 
 /*
-** Reads bytes from memory and writes the value to the player arguments array
+** Reads bytes from memory and writes the value to the player arguments array  
 ** returns the amount of bytes copied
 */
 

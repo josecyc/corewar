@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+         #
+#    By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/15 19:22:08 by jdiaz             #+#    #+#              #
 #    Updated: 2019/09/09 11:17:36 by viduvern         ###   ########.fr        #
@@ -17,13 +17,11 @@ SRCS_PATH = srcs/
 OBJ_PATH  = obj/
 LIBFT_PATH = ../libft/
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = #-Wall -Werror -Wextra
 
 INC = -I ./includes/ -I ./$(LIBFT_PATH)
 
-VM_SRC	= srcs/interactive/getcha.c \
-		  srcs/interactive/side_informations.c \
-		  srcs/interactive/colors_are_fun.c	\
+VM_SRC	= srcs/interactive/side_informations.c \
 		  srcs/interactive/interactive.c \
 		  srcs/interactive/write_mem.c \
 		  srcs/interactive/getch_theses.c \
@@ -66,8 +64,7 @@ all: $(NAME)
 
 $(NAME): $(VM_OBJ)
 	@make -C $(LIBFT_PATH)
-	@gcc $(FLAGS) $(INC) -c $(VM_SRC)
-	@gcc $(INC) $(VM_OBJ) -o $(NAME) -L $(LIBFT_PATH) -lft -lncurses $(FLAGS) 
+	@gcc $(FLAGS) $(INC) $(VM_OBJ) -L $(LIBFT_PATH) -lft -lncurses -o $(NAME)
 	@echo "Compiled corewar"
 
 clean:

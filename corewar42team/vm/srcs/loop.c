@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 10:55:08 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/09 15:26:11 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/09 15:58:26 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,30 @@ void	clean_process_inst(t_player *process)
 ** The cycles decrease whenever a loop is executed.
 */
 
+void	winner_print(t_player *p, t_arena *arena, t_window *win)
+{
+	t_player *tmp;
+
+	tmp = p;
+	wattron(win->down, COLOR_PAIR(3));
+	while (tmp)
+	{
+		if (tmp->pnum == arena->last_alive)
+		{
+			mvwprintw(win->down, 3, 170, "WINNER IS \"%s\"", tmp->name);
+			wattroff(win->down, COLOR_PAIR(3));
+			wrefresh(win->down);
+			getch_theses(win, 1);
+			return ;
+		}
+		tmp = tmp->next;
+	}
+	getch_theses(win, 1);
+	mvwprintw(win->down, 3, 170, "END OF THE GAME");
+	wrefresh(win->down);
+	wattroff(win->down, COLOR_PAIR(3));
+}
+
 void			loop(t_player *players, t_arena *arena)
 {
 	t_player		*cur;
@@ -68,7 +92,7 @@ void			loop(t_player *players, t_arena *arena)
 			while(cur && cur->dead == 1)
 				cur = cur->next;
 			if(!cur)
-				return;
+				break;
 			if (cur->inst->counter == -1)
 				while(put_cycle(cur, arena) == 0)
 					cur->pc++;
@@ -89,20 +113,23 @@ void			loop(t_player *players, t_arena *arena)
 			}
 			cur->inst->counter != -1 ? cur->inst->counter-- : cur->inst->counter;
 			cur = cur->next;
-		}
-	//	interactive(players, arena, &win);
-	if (arena->cycle_counter == arena->cycle_to_die)
-		if (live_checkup(players, arena) == -1)
-			return ;
-		//print_info(arena, players);
-	//	interactive(players, arena, win);
+		}	
+		if (arena->cycle_counter == arena->cycle_to_die)
+			if (live_checkup(players, arena) == -1)
+			{
+				return ;
+			}
+				//print_info(arena, players);
+		//interactive(players, arena, &win);
 		//graphics(arena, players); //Victor cleans the write bl and address here
 	if (arena->flags->dump_bl && arena->flags->dump_cycles == arena->total_cycles)
 	{
 		print_memory(arena->memory);
 		return;
 	}
+	//close_win();
 	arena->cycle_counter++;
 	arena->total_cycles++;
+	//close_win();
 	}
 }

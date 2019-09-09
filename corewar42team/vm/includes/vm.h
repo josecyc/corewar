@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:56:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/09 15:02:51 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/09 14:06:51 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ typedef struct		s_player
 	char			*comment;
 	char			*prog;
 	int				oldpc;
-	int				coord[4]; //1 -2 pc ; 3-4 oldpc
 	int				pc_inter;
 	char			valid_arg_type;
 	int				j;
@@ -84,6 +83,8 @@ typedef struct		s_window
 	WINDOW	*big;
 	WINDOW	*side;
 	WINDOW	*down;
+	int		tab[MEM_SIZE];
+	int		index; 			//not used for now
 	int		first_loop;
 	int		first_round;
 	int		sleep_cursor;
@@ -98,8 +99,8 @@ typedef struct		s_data
 	int				addr;
 	int				tmp;
 	int 			color;
-	int				color_bool;
 	int				empty_turn;
+	int				update_coord;
 }					t_data;
 
 struct node
@@ -176,6 +177,7 @@ void				print_info(t_arena *arena, t_player *fplayer);
 ** graphics.c
 */
 void				graphics(t_arena *arena, t_player *fplayer);
+void				winner_print(t_player *p, t_arena *arena, t_window *win);
 
 /*
 ** live_checkup.c
@@ -195,29 +197,24 @@ int					save_inst(t_player *player, t_arena *arena);
 int					memory_to_int(int *dest, t_arena *arena, int src_addr, int bytes);
 
 /*
-** windows.c
-*/
-//void				init_windows(t_wins **window_head);
-
-/*
 ** Interactive folder
 */
 t_window			*interactive(t_player *players, t_arena *arena, t_window *win);
 void				write_mem(t_window *win, t_arena *arena, t_player *player);
 t_window			*init_interactive_mode(t_window *win);
-void				getch_theses(t_window *win);
+void				getch_theses(t_window *win, int index);
 void				close_win(void);
 void				sides_infos();
-void				down_infos(t_window *win, t_arena *arena);
+void				down_infos(t_window *win, t_arena *a, t_player *p);
 int					init_print(t_window *win, t_player *p, t_arena *arena);
-void				getcha();
-void				print_color(t_window *win, t_player *p, t_arena *arena, t_data data);
+void				print_color(t_window *win, t_arena *arena, t_data data);
 void				print_map(WINDOW *win, t_data *data, t_player *tmp, t_arena *arena);
-void				ft_update_coord(t_data *data, t_player *player, t_arena *arena, t_window *win);
+void				ft_update_coord(t_data *data, int value, WINDOW *win);
 void				write_mem(t_window *win, t_arena *arena, t_player *p);
 void				delete_old(t_window *win, t_arena *arena, t_player *tmp);
 void				loop_first_round(t_window *win, t_arena *arena, t_player *p);
-void	side_informations(t_window *win, t_arena *arena, t_player *players);
+void				side_informations(t_window *win, t_player *players);
+void				print_board(t_window *win);
 
 /*
 ** init_players.c

@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 19:15:46 by jdiaz             #+#    #+#             */
-/*   Updated: 2019/09/01 10:43:27 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/09 10:40:25 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ typedef struct			s_op
 {
 	char				*mnemonic;
 	int					num_args;
-	//int					arg_types[3];
 	int					arg_types[3];
 	int					op_code;
 	int					num_cycles;
@@ -62,6 +61,7 @@ typedef struct			s_vars
 {
 	int					output_fd;
 	char				*player_name;
+	char				*output_name;
 	char				*comment;
 	t_label				*labels;
 	int					bl_label;

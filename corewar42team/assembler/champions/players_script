@@ -4,3 +4,13 @@ done
 rm -rf cor_files_them
 mkdir cor_files_them
 mv *.cor cor_files_them
+DIR1=$(ls cor_files_us)
+DIR2=$(ls cor_files_them)
+
+for i in $DIR1; do
+    for j in $DIR2; do
+        if [[ $i == $j ]]; then
+			diff cor_files_us/$i cor_files_them/$j
+		fi
+    done
+done

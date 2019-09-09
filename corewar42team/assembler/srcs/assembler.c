@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 18:09:01 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/01/26 17:10:46 by tholzheu         ###   ########.fr       */
+/*   Updated: 2019/09/09 13:36:29 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int				free_split(char **inst)
 	return (0);
 }
 
-static char		*set_output_name(char *old_name)
+static char		*set_output_name(char *old_name, t_vars *ob)
 {
 	char	*new_name;
 	size_t	len;
@@ -58,6 +58,8 @@ static char		*set_output_name(char *old_name)
 	ft_strncpy(new_name, old_name, len - 1);
 	new_name[len - 1] = '\0';
 	ft_strcat(new_name, "cor");
+	//ob->player_name = new_name;
+	ob->output_name = new_name;
 	return (new_name);
 }
 
@@ -65,6 +67,7 @@ static void		init_vars(t_vars *ob)
 {
 	ob->output_fd = -1;
 	ob->player_name = NULL;
+	ob->output_name = NULL;
 	ob->comment = NULL;
 	ob->labels = NULL;
 	ob->bl_label = 0;
@@ -92,7 +95,7 @@ int				main(int argc, char **argv)
 	get_label_address(&ob, fd);
 	close(fd);
 	fd = open(argv[1], O_RDONLY);
-	ob.output_fd = open(set_output_name(argv[1]),
+	ob.output_fd = open(set_output_name(argv[1], &ob),
 						O_CREAT | O_RDWR | O_TRUNC, 0644);
 	if (generator(&ob, fd) == -1)
 		return (-1);
