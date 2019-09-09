@@ -132,5 +132,5 @@ void			loop(t_player *players, t_arena *arena)
 	//close_win();
 	arena->cycle_counter++;
 	arena->total_cycles++;
-	}
+	close_win();
 }
