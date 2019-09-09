@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inst_zjmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 17:19:06 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/02 21:33:35 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/08 19:48:00 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ void     inst_zjmp(t_player *cur, t_arena *arena)
         return ;
     else 
     {
-        advance_proc_pc(&cur, (-3));
-        advance_proc_pc(&cur, cur->inst->args[0] % IDX_MOD);
+        if((cur->inst->args[0] % IDX_MOD) == 0)
+            return;
+        else
+            advance_proc_pc(&cur, (-cur->inst->size) + cur->inst->args[0] % IDX_MOD);    
     }
 }
