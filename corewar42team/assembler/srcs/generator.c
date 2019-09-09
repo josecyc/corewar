@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:28:57 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/09 10:47:44 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/09 13:37:31 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,6 @@ int			generator(t_vars *ob, int fd)
 		}
 		free(line);
 	}
-	ft_printf("Writing output bytecode program to %s\n", ob->player_name);
+	ft_printf("Writing output bytecode program to %s\n", ob->output_name);
 	return (1);
 }

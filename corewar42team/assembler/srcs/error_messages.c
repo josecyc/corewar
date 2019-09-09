@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_messages.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 20:50:23 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/01/26 18:37:57 by tholzheu         ###   ########.fr       */
+/*   Updated: 2019/09/09 13:29:07 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ static void			error_message_pt2(int msg_nb, int i, int arg)
 int					error_message(int msg_nb, int i, int arg)
 {
 	if (msg_nb == 0)
-		printf("Incorrect number of arguments\nusage ./asm [file.s]\n");
+		printf("Incorrect number of arguments\nUSAGE: ./asm [file.s]\n");
 	else if (msg_nb == 1)
-		printf("Error in the input file\nusage ./asm [file.s]\n");
+		printf("Error in the input file\nUSAGE: ./asm [file.s]\n");
 	else if (msg_nb == 2 && i == 'n')
 		printf("Lexical error in name\n");
 	else if (msg_nb == 2)

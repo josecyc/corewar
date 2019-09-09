@@ -4,3 +4,8 @@ done
 rm -rf cor_files_them
 mkdir cor_files_them
 mv *.cor cor_files_them
+for file in cor_files_us/*.cor; do
+    name=${file##*/}
+    if [[ -f cor_files_us/$name ]]; then
+        diff <(hexdump cor_files_us/$name) <(hexdump cor_files_them/$name)
+done
