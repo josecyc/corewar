@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 10:55:08 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/09 15:58:26 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/09 16:01:59 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,16 @@ void	winner_print(t_player *p, t_arena *arena, t_window *win)
 		}
 		tmp = tmp->next;
 	}
-	getch_theses(win, 1);
 	mvwprintw(win->down, 3, 170, "END OF THE GAME");
 	wrefresh(win->down);
 	wattroff(win->down, COLOR_PAIR(3));
+	getch_theses(win, 1);
 }
 
 void			loop(t_player *players, t_arena *arena)
 {
 	t_player		*cur;
+
 
 //	t_window		win;
 //	init_interactive_mode(&win);
@@ -120,7 +121,7 @@ void			loop(t_player *players, t_arena *arena)
 				return ;
 			}
 				//print_info(arena, players);
-		//interactive(players, arena, &win);
+		interactive(players, arena, &win);
 		//graphics(arena, players); //Victor cleans the write bl and address here
 	if (arena->flags->dump_bl && arena->flags->dump_cycles == arena->total_cycles)
 	{
@@ -130,6 +131,7 @@ void			loop(t_player *players, t_arena *arena)
 	//close_win();
 	arena->cycle_counter++;
 	arena->total_cycles++;
-	//close_win();
 	}
+	winner_print(players, arena, &win);
+	close_win();
 }

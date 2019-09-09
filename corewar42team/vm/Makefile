@@ -6,7 +6,7 @@
 #    By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/15 19:22:08 by jdiaz             #+#    #+#              #
-#    Updated: 2019/09/09 11:17:36 by viduvern         ###   ########.fr        #
+#    Updated: 2019/09/09 16:40:49 by viclucas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ VM_SRC	= srcs/interactive/side_informations.c \
 		  srcs/interactive/write_mem.c \
 		  srcs/interactive/getch_theses.c \
 		  srcs/interactive/init_interactive_mode.c \
+		  srcs/interactive/pc_management.c \
 		  srcs/errorh.c \
 		  srcs/flags.c \
 		  srcs/init_objs.c \
@@ -56,7 +57,6 @@ VM_SRC	= srcs/interactive/side_informations.c \
 		  srcs/instructions/inst_lldi.c \
 		  srcs/instructions/inst_lfork.c \
 		  srcs/instructions/inst_aff.c \
-
 		  
 VM_OBJ =  $(VM_SRC:.c=.o)
 
