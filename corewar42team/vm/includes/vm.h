@@ -6,7 +6,7 @@
 /*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:56:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/09 00:09:29 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/09 15:02:51 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ typedef struct		s_player
 	int				oldpc;
 	int				coord[4]; //1 -2 pc ; 3-4 oldpc
 	int				pc_inter;
+	char			valid_arg_type;
+	int				j;
 	struct s_player *next;
 	struct s_player *prev;
 
@@ -228,8 +230,15 @@ void		color_pc(t_window *win, t_arena *arena, t_player *tmp);
 /*
 ** inst_utils.c
 */
+//int					ebyte_to_args2(t_player *player, t_arena *arena, int *step, char e_pair);
+int					ebyte_to_args(t_player *player, t_arena *arena, int *step);
+int					save_without_eb(t_player *player, t_arena *arena, int *step);
+int					valid_reg(t_arena *arena, t_player *player, int step);
+int					valid_ebyte(char e_pair, char valid_arg_types);
 int					advance_proc_pc(t_player **player, int step);
 int					get_addr_value(t_player *player, int step);
+int					jump_next_op(int nbr);
+int					put_cycle(t_player *player, t_arena *arena);
 
 /*
 ** instructions
@@ -247,11 +256,9 @@ void				inst_zjmp(t_player *fplayer, t_arena *arena);
 void				inst_ldi(t_player *fplayer, t_arena *arena);
 void				inst_sti(t_player *fplayer, t_arena *arena);
 void				inst_fork(t_player *fplayer, t_arena *arena);
-t_player		   	*add_process_last(t_player **any_process, t_arena *arena);
 void				inst_lld(t_player *fplayer, t_arena *arena);
 void				inst_lldi(t_player *fplayer, t_arena *arena);
 void				inst_lfork(t_player *fplayer, t_arena *arena);
 void				inst_aff(t_player *fplayer, t_arena *arena);
-
 
 #endif

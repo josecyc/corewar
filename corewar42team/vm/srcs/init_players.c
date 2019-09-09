@@ -6,13 +6,13 @@
 /*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 20:16:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/06 23:21:13 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/09 10:54:59 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vm.h"
 
-int		assign_number(t_player *fplayer, int cur_pl_num)
+int			assign_number(t_player *fplayer, int cur_pl_num)
 {
 	t_player	*cur;
 	int			i;
@@ -44,7 +44,7 @@ t_inst		*init_instruction(void)
 	int		i;
 
 	if (!(new_inst = (t_inst *)malloc(sizeof(t_inst))))
-		exit (1);
+		exit(1);
 	new_inst->counter = -1;
 	new_inst->op_code = -1;
 	new_inst->ebyte = 0;
@@ -63,15 +63,13 @@ t_player	*create_player(void)
 	int			i;
 
 	if (!(player = (t_player*)malloc(sizeof(t_player))))
-		exit (1);
+		exit(1);
 	i = 0;
 	ft_bzero(&(*player), sizeof(t_player));
 	while (i < REG_NUMBER)
 		player->reg[i++] = 0;
 	inst = init_instruction();
 	player->inst = inst;
-	// player->next = NULL;
-	// player->prev = NULL;	
 	return (player);
 }
 
@@ -81,24 +79,22 @@ t_player	*add_player(t_player **head)
 
 	elem = create_player();
 	elem->next = *head;
-	// if (!(tmp = *head))
-	// 	elem->prev = NULL;
-	if(elem->next != NULL)
+	if (elem->next != NULL)
 		elem->next->prev = elem;
 	return (elem);
 }
 
-int		init_player(int fd, t_arena *arena, t_player **fplayer)
+int			init_player(int fd, t_arena *arena, t_player **fplayer)
 {
 	char	buf;
 	char	program[PROG_MAX_SIZE];
 	int		j;
 
 	j = 0;
-	while (read(fd, &buf, 1) > 0) // READ AND PUT IN PROGRAM;
+	while (read(fd, &buf, 1) > 0)
 	{
 		program[j++] = buf;
-		if(j == PROG_MAX_SIZE - 1)    /// CHECK IF PROG TO BIG in verify prog?
+		if (j == PROG_MAX_SIZE - 1)
 			return (print_error(1, *fplayer, arena));
 	}
 	close(fd);

@@ -6,7 +6,7 @@
 /*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 10:55:08 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/09 09:59:38 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/09 15:26:11 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ void			loop(t_player *players, t_arena *arena)
 {
 	t_player		*cur;
 
-	t_window		win;
-	//init_interactive_mode(&win);
+//	t_window		win;
+//	init_interactive_mode(&win);
 	t_player		*tmp;
 
 	while (arena->cycle_to_die >= 0)
@@ -90,12 +90,12 @@ void			loop(t_player *players, t_arena *arena)
 			cur->inst->counter != -1 ? cur->inst->counter-- : cur->inst->counter;
 			cur = cur->next;
 		}
-		//interactive(players, arena, &win);
+	//	interactive(players, arena, &win);
 	if (arena->cycle_counter == arena->cycle_to_die)
 		if (live_checkup(players, arena) == -1)
 			return ;
 		//print_info(arena, players);
-		//interactive(players, arena, win);
+	//	interactive(players, arena, win);
 		//graphics(arena, players); //Victor cleans the write bl and address here
 	if (arena->flags->dump_bl && arena->flags->dump_cycles == arena->total_cycles)
 	{

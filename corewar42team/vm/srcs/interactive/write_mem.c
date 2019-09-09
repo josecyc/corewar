@@ -6,7 +6,7 @@
 /*   By: viclucas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 10:36:54 by viclucas          #+#    #+#             */
-/*   Updated: 2019/09/07 12:22:16 by viclucas         ###   ########.fr       */
+/*   Updated: 2019/09/09 10:45:40 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	print_color(t_window *win, t_player *p, t_arena *arena, t_data data)
 {
+	(void)p;
 	if (data.color == 2)
 	{
 		wattron(win->big, A_BOLD);
@@ -71,6 +72,7 @@ void	tag_pc(t_player *tmp, t_data *data, t_window *win)
    */
 void	ft_update_coord(t_data *data, t_player *player, t_arena *arena, t_window *win)
 {
+	(void)arena;
 	ft_bzero(data, sizeof(data));
 	getbegyx(win->big, data->y, data->x);
 	data->tmp = data->x + 2;
@@ -93,6 +95,7 @@ void	ft_update_coord(t_data *data, t_player *player, t_arena *arena, t_window *w
 
 void	do_movement(t_data *data, t_player *tmp, t_window *win)
 {
+	(void)win;
 	if (MAX_Y == data->y && MAX_X == data->x)
 	{
 		data->y = 1;

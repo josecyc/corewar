@@ -6,7 +6,7 @@
 /*   By: viclucas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 13:05:34 by viclucas          #+#    #+#             */
-/*   Updated: 2019/09/07 14:03:28 by viclucas         ###   ########.fr       */
+/*   Updated: 2019/09/09 10:45:54 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 void	side_informations(t_window *win, t_arena *arena, t_player *players)
 {
+	(void)arena;
 	t_player	*tmp;
 	t_data		data;
 

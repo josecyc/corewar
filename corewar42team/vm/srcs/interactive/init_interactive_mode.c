@@ -6,7 +6,7 @@
 /*   By: viclucas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 07:12:56 by viclucas          #+#    #+#             */
-/*   Updated: 2019/09/07 07:30:17 by viclucas         ###   ########.fr       */
+/*   Updated: 2019/09/09 10:44:44 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void error_handler_inter(int error)
 {
-	int token;
+	//int token;
 
 	endwin();
 	if (error == 1)
@@ -49,7 +49,7 @@ void			set_up_colors()
 
 t_window		*init_interactive_mode(t_window *win)
 {
-	int x;
+	//int x;
 
 	initscr();
 	start_color();

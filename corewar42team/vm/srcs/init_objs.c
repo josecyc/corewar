@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_objs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 20:30:51 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/03 21:45:26 by viclucas         ###   ########.fr       */
+/*   Updated: 2019/09/09 13:14:36 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	init_arena_ob(t_arena *arena, int argc, char **argv)
 		i++;
 	}
 	if (!(arena->flags = (t_flag*)malloc(sizeof(t_flag))))
-		exit (1);
+		exit(1);
 	arena->num_plys = 0;
 	arena->cycle_to_die = CYCLE_TO_DIE;
 	arena->total_cycles = 0;

@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 20:32:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/05 22:57:28 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/09 10:52:19 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int		get_flags(t_arena *arena, int *i, t_player **fplayer)
 		arena->flags->dump_bl = 1;
 		arena->flags->dump_cycles = ft_atoi(arena->argv[*i + 1]);
 		*i = *i + 2;
-		//ft_printf("dump after %d\n", arena->flags->dump_cycles);
-		//ft_printf("index %d\n", *i);
 		return (1);
 	}
 	else if (ft_strcmp(arena->argv[*i], "-i") == 0)

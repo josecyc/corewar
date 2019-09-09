@@ -6,7 +6,7 @@
 #    By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/15 19:22:08 by jdiaz             #+#    #+#              #
-#    Updated: 2019/09/08 22:29:30 by viduvern         ###   ########.fr        #
+#    Updated: 2019/09/09 11:17:36 by viduvern         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ VM_SRC	= srcs/interactive/getcha.c \
 		  srcs/print_memory.c \
 		  srcs/live_checkup.c \
 		  srcs/loop.c \
+		  srcs/save_utils.c \
 		  srcs/save_inst.c \
 		  ../assembler/srcs/op.c \
 		  srcs/inst_utils.c \
@@ -65,6 +66,7 @@ all: $(NAME)
 
 $(NAME): $(VM_OBJ)
 	@make -C $(LIBFT_PATH)
+	@gcc $(FLAGS) $(INC) -c $(VM_SRC)
 	@gcc $(INC) $(VM_OBJ) -o $(NAME) -L $(LIBFT_PATH) -lft -lncurses $(FLAGS) 
 	@echo "Compiled corewar"
 
