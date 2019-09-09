@@ -6,7 +6,7 @@
 #    By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/15 19:22:08 by jdiaz             #+#    #+#              #
-#    Updated: 2019/09/09 13:17:56 by jcruz-y-         ###   ########.fr        #
+#    Updated: 2019/09/09 15:34:28 by jcruz-y-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,8 +63,7 @@ all: $(NAME)
 
 $(NAME): $(VM_OBJ)
 	@make -C $(LIBFT_PATH)
-	@gcc -c $(INC) $(FLAGS) $(VM_SRC)
-	@gcc $(VM_OBJ) -o $(NAME) -L $(LIBFT_PATH) -lft -lncurses $(FLAGS) 
+	@gcc $(FLAGS) $(INC) $(VM_OBJ) -L $(LIBFT_PATH) -lft -lncurses -o $(NAME)
 	@echo "Compiled corewar"
 
 clean:

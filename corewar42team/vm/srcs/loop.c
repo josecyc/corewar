@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 10:55:08 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/09 14:05:20 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/09 15:34:52 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,10 +112,8 @@ void			loop(t_player *players, t_arena *arena)
 					clean_process_inst(cur);
 			}
 			cur->inst->counter != -1 ? cur->inst->counter-- : cur->inst->counter;
-			ft_printf("player name: %s\n", cur->name);
 			cur = cur->next;
-		}
-	
+		}	
 		if (arena->cycle_counter == arena->cycle_to_die)
 			if (live_checkup(players, arena) == -1)
 			{
@@ -132,5 +130,6 @@ void			loop(t_player *players, t_arena *arena)
 	//close_win();
 	arena->cycle_counter++;
 	arena->total_cycles++;
-	close_win();
+	//close_win();
+	}
 }
