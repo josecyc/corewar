@@ -6,7 +6,7 @@
 #    By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/15 19:22:08 by jdiaz             #+#    #+#              #
-#    Updated: 2019/09/09 15:34:28 by jcruz-y-         ###   ########.fr        #
+#    Updated: 2019/09/09 11:17:36 by viduvern         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ VM_SRC	= srcs/interactive/side_informations.c \
 		  srcs/print_memory.c \
 		  srcs/live_checkup.c \
 		  srcs/loop.c \
+		  srcs/save_utils.c \
 		  srcs/save_inst.c \
 		  ../assembler/srcs/op.c \
 		  srcs/inst_utils.c \

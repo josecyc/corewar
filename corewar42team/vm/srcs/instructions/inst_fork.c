@@ -6,10 +6,9 @@
 /*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 12:20:00 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/09 00:09:33 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/09 14:27:54 by viduvern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../includes/vm.h"
 
@@ -21,46 +20,44 @@
 ** argument indicates
 */
 
-t_player        *add_process_last(t_player **any_process, t_arena *arena)
+static void			new_process(t_player **new, t_player *tmp)
 {
-    t_player *new;
-    t_player *tmp;
+	int i;
 
-    tmp = *any_process;
-    int i  = 0 ;
-    new = create_player();
-    (*any_process)->inst->fork = 1;
-    new->pnum = tmp->pnum;
-    new->carry = tmp->carry;
-    new->life_bl = tmp->life_bl;
-    new->name = tmp->name;
-    new->pc_inter = tmp->pc_inter;
-    new->dead = new->dead;
-    while (i < REG_NUMBER)
-    {
-        new->reg[i] = tmp->reg[i];
-        i++;
-    }
-    new->pc = tmp->pc;
-    advance_proc_pc(&new, (-tmp->inst->size) + (tmp->inst->args[0] % IDX_MOD));
-
-    while(tmp->prev)
-    {
-        tmp = tmp->prev;
-        i++;
-    }
-    tmp->prev = new;
-    new->next = tmp;
-    while(put_cycle(new, arena) == 0)
-        new->pc++;
-    //*any_process;
-  //  (*any_process) = new;
-    return(*any_process);
+	i = 0;
+	*new = create_player();
+	(*new)->pnum = tmp->pnum;
+	(*new)->carry = tmp->carry;
+	(*new)->life_bl = tmp->life_bl;
+	(*new)->name = tmp->name;
+	(*new)->pc_inter = tmp->pc_inter;
+	(*new)->pc = tmp->pc;
+	while (i < REG_NUMBER)
+	{
+		(*new)->reg[i] = tmp->reg[i];
+		i++;
+	}
 }
 
-void     inst_fork(t_player *player, t_arena *arena)
+static t_player		*add_process_last(t_player **any_process, t_arena *arena)
 {
-    t_player    *new;
- 
-    new = add_process_last(&player, arena);
-} 
+	t_player *new;
+	t_player *tmp;
+
+	tmp = *any_process;
+	new_process(&new, tmp);
+	(*any_process)->inst->fork = 1;
+	advance_proc_pc(&new, (-tmp->inst->size) + (tmp->inst->args[0] % IDX_MOD));
+	while (tmp->prev)
+		tmp = tmp->prev;
+	tmp->prev = new;
+	new->next = tmp;
+	while (put_cycle(new, arena) == 0)
+		new->pc++;
+	return (*any_process);
+}
+
+void				inst_fork(t_player *player, t_arena *arena)
+{
+	add_process_last(&player, arena);
+}
