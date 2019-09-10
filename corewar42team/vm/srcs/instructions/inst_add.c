@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inst_add.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 09:27:39 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/09 13:20:17 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/10 00:10:19 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,18 @@
 void		inst_add(t_player *cur, t_arena *arena)
 {
 	int result;
-	int i;
 
 	(void)arena;
-	i = 0;
-	result = (cur->reg[cur->inst->args[0] - 1] + \
-	cur->reg[cur->inst->args[1] - 1]);
-	cur->carry = (result == 0) ? 1 : 0;
-	cur->reg[cur->inst->args[2] - 1] = result;
+	result = 0;
+	if (valid_reg_int(cur, 4) == 1)
+	{
+		result = (cur->reg[cur->inst->args[0] - 1] + \
+		cur->reg[cur->inst->args[1] - 1]);
+		cur->carry = (result == 0) ? 1 : 0;
+		cur->reg[cur->inst->args[2] - 1] = result;
+	}
+	else
+	{
+		advance_proc_pc(&cur, jump_next_op(cur->inst->op_code));
+	}
 }

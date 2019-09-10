@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_players.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 20:16:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/09 15:55:37 by viclucas         ###   ########.fr       */
+/*   Updated: 2019/09/09 21:21:27 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,6 @@ t_player	*add_player(t_player **head)
 
 	elem = create_player();
 	elem->next = *head;
-	if (elem->next != NULL)
-		elem->next->prev = elem;
 	return (elem);
 }
 

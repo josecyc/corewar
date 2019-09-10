@@ -28,7 +28,7 @@
 # include <ncurses.h>
 # include "../../libft/libft.h"
 # define FLAGSC "id"
-# define OPTIONS "OPTIONS ARE:\n-i for interactive mode\n-n [desired_player_num] [player]\n-dump [cycles] for dumping arena memory\n"
+# define OPTIONS "USAGE ./corewar:\n-i for interactive mode (mutually exclusive with -dump flag)\n-n [desired_player_num] [player]\n-dump [cycles] [player] for dumping arena memory\n"
 
 int					debug;
 
@@ -74,8 +74,6 @@ typedef struct		s_player
 	char			valid_arg_type;
 	int				j;
 	struct s_player *next;
-	struct s_player *prev;
-
 }					t_player;
 
 typedef struct		s_window
@@ -141,6 +139,7 @@ int					init_arena(t_arena *arena, t_player **player);
 ** errorh.c
 */
 int					print_error(int errnum, t_player *fplayer, t_arena *arena);
+int					print_error2(int errnum, t_player *fplayer, t_arena *arena);
 
 /*
 ** flags.c
@@ -188,6 +187,7 @@ int					live_checkup(t_player *players, t_arena *arena);
 ** loop.c
 */
 void				loop(t_player *players, t_arena *arena);
+void				announce_winner(t_player *players, t_arena *arena);
 
 /*
 **	save_inst
@@ -247,7 +247,7 @@ void				print_color(t_window *win, t_arena *arena, t_data data);
 int					init_player(int fd, t_arena *arena, t_player **fplayer);
 int					verify_program(t_player **fplayer, char *prog, int size);
 int					assign_number(t_player *fplayer, int cur_pl_num);
-void		color_pc(t_window *win, t_arena *arena, t_player *tmp);
+void				color_pc(t_window *win, t_arena *arena, t_player *tmp);
 
 /*
 ** inst_utils.c
@@ -256,6 +256,7 @@ void		color_pc(t_window *win, t_arena *arena, t_player *tmp);
 int					ebyte_to_args(t_player *player, t_arena *arena, int *step);
 int					save_without_eb(t_player *player, t_arena *arena, int *step);
 int					valid_reg(t_arena *arena, t_player *player, int step);
+int					valid_reg_int(t_player *player, int num);
 int					valid_ebyte(char e_pair, char valid_arg_types);
 int					advance_proc_pc(t_player **player, int step);
 int					get_addr_value(t_player *player, int step);
@@ -277,10 +278,12 @@ void				inst_xor(t_player *fplayer, t_arena *arena);
 void				inst_zjmp(t_player *fplayer, t_arena *arena);
 void				inst_ldi(t_player *fplayer, t_arena *arena);
 void				inst_sti(t_player *fplayer, t_arena *arena);
-void				inst_fork(t_player *fplayer, t_arena *arena);
+void				inst_fork(t_player **head, t_arena *arena, t_player *cur);
 void				inst_lld(t_player *fplayer, t_arena *arena);
 void				inst_lldi(t_player *fplayer, t_arena *arena);
-void				inst_lfork(t_player *fplayer, t_arena *arena);
+void				inst_lfork(t_player **head, t_arena *arena, t_player *cur);
+void				inst_dummy(t_player *fplayer, t_arena *arena);
+void				inst_dummy2(t_player *fplayer, t_arena *arena);
 void				inst_aff(t_player *fplayer, t_arena *arena);
 
 #endif

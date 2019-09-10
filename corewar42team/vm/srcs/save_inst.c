@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 18:23:21 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/09 15:36:26 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/09 22:20:05 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,8 +128,8 @@ int				save_inst(t_player *player, t_arena *arena)
 	int		step;
 
 	step = 0;
-	player->inst->op_code = (char)arena->memory[player->pc];
-	if (player->inst->op_code > 17 || player->inst->op_code < 1)
+	//player->inst->op_code = (char)arena->memory[player->pc];
+	if (player->inst->op_code > 16 || player->inst->op_code < 1)
 		return (-1);
 	advance_proc_pc(&player, 1);
 	if (op_tab[player->inst->op_code - 1].encoding_byte == 1)

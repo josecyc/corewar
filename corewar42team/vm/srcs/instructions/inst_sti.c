@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:22:26 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/09 11:34:18 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 00:07:20 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ void			inst_sti(t_player *cur, t_arena *arena)
 
 	args = 0;
 	a = 4;
+	if (!valid_reg_int(cur, 0))
+	{
+		advance_proc_pc(&cur, jump_next_op(cur->inst->op_code));
+		return ;
+	}
 	while (a > 0 && ++args)
 	{
 		if ((cur->inst->ebyte >> a & 3) == REG_CODE)

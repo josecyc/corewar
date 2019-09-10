@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inst_ld.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 02:29:11 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/09 13:25:08 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/09 23:51:28 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 /*
 ** opcode 0x02, changes the carry if ARG_1 is null
-**  usage : ld ARG_1(ID/D4), ARG_2(RG)
+** usage : ld ARG_1(ID/D4), ARG_2(RG)
 ** loads the value of ARG_1 in ARG_2
-** direct transfert from RAM to register
+** direct transfer from RAM to register
 */
 
 void		inst_ld(t_player *cur, t_arena *arena)
@@ -27,6 +27,11 @@ void		inst_ld(t_player *cur, t_arena *arena)
 	char	ebyte;
 
 	ebyte = cur->inst->ebyte >> 6 & 3;
+	if (!valid_reg_int(cur, 1))
+	{
+		advance_proc_pc(&cur, jump_next_op(cur->inst->op_code));
+		return ;
+	}
 	if (ebyte == DIR_CODE)
 	{
 		cur->carry = (cur->inst->args[0] == 0) ? 1 : 0;
