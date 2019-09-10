@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 19:58:22 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/09 21:05:04 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 11:34:39 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int				main(int argc, char **argv)
 	//print_memory(arena.memory);
 	if (!arena.flags->interactive)
 		announce_winner(fplayer, &arena);
+	printf("arena total cycles %d\n", arena.total_cycles);
 //	system("leaks corewar");
 	//winner_print(fplayer, &arena, &win);
 	//close_win();

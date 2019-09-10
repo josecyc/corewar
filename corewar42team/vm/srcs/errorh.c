@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 20:39:45 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/09 20:13:24 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 12:49:21 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		print_error(int errnum, t_player *fplayer, t_arena *arena)
 	else if (errnum == 3)
 		ft_printf("invalid program file\n");
 	else if (errnum == 4)
-		ft_printf("too many gladiators, max number allowed is %d you have %d\n",
+		ft_printf("too many gladiators, max number allowed is 4 or %d you have %d\n",
 MAX_PLAYERS, arena->num_plys);
 	else if (errnum == 5)
 		ft_printf("unable to open program file\n");
