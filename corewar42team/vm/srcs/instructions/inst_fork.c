@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 12:20:00 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/10 12:00:36 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 15:26:27 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 static void	new_process(t_player **new, t_player *tmp)
 {
 	int i;
-	
+
 	i = 0;
 	*new = create_player();
 	(*new)->pnum = tmp->pnum;
@@ -44,7 +44,7 @@ void		inst_fork(t_player **head, t_arena *arena, t_player *cur)
 {
 	t_player *new;
 	t_player *tmp;
-	
+
 	tmp = (*head);
 	new_process(&new, cur);
 	advance_proc_pc(&new, (-cur->inst->size) + (cur->inst->args[0] % IDX_MOD));
