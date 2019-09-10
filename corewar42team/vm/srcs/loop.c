@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 10:55:08 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/09 16:54:42 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/09 16:01:59 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,10 @@ void	winner_print(t_player *p, t_arena *arena, t_window *win)
 		}
 		tmp = tmp->next;
 	}
-	getch_theses(win, 1);
 	mvwprintw(win->down, 3, 170, "END OF THE GAME");
 	wrefresh(win->down);
 	wattroff(win->down, COLOR_PAIR(3));
+	getch_theses(win, 1);
 }
 
 void	saving_inst(t_player *cur, t_arena *arena, t_player **head)

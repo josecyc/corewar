@@ -6,7 +6,7 @@
 /*   By: viclucas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 07:12:56 by viclucas          #+#    #+#             */
-/*   Updated: 2019/09/09 10:48:29 by viclucas         ###   ########.fr       */
+/*   Updated: 2019/09/09 16:16:10 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,16 @@ void			error_handler_inter(int error)
 	exit(error);
 }
 
-WINDOW *create_newwin(int height, int width, int starty, int startx)
+WINDOW			*create_newwin(int height, int width, int starty, int startx)
 {
 	WINDOW *local_win;
 
 	local_win = newwin(height, width, starty, startx);
-	box(local_win, 0 , 0);
-	return local_win;
+	box(local_win, 0, 0);
+	return (local_win);
 }
 
-void			set_up_colors()
+void			set_up_colors(void)
 {
 	init_pair(1, COLOR_RED, COLOR_BLACK);
 	init_pair(2, COLOR_GREEN, COLOR_BLACK);
@@ -57,17 +57,18 @@ void			init_win_data(t_window *win)
 	i = 0;
 	while (i < MEM_SIZE)
 		win->tab[i++] = 0;
-	win->sleep_cursor = 5;
+	win->sleepc = 5;
 	win->first_round = 1;
 	win->first_loop = 1;
 	win->sleep = MIN_UNIT_SLEEP - (5 * MAX_UNIT_SLEEP);
 	win->big = create_newwin(LINES * 0.84, COLS * 0.80, LINES - LINES + 1,
 			COLS - COLS + 1);
-	mvwprintw(win->big, 0,  (COLS * 0.8) / 2 - 11, "%s"," - ARENA - ");
+	mvwprintw(win->big, 0, (COLS * 0.8) / 2 - 11, "%s", " - ARENA - ");
 	win->side = create_newwin(LINES * 0.84, COLS * 0.20, LINES - LINES + 1,
 			(COLS * 0.80) + 1);
-	mvwprintw(win->side, 0,  (LINES * 0.84) / 2 - 10, "%s"," - DATA - ");
-	win->down = create_newwin(LINES * 0.16, COLS - 1, LINES - (LINES * 0.16 - 1),
+	mvwprintw(win->side, 0, (LINES * 0.84) / 2 - 10, "%s", " - DATA - ");
+	win->down = create_newwin(LINES * 0.16,
+			COLS - 1, LINES - (LINES * 0.16 - 1),
 			(COLS - COLS + 1));
 	mvwprintw(win->down, 0, (COLS - 1) / 2 - 13, "%s", " - COMMANDS - ");
 }
