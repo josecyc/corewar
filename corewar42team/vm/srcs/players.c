@@ -64,7 +64,9 @@ static int		check_openfile(t_arena *arena, t_player **fplayer, int i)
 			else
 				return (print_error(5, *fplayer, arena));
 		}
-		return (-1);
+		{
+			return (-1);
+		}
 	}
 	if (init_player(fd, arena, fplayer) == -1)
 		return (-1);

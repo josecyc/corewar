@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   write_mem.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viclucas <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 10:36:54 by viclucas          #+#    #+#             */
 /*   Updated: 2019/09/09 16:38:41 by viclucas         ###   ########.fr       */
@@ -14,7 +14,6 @@
 
 void	print_color(t_window *win, t_arena *arena, t_data data)
 {
-	(void)p;
 	if (data.color == 2)
 	{
 		wattron(win->big, A_BOLD);
@@ -40,7 +39,6 @@ void	print_color(t_window *win, t_arena *arena, t_data data)
 
 void	ft_update_coord(t_data *data, int value, WINDOW *win)
 {
-	(void)arena;
 	ft_bzero(data, sizeof(data));
 	getbegyx(win, data->y, data->x);
 	data->tmp = data->x + 2;
@@ -63,7 +61,6 @@ void	ft_update_coord(t_data *data, int value, WINDOW *win)
 
 void	do_movement(t_data *data, t_player *tmp)
 {
-	(void)win;
 	if (MAX_Y == data->y && MAX_X == data->x)
 	{
 		data->y = 1;

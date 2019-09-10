@@ -1,4 +1,4 @@
-.name "                   oerwjporwejorpwjowprejrowewjorperwjeoprweojprwejoprewjoprwejoprewjoprewjoperwjoperwjoprwejop rwerewperworewoprewoprwejoprewjoperwjoprweqjoperqwjopeqrwjoprweqjopreqwjoprewjorewrejpwoejroprejqwoprewjopjorpewjoperjoprewjoprejorewjorewjorewrjeowrewqjorewqjoprewqjoprewjoprweqjoprewjoprewjoprewjoprwejoprewjorjoewjroepwjroepwrejopwrjoewrejworejwo"
+.name "King Sombra"
 .comment "Crystal empire is mine!"
 
 init:

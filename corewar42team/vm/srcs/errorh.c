@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errorh.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 20:39:45 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/09 10:52:06 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/09 18:38:03 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ MAX_PLAYERS, arena->num_plys);
 	else if (errnum == 7)
 		ft_printf("%s", OPTIONS);
 	else if (errnum == 8)
-		ft_printf("Options -dump Must be followed by a number: ./corewar \
-				[-dump] [num cycles till dump] [[champions.cor]...]\n");
+		ft_printf("Option -dump Must be followed by a number:\n\
+		 ./corewar [-dump] [num cycles till dump] [[champions.cor]...]\n");
 	else if (errnum == 9)
 		ft_printf("player number '%d' previously assigned\n", fplayer->pnum);
 	else if (errnum == 10)
-		ft_printf(" Options -n Must be followed by a number: ./corewar\
-				[-n] [number] \n");
+		ft_printf(" Option -n Must be followed by a number:\n\
+./corewar [-n] [number] \n");
 	return (-1);
 }

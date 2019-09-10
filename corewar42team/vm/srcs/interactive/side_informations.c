@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   side_informations.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viclucas <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 13:05:34 by viclucas          #+#    #+#             */
 /*   Updated: 2019/09/09 16:31:00 by viclucas         ###   ########.fr       */
@@ -25,7 +25,6 @@ void	basic_infos(t_window *win, t_data data, t_player *tmp)
 
 void	side_informations(t_window *win, t_player *players)
 {
-	(void)arena;
 	t_player	*tmp;
 	t_data		data;
 
