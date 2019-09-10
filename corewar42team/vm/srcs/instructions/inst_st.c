@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inst_st.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:21:56 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/09 14:05:15 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/10 00:03:56 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,23 @@ void		inst_st(t_player *cur, t_arena *arena)
 	int				adress;
 
 	i = 24;
+	adress = 0;
+	if (!valid_reg_int(cur, 0))
+	{
+		advance_proc_pc(&cur, jump_next_op(cur->inst->op_code));
+		return ;
+	}
 	reg_value = cur->reg[cur->inst->args[0] - 1];
 	ebyte = cur->inst->ebyte >> 4 & 3;
 	if (ebyte == REG_CODE)
+	{
+		if (!valid_reg_int(cur, 1))
+		{
+			advance_proc_pc(&cur, jump_next_op(cur->inst->op_code));
+			return ;
+		}
 		cur->reg[cur->inst->args[1] - 1] = reg_value;
+	}
 	else
 	{
 		adress = get_addr_value(cur, (-cur->inst->size) + \

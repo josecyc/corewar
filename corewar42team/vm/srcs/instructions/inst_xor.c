@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 10:37:45 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/09 14:09:51 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/09 23:36:25 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,27 +21,35 @@
 
 void		inst_xor(t_player *cur, t_arena *arena)
 {
-	int		addrs;
-	short	byte;
-	int		args;
-	int		i;
+	int			addrs;
+	short		byte;
+	int			j;
+	int			i;
 
-	args = 0;
+	j = 0;
 	i = 6;
 	while (i != 2)
 	{
 		if ((cur->inst->ebyte >> i & 3) == IND_CODE)
 		{
-			byte = (cur->inst->args[args] % IDX_MOD);
+			byte = (cur->inst->args[j] % IDX_MOD);
 			addrs = get_addr_value(cur, (-cur->inst->size) + byte);
-			memory_to_int(&cur->inst->args[args], arena, addrs, 4);
+			memory_to_int(&cur->inst->args[j], arena, addrs, 4);
 		}
 		else if ((cur->inst->ebyte >> i & 3) == REG_CODE)
-			cur->inst->args[args] = cur->reg[cur->inst->args[args] - 1];
+		{
+			if (valid_reg_int(cur, cur->inst->args[j]))
+				cur->inst->args[j] = cur->reg[cur->inst->args[j] - 1];
+			else
+			{
+				advance_proc_pc(&cur, jump_next_op(cur->inst->op_code));
+				break ;
+			}
+		}
 		i -= 2;
-		args++;
+		j++;
 	}
-	args = cur->inst->args[0] ^ cur->inst->args[1];
-	cur->carry = (args == 0) ? 1 : 0;
-	cur->reg[cur->inst->args[2] - 1] = args;
+	j = cur->inst->args[0] ^ cur->inst->args[1];
+	cur->carry = (j == 0) ? 1 : 0;
+	cur->reg[cur->inst->args[2] - 1] = j;
 }

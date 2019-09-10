@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:22:12 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/09 13:55:32 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/10 00:00:03 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ void		inst_lld(t_player *cur, t_arena *arena)
 	char	ebyte;
 
 	ebyte = cur->inst->ebyte >> 6 & 3;
+	if (!valid_reg_int(cur, 1))
+	{
+		advance_proc_pc(&cur, jump_next_op(cur->inst->op_code));
+		return ;
+	}
 	if (ebyte == DIR_CODE)
 	{
 		cur->carry = (cur->inst->args[0] == 0) ? 1 : 0;

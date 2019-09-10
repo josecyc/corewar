@@ -6,11 +6,32 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 13:48:07 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/08 19:26:06 by viclucas         ###   ########.fr       */
+/*   Updated: 2019/09/09 21:37:13 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vm.h"
+
+static void		welcome_msg(t_arena *arena, t_player **fplayer)
+{
+	t_player	*cur;
+
+	cur = *fplayer;
+	ft_printf("|| ================= WELCOME TO THE JUNGLE ================= ||\n");
+	ft_printf("||                                                           ||\n");
+	ft_printf("||       Get ready to presence the legendary gladiator       ||\n");
+	ft_printf("||               FIGHT FOR THE COOOORE!!!!!                  ||\n");
+	ft_printf("||                                                           ||\n");
+	ft_printf("||                                                           ||\n");
+	while (cur)
+	{
+		ft_printf("|| Introducing \"%s\"\n", cur->name);
+		ft_printf("|| Any comment?: \"%s\"\n", cur->comment);
+		cur = cur->next;
+	}
+	ft_printf("||                                                           ||\n");
+	ft_printf("|| ============= MAY THE CODE BE WITH YOU ALL ============== ||\n");
+}
 
 static int		write_player(t_arena *arena, t_player *elem)
 {
@@ -52,6 +73,8 @@ int				init_arena(t_arena *arena, t_player **fplayer)
 
 	if (get_numplys(arena, fplayer) == -1)
 		return (print_error(4, *fplayer, arena));
+	if (!arena->flags->interactive)
+		welcome_msg(arena, fplayer);
 	i = arena->num_plys;
 	elem = *fplayer;
 	while (i > 0)

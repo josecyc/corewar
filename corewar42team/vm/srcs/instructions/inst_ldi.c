@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inst_ldi.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 02:27:58 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/09 13:52:53 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/09 23:59:08 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,22 @@ void			inst_ldi(t_player *cur, t_arena *arena)
 	get_byte = 0;
 	args = 0;
 	i = 6;
+	if (!valid_reg_int(cur, 2))
+	{
+		advance_proc_pc(&cur, jump_next_op(cur->inst->op_code));
+		return ;
+	}
 	while (i > 2)
 	{
 		if ((cur->inst->ebyte >> i & 3) == REG_CODE)
+		{
+			if (!valid_reg_int(cur, args))
+			{
+				advance_proc_pc(&cur, jump_next_op(cur->inst->op_code));
+				return ;
+			}
 			cur->inst->args[args] = cur->reg[cur->inst->args[args] - 1];
+		}
 		else if ((cur->inst->ebyte >> i & 3) == IND_CODE)
 		{
 			result = (cur->inst->args[0] % IDX_MOD);

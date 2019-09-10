@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inst_sub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viduvern <viduvern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 11:30:23 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/09 14:08:08 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/10 00:10:35 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,15 @@ void		inst_sub(t_player *cur, t_arena *arena)
 
 	(void)arena;
 	i = 0;
-	result = (cur->reg[cur->inst->args[0] - 1] - \
-	cur->reg[cur->inst->args[1] - 1]);
-	cur->carry = (result == 0) ? 1 : 0;
-	cur->reg[cur->inst->args[2] - 1] = result;
+	if (valid_reg_int(cur, 4) == 1)
+	{
+		result = (cur->reg[cur->inst->args[0] - 1] - \
+		cur->reg[cur->inst->args[1] - 1]);
+		cur->carry = (result == 0) ? 1 : 0;
+		cur->reg[cur->inst->args[2] - 1] = result;
+	}
+	else
+	{
+		advance_proc_pc(&cur, jump_next_op(cur->inst->op_code));
+	}
 }

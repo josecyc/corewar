@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 19:58:22 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/09 18:29:23 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/09 21:05:04 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,16 @@ static int		get_args(t_arena *arena, t_player **fplayer)
 	i = 1;
 	while (i < arena->argc)
 	{
-		if (get_flags(arena, &i, fplayer) == -1)
+		while (i < arena->argc && (ft_strcmp(arena->argv[i], "-dump") == 0 ||
+		ft_strcmp(arena->argv[i], "-i") == 0))
+			if (get_flags(arena, &i, fplayer) == -1)
+				return (-1);
+		if (i < arena->argc && get_player(arena, fplayer, &i) == -1)
 			return (-1);
-		if (arena->argv[i] && get_player(arena, fplayer, &i) == -1)
-			return (-1);
-		else
-			i++;
+		i++;
 	}
+	if (*fplayer == NULL)
+        return(print_error2(1, *fplayer, arena));
 	return (1);
 }
 
@@ -47,14 +50,14 @@ int				main(int argc, char **argv)
 	t_window		win;
 
 	init_arena_ob(&arena, argc, argv);
-	//init_interactive_mode(&win);
 	fplayer = NULL;
 	if (init_state(&arena, &fplayer) == -1)
 		return (-1);
 	loop(fplayer, &arena);
 	//print_info(&arena, fplayer);
 	//print_memory(arena.memory);
-	//announce_winner(&arena, fplayer);
+	if (!arena.flags->interactive)
+		announce_winner(fplayer, &arena);
 //	system("leaks corewar");
 	//winner_print(fplayer, &arena, &win);
 	//close_win();
