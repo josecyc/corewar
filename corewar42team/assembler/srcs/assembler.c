@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 18:09:01 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/10 13:39:42 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 14:30:06 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ static void		init_vars(t_vars *ob)
 	ob->begin_line = 0;
 	ob->counter = 0;
 	ob->prog_size = 0;
+	ob->prog_code = 0;
 }
 
 int				main(int argc, char **argv)
