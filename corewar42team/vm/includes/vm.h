@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:56:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/09 23:08:09 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 11:55:36 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ typedef struct		s_player
 	int				dead;
 	int				write_bl;
 	int				write_addr;
-	//int			xy[2];   //start location
 	int				pc;
 	int				pnum;	
 	t_inst			*inst;
@@ -70,6 +69,7 @@ typedef struct		s_player
 	char			*comment;
 	char			*prog;
 	int				oldpc;
+	int				proc_num;
 	int				pc_inter;
 	char			valid_arg_type;
 	int				j;

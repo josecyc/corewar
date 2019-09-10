@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:43:01 by zaz               #+#    #+#             */
-/*   Updated: 2019/09/02 17:30:11 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/09 18:32:32 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,12 @@ t_op	op_tab[17] =
 	{"aff", 1, {T_REG}, 16, 2, "aff", 1, 0},
 	{0, 0, {0}, 0, 0, 0, 0, 0}
 };
+
 /*
 ** Certain instructions which take indexes have their expressed direct values 
 ** (%value) of size indirect: zjmp 09, ldi 10, sti 11, fork 12, lldi 14, lfork 15
 */
+
 int		check_index(int op_code)
 {
 	static int		intarr[6] = {9, 10, 11, 12, 14, 15};

@@ -6,13 +6,13 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 20:50:23 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/09 13:29:07 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 14:05:22 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/assembler.h"
 
-static void			error_message_pt2(int msg_nb, int i, int arg)
+int			error_message_pt2(int msg_nb, int i, int arg)
 {
 	if (msg_nb == 9)
 	{
@@ -31,9 +31,12 @@ static void			error_message_pt2(int msg_nb, int i, int arg)
 	}
 	else if (msg_nb == 12)
 		printf("Error on line %d, argument %d: no such label\n", i, arg);
+	else if (msg_nb == 13)
+		printf("Error, no program code\n");
+	return (-1);
 }
 
-int					error_message(int msg_nb, int i, int arg)
+int			error_message(int msg_nb, int i, int arg)
 {
 	if (msg_nb == 0)
 		printf("Incorrect number of arguments\nUSAGE: ./asm [file.s]\n");

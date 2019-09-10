@@ -1,5 +1,5 @@
 	.name "Wall"
-	.comment "Werror(you) Wextra(me)"
+	.comment "Werror  you Wextrame"
 
 start:
 	ld		%1, r14

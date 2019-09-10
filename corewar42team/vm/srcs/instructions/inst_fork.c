@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 12:20:00 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/09 21:13:48 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 12:00:36 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static void	new_process(t_player **new, t_player *tmp)
 	(*new)->name = tmp->name;
 	(*new)->pc_inter = tmp->pc_inter;
 	(*new)->pc = tmp->pc;
+	(*new)->proc_num = tmp->proc_num + 1;
 	while (i < REG_NUMBER)
 	{
 		(*new)->reg[i] = tmp->reg[i];
