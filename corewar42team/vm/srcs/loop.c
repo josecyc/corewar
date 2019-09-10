@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 10:55:08 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/09 16:01:59 by viclucas         ###   ########.fr       */
+/*   Updated: 2019/09/09 22:37:30 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ static t_inst_funct	inst_functions[16] =
 	inst_zjmp,
 	inst_ldi,
 	inst_sti,
-	inst_fork,
+	inst_dummy,
 	inst_lld,
 	inst_lldi,
-	inst_lfork,
+	inst_dummy2,
 	inst_aff
 };
 
@@ -76,25 +76,37 @@ void	winner_print(t_player *p, t_arena *arena, t_window *win)
 	getch_theses(win, 1);
 }
 
-void	saving_inst(t_player *cur, t_arena *arena, t_player **head)
+void	announce_winner(t_player *p, t_arena *arena)
 {
 	t_player *tmp;
 
-
-	if(save_inst(cur, arena) != -1)
-		inst_functions[cur->inst->op_code - 1](cur, arena);
-	if(cur->inst->fork == 1)
+	tmp = p;
+	while (tmp)
 	{
-		cur->inst->fork = 0;
-		tmp = cur;
-		while(tmp->prev)
-			tmp = tmp->prev;	
-		*head = tmp;
+		if (tmp->pnum == arena->last_alive)
+		{
+			ft_printf("\n\nXXXXXXXXX\nWINNER IS \"%s\"\nXXXXXXXXXXX\n", tmp->name);
+			return ;
+		}
+		tmp = tmp->next;
 	}
-	else
-		clean_process_inst(cur);
 }
 
+void	to_save_inst(t_player *cur, t_arena *arena, t_player **head)
+{
+	t_player *tmp;
+
+	if (save_inst(cur, arena) != -1) //
+	{
+		if (cur->inst->op_code == 12)
+			inst_fork(head, arena, cur);
+		else if(cur->inst->op_code == 15)
+			inst_lfork(head, arena, cur);
+		else
+			inst_functions[cur->inst->op_code - 1](cur, arena);
+	}
+	clean_process_inst(cur);
+}
 
 void		loop2(t_player *cur, t_arena *arena, t_player **head)
 {
@@ -102,17 +114,17 @@ void		loop2(t_player *cur, t_arena *arena, t_player **head)
 	{
 		while(cur && cur->dead == 1)
 			cur = cur->next;
-		if(!cur)
+		if (!cur)
 			break;
 		if (cur->inst->counter == -1)
-			while(put_cycle(cur, arena) == 0)
+			while (put_cycle(cur, arena) == 0)
 				cur->pc++;
 		if (cur && cur->inst->counter == 0)
 		{
-			saving_inst(cur, arena, head);
+			to_save_inst(cur, arena, head);
 		}
-	cur->inst->counter != -1 ? cur->inst->counter-- : cur->inst->counter;
-	cur = cur->next;
+		cur->inst->counter != -1 ? cur->inst->counter-- : cur->inst->counter;
+		cur = cur->next;
 	}
 }
 

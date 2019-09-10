@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:22:18 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/09 14:01:44 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/10 00:01:06 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,22 @@ void	inst_lldi(t_player *cur, t_arena *arena)
 
 	args = -1;
 	i = 6;
+	if (!valid_reg_int(cur, 2))
+	{
+		advance_proc_pc(&cur, jump_next_op(cur->inst->op_code));
+		return ;
+	}
 	while (i != 2 && ++args)
 	{
 		if ((cur->inst->ebyte >> i & 3) == REG_CODE)
+		{
+			if (!valid_reg_int(cur, args))
+			{
+				advance_proc_pc(&cur, jump_next_op(cur->inst->op_code));
+				return ;
+			}
 			cur->inst->args[args] = cur->reg[cur->inst->args[args] - 1];
+		}
 		else if ((cur->inst->ebyte >> i & 3) == DIR_CODE)
 		{
 			adress = get_addr_value(cur, (-cur->inst->size) + \
