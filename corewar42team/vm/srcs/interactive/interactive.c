@@ -6,7 +6,7 @@
 /*   By: viclucas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 06:54:27 by viclucas          #+#    #+#             */
-/*   Updated: 2019/09/09 16:28:12 by viclucas         ###   ########.fr       */
+/*   Updated: 2019/09/09 21:19:21 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,12 @@ void		loop_first_round(t_window *win, t_arena *arena, t_player *p)
 	wrefresh(win->big);
 	wrefresh(win->side);
 	wrefresh(win->down);
-	getch_theses(win, 1);
+	getch_theses(win, arena, 1);
 }
 
 t_window	*interactive(t_player *players, t_arena *arena, t_window *win)
 {
-	getch_theses(win, 0);
+	getch_theses(win, arena, 0);
 	down_infos(win, arena, players);
 	write_mem(win, arena, players);
 	side_informations(win, players);
