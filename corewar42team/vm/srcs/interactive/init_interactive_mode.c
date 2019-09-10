@@ -6,7 +6,7 @@
 /*   By: viclucas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 07:12:56 by viclucas          #+#    #+#             */
-/*   Updated: 2019/09/09 16:16:10 by viclucas         ###   ########.fr       */
+/*   Updated: 2019/09/09 21:42:26 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void			error_handler_inter(int error)
 {
-	//int token;
-
 	endwin();
 	if (error == 1)
 	{
@@ -82,6 +80,7 @@ t_window		*init_interactive_mode(t_window *win)
 	nodelay(stdscr, TRUE);
 	keypad(stdscr, TRUE);
 	noecho();
+	curs_set(0);
 	if (COLS < 280 || LINES < 80)
 		error_handler_inter(WINDOW_TOO_SMALL);
 	else if (has_colors() == FALSE)
