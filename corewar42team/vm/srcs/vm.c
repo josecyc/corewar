@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 19:58:22 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/10 11:34:39 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 16:13:53 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int		get_args(t_arena *arena, t_player **fplayer)
 		i++;
 	}
 	if (*fplayer == NULL)
-        return(print_error2(1, *fplayer, arena));
+		return (print_error2(1, *fplayer, arena));
 	return (1);
 }
 
@@ -47,20 +47,16 @@ int				main(int argc, char **argv)
 {
 	t_arena		arena;
 	t_player	*fplayer;
-	t_window		win;
+	t_window	win;
 
 	init_arena_ob(&arena, argc, argv);
 	fplayer = NULL;
 	if (init_state(&arena, &fplayer) == -1)
 		return (-1);
 	loop(fplayer, &arena);
-	//print_info(&arena, fplayer);
-	//print_memory(arena.memory);
-	if (!arena.flags->interactive)
+	if ((!arena.flags->interactive && !arena.flags->dump_bl) ||
+	(arena.flags->dump_bl && arena.total_cycles < arena.flags->dump_cycles))
 		announce_winner(fplayer, &arena);
-	printf("arena total cycles %d\n", arena.total_cycles);
-//	system("leaks corewar");
-	//winner_print(fplayer, &arena, &win);
-	//close_win();
 	return (0);
 }
+

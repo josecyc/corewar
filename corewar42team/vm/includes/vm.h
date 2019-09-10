@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:56:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/10 12:45:35 by viclucas         ###   ########.fr       */
+/*   Updated: 2019/09/10 14:51:28 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@
 # include <ncurses.h>
 # include "../../libft/libft.h"
 # define FLAGSC "id"
-# define OPTIONS "USAGE ./corewar:\n-i for interactive mode (mutually exclusive with -dump flag)\n-n [desired_player_num] [player]\n-dump [cycles] [player] for dumping arena memory\n"
+# define OPTIONS "USAGE ./corewar:\n-i for interactive mode (mutually exclusive \
+with -dump flag)\n-n [desired_player_num] [player]\n-dump [cycles] [player] for \
+dumping arena memory\n"
 
 int					debug;
 
@@ -48,7 +50,7 @@ typedef struct		s_inst
 	unsigned char	ebyte;
 	int				args[3];
 	int				size;
-	int				fork;  //?
+	int				fork;
 }					t_inst;
 
 typedef struct		s_player

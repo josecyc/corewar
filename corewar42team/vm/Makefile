@@ -6,7 +6,7 @@
 #    By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/15 19:22:08 by jdiaz             #+#    #+#              #
-#    Updated: 2019/09/10 12:55:37 by viclucas         ###   ########.fr        #
+#    Updated: 2019/09/10 16:01:06 by jcruz-y-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRCS_PATH = srcs/
 OBJ_PATH  = obj/
 LIBFT_PATH = ../libft/
 
-FLAGS = #-Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra
 
 INC = -I ./includes/ -I ./$(LIBFT_PATH)
 
@@ -98,3 +98,4 @@ test: fclean
 FILE = _
 
 .PHONY: all, clean, fclean, re, de
+
