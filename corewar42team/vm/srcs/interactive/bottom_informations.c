@@ -6,7 +6,7 @@
 /*   By: viclucas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 18:34:13 by viclucas          #+#    #+#             */
-/*   Updated: 2019/09/09 21:38:17 by viclucas         ###   ########.fr       */
+/*   Updated: 2019/09/10 13:56:25 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ int			nb_process(t_player *p)
 	ret = 0;
 	while (tmp)
 	{
-		if (!p->dead)
-			ret++;
+		ret++;
 		tmp = tmp->next;
 	}
 	return (ret);
@@ -44,7 +43,7 @@ void		bottom_informations(t_window *win, t_arena *a, int value)
 	if (a->cycle_to_die <= 0)
 	{
 		wattron(win->down, COLOR_PAIR(3));
-		mvwprintw(win->down, 8, 75, "CYCLE TO DIE:\t%s", "FINISHED");
+		mvwprintw(win->down, 8, 80, "CYCLE TO DIE:\t     %s", "END");
 		wattroff(win->down, COLOR_PAIR(3));
 	}
 	else
@@ -60,9 +59,10 @@ void		down_infos(t_window *win, t_arena *a, t_player *p)
 	bottom_informations(win, a, 1);
 	wattron(win->down, COLOR_PAIR(2));
 	mvwprintw(win->down, 6, 5, "SPEED:\tx%d  ", win->sleepc);
-	mvwprintw(win->down, 6, 25, "<< w | p >>");
+	mvwprintw(win->down, 6, 25, "<< w | e >>");
 	wattroff(win->down, COLOR_PAIR(2));
-	mvwprintw(win->down, 7, 5, "NUMBER OF PROCESS:\t\t%d", nb_process(p));
+	mvwprintw(win->down, 7, 5, "NUMBER OF PROCESS:\t%d", nb_process(p));
 	mvwprintw(win->down, 6, 75, "TOTAL CYCLES:\t%d", a->total_cycles);
 	mvwprintw(win->down, 7, 75, "CYCLE COUNTER:\t%d", a->cycle_counter);
+	mvwprintw(win->down, 9, 75, "LIVE COUNTER:\t%d", a->live_counter);
 }

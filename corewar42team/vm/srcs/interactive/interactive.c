@@ -6,7 +6,7 @@
 /*   By: viclucas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 06:54:27 by viclucas          #+#    #+#             */
-/*   Updated: 2019/09/09 21:19:21 by viclucas         ###   ########.fr       */
+/*   Updated: 2019/09/10 13:56:53 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,11 @@ t_window	*interactive(t_player *players, t_arena *arena, t_window *win)
 	side_informations(win, players);
 	wrefresh(win->big);
 	wrefresh(win->down);
+	mvwprintw(win->down, 7, 5, "NUMBER OF PROCESS:\t     ");
+	mvwprintw(win->down, 7, 75, "CYCLE COUNTER:\t     ");
+	mvwprintw(win->down, 7, 5, "NUMBER OF PROCESS:\t   ");
+	mvwprintw(win->down, 8, 75, "CYCLE TO DIE:\t     ");
+	mvwprintw(win->down, 9, 75, "LIVE COUNTER:\t     ");
 	wrefresh(win->side);
 	usleep(win->sleep);
 	return (win);

@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 13:05:34 by viclucas          #+#    #+#             */
-/*   Updated: 2019/09/09 21:38:10 by viclucas         ###   ########.fr       */
+/*   Updated: 2019/09/10 13:56:50 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ void	basic_infos(t_window *win, t_data data, t_player *tmp)
 	t_data	tmp_data;
 
 	ft_bzero(&tmp_data, sizeof(tmp_data));
+	tmp_data.addr = 0;
 	ft_update_coord(&tmp_data, get_addr_value(tmp, (-tmp->inst->size)),
 			win->side);
 	mvwprintw(win->side, data.y, data.x, "[%d][%d] ", tmp_data.y,
-			tmp_data.x / (64 * 3) + 2);
+			tmp_data.x);
 }
 
 void	side_informations(t_window *win, t_player *players)
@@ -41,7 +42,6 @@ void	side_informations(t_window *win, t_player *players)
 			data.x += 11;
 			mvwprintw(win->side, data.y, data.x, "%s         ", tmp->name);
 			data.x = data.x + ft_strlen(tmp->name) + 9;
-			mvwprintw(win->side, data.y, data.x, "         ");
 			wattroff(win->side, COLOR_PAIR(abs(tmp->pnum)));
 			data.y++;
 		}

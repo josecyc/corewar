@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:56:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/10 11:55:36 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 12:45:35 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,12 +226,12 @@ void				loop_first_round(t_window *win, t_arena *arena, t_player *p);
 void				change_pc(t_data data, t_player *tmp, t_arena *arena, t_window *win);
 
 /*
-**	pc_management.c
+**	side_informations.c
 */
 void				side_informations(t_window *win, t_player *players);
 
 /*
-**	pc_management.c
+**	write_mem.c
 */
 void				write_mem(t_window *win, t_arena *arena, t_player *player);
 void				ft_update_coord(t_data *data, int value, WINDOW *win);
