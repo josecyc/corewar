@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 16:16:48 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/09 11:06:40 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/09 18:31:17 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,9 @@ static int		check_openfile(t_arena *arena, t_player **fplayer, int i)
 			else
 				return (print_error(5, *fplayer, arena));
 		}
-		return (-1);
+		{
+			return (-1);
+		}
 	}
 	if (init_player(fd, arena, fplayer) == -1)
 		return (-1);

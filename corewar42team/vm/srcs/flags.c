@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 20:32:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/09 10:52:19 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/09 18:31:50 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		get_flags(t_arena *arena, int *i, t_player **fplayer)
 	else if (ft_strcmp(arena->argv[*i], "-i") == 0)
 	{
 		arena->flags->interactive = 1;
-		ft_printf("entering interactive mode...\n");
+		*i = *i + 1;
 		return (1);
 	}
 	else

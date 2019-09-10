@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 19:58:22 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/09 15:24:58 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/09 18:29:23 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ static int		get_args(t_arena *arena, t_player **fplayer)
 	int i;
 
 	i = 1;
-	while (arena->argv[i])
+	while (i < arena->argc)
 	{
 		if (get_flags(arena, &i, fplayer) == -1)
 			return (-1);
-		if (get_player(arena, fplayer, &i) == -1)
+		if (arena->argv[i] && get_player(arena, fplayer, &i) == -1)
 			return (-1);
 		else
 			i++;
