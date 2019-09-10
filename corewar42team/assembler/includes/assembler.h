@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 19:15:46 by jdiaz             #+#    #+#             */
-/*   Updated: 2019/09/09 10:40:25 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 14:17:27 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct			s_vars
 	int					begin_line;
 	int					counter;
 	int					prog_size;
+	int					prog_code;
 }						t_vars;
 
 /*
@@ -93,6 +94,7 @@ int		check_args(int num_args, int *arg_types, char **inst, t_vars *ob);
 **	error_messages
 */
 int		error_message(int msg_nb, int i, int inst);
+int		error_message_pt2(int msg_nb, int i, int arg);
 
 /*
 **	generator

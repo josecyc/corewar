@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 13:48:07 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/09 21:37:13 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 12:51:33 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int		get_numplys(t_arena *arena, t_player **fplayer)
 		num++;
 	}
 	arena->num_plys = num;
-	if (num > 4)
+	if (num > 4 || num > MAX_PLAYERS)
 		return (-1);
 	return (num);
 }

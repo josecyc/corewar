@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 20:16:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/09 21:21:27 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 12:05:00 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ int			assign_number(t_player *fplayer, int cur_pl_num)
 		cur = cur->next;
 	}
 	if (cur_pl_num == 0)
+	{
 		fplayer->pnum = i;
+		fplayer->proc_num = abs(i);
+	}
 	fplayer->reg[0] = fplayer->pnum;
 	return (1);
 }

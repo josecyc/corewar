@@ -59,7 +59,6 @@ typedef struct		s_player
 	int				dead;
 	int				write_bl;
 	int				write_addr;
-	//int			xy[2];   //start location
 	int				pc;
 	int				pnum;	
 	t_inst			*inst;
@@ -70,6 +69,7 @@ typedef struct		s_player
 	char			*comment;
 	char			*prog;
 	int				oldpc;
+	int				proc_num;
 	int				pc_inter;
 	char			valid_arg_type;
 	int				j;
@@ -229,7 +229,7 @@ void				change_pc(t_data data, t_player *tmp, t_arena *arena, t_window *win);
 **	side_informations.c
 */
 void				side_informations(t_window *win, t_player *players);
-void				clean_sides(t_window *win, t_player *player);
+
 /*
 **	write_mem.c
 */

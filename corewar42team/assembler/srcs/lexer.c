@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:28:59 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/01/26 19:11:34 by tholzheu         ###   ########.fr       */
+/*   Updated: 2019/09/10 13:55:19 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,11 @@ static int		arg_lexer(char **inst, t_vars *ob)
 		return (-1);
 	return (1);
 }
+
+/*
+** First pass through the file will chech correct name, comment and 
+** instructions
+*/
 
 int				lexer(t_vars *ob, int fd)
 {
