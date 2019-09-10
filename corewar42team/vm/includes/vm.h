@@ -6,14 +6,14 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:56:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/10 14:51:28 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 16:04:00 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VM_H
 # define VM_H
 
-
+# include <ncurses.h>
 # define MAX_X 192
 # define MAX_Y 64
 # define MIN_UNIT_SLEEP 100000
@@ -25,14 +25,8 @@
 # define TOO_MUCH_PPL 3
 # include "../../assembler/includes/op.h"
 # include "../../assembler/includes/assembler.h"
-# include <ncurses.h>
 # include "../../libft/libft.h"
 # define FLAGSC "id"
-# define OPTIONS "USAGE ./corewar:\n-i for interactive mode (mutually exclusive \
-with -dump flag)\n-n [desired_player_num] [player]\n-dump [cycles] [player] for \
-dumping arena memory\n"
-
-int					debug;
 
 typedef struct		s_flag
 {
@@ -45,7 +39,7 @@ typedef struct		s_flag
 
 typedef struct		s_inst
 {
-	int 			counter;
+	int				counter;
 	int				op_code;
 	unsigned char	ebyte;
 	int				args[3];
@@ -62,11 +56,11 @@ typedef struct		s_player
 	int				write_bl;
 	int				write_addr;
 	int				pc;
-	int				pnum;	
+	int				pnum;
 	t_inst			*inst;
 	int				total_size;
 	int				prog_size;
-	int				actual_size; //?
+	int				actual_size;
 	char			*name;
 	char			*comment;
 	char			*prog;
@@ -84,7 +78,7 @@ typedef struct		s_window
 	WINDOW	*side;
 	WINDOW	*down;
 	int		tab[MEM_SIZE];
-	int		index; 			//not used for now
+	int		index;
 	int		first_loop;
 	int		first_round;
 	int		sleepc;
@@ -98,17 +92,10 @@ typedef struct		s_data
 	int				y;
 	int				addr;
 	int				tmp;
-	int 			color;
+	int				color;
 	int				empty_turn;
 	int				update_coord;
 }					t_data;
-
-struct node
-{
-    int nb_item;
-    struct node *tail;;
-    struct node *head;
-};
 
 typedef struct		s_arena
 {
@@ -129,7 +116,7 @@ typedef struct		s_arena
 typedef	void		(*t_inst_funct)(t_player *player, t_arena *arena);
 
 /*
-* Initial State (part 1)
+** Initial State (part 1)
 */
 
 /*
@@ -196,7 +183,8 @@ void				announce_winner(t_player *players, t_arena *arena);
 */
 int					put_cycle(t_player *player, t_arena *arena);
 int					save_inst(t_player *player, t_arena *arena);
-int					memory_to_int(int *dest, t_arena *arena, int src_addr, int bytes);
+int					memory_to_int(int *dest, t_arena *arena, int src_addr,
+					int bytes);
 
 /*
 ** Interactive folder:
@@ -219,13 +207,16 @@ t_window			*init_interactive_mode(t_window *win);
 /*
 **	interactive.c
 */
-t_window			*interactive(t_player *players, t_arena *arena, t_window *win);
-void				loop_first_round(t_window *win, t_arena *arena, t_player *p);
+t_window			*interactive(t_player *players, t_arena *arena,
+					t_window *win);
+void				loop_first_round(t_window *win, t_arena *arena,
+					t_player *p);
 
 /*
 **	pc_management.c
 */
-void				change_pc(t_data data, t_player *tmp, t_arena *arena, t_window *win);
+void				change_pc(t_data data, t_player *tmp, t_arena *arena,
+					t_window *win);
 
 /*
 **	side_informations.c
@@ -254,9 +245,9 @@ void				color_pc(t_window *win, t_arena *arena, t_player *tmp);
 /*
 ** inst_utils.c
 */
-//int					ebyte_to_args2(t_player *player, t_arena *arena, int *step, char e_pair);
 int					ebyte_to_args(t_player *player, t_arena *arena, int *step);
-int					save_without_eb(t_player *player, t_arena *arena, int *step);
+int					save_without_eb(t_player *player, t_arena *arena,
+					int *step);
 int					valid_reg(t_arena *arena, t_player *player, int step);
 int					valid_reg_int(t_player *player, int num);
 int					valid_ebyte(char e_pair, char valid_arg_types);
