@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:56:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/09 23:08:09 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/09 21:41:47 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,24 +197,49 @@ int					save_inst(t_player *player, t_arena *arena);
 int					memory_to_int(int *dest, t_arena *arena, int src_addr, int bytes);
 
 /*
-** Interactive folder
+** Interactive folder:
+** bottom_informations.c
+*/
+void				bottom_informations(t_window *win, t_arena *a, int value);
+void				down_infos(t_window *win, t_arena *a, t_player *p);
+
+/*
+**	getch_theses.c
+*/
+void				getch_theses(t_window *win, t_arena *arena, int index);
+void				close_win(void);
+
+/*
+**	init_interactive_mode.c
+*/
+t_window			*init_interactive_mode(t_window *win);
+
+/*
+**	interactive.c
+*/
+t_window			*interactive(t_player *players, t_arena *arena, t_window *win);
+void				loop_first_round(t_window *win, t_arena *arena, t_player *p);
+
+/*
+**	pc_management.c
 */
 void				change_pc(t_data data, t_player *tmp, t_arena *arena, t_window *win);
-t_window			*interactive(t_player *players, t_arena *arena, t_window *win);
-void				write_mem(t_window *win, t_arena *arena, t_player *player);
-t_window			*init_interactive_mode(t_window *win);
-void				getch_theses(t_window *win, int index);
-void				close_win(void);
-void				sides_infos();
-void				down_infos(t_window *win, t_arena *a, t_player *p);
-int					init_print(t_window *win, t_player *p, t_arena *arena);
-void				print_color(t_window *win, t_arena *arena, t_data data);
-void				print_map(WINDOW *win, t_data *data, t_player *tmp, t_arena *arena);
-void				ft_update_coord(t_data *data, int value, WINDOW *win);
-void				write_mem(t_window *win, t_arena *arena, t_player *p);
-void				delete_old(t_window *win, t_arena *arena, t_player *tmp);
-void				loop_first_round(t_window *win, t_arena *arena, t_player *p);
+
+/*
+**	pc_management.c
+*/
 void				side_informations(t_window *win, t_player *players);
+
+/*
+**	pc_management.c
+*/
+void				write_mem(t_window *win, t_arena *arena, t_player *player);
+void				ft_update_coord(t_data *data, int value, WINDOW *win);
+void				print_color(t_window *win, t_arena *arena, t_data data);
+
+/*
+** End of Interactive folder, back to poor quality code just below
+*/
 
 /*
 ** init_players.c

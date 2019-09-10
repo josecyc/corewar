@@ -65,7 +65,7 @@ void	winner_print(t_player *p, t_arena *arena, t_window *win)
 			mvwprintw(win->down, 3, 170, "WINNER IS \"%s\"", tmp->name);
 			wattroff(win->down, COLOR_PAIR(3));
 			wrefresh(win->down);
-			getch_theses(win, 1);
+			getch_theses(win, arena, 1);
 			return ;
 		}
 		tmp = tmp->next;
@@ -73,7 +73,7 @@ void	winner_print(t_player *p, t_arena *arena, t_window *win)
 	mvwprintw(win->down, 3, 170, "END OF THE GAME");
 	wrefresh(win->down);
 	wattroff(win->down, COLOR_PAIR(3));
-	getch_theses(win, 1);
+	getch_theses(win, arena, 1);
 }
 
 void	announce_winner(t_player *p, t_arena *arena)
@@ -152,5 +152,6 @@ void	loop(t_player *players, t_arena *arena)
 		arena->cycle_counter++;
 		arena->total_cycles++;
 	}
+	winner_print(players, arena, &win);
 	close_win();
 }

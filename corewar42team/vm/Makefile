@@ -6,7 +6,7 @@
 #    By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/15 19:22:08 by jdiaz             #+#    #+#              #
-#    Updated: 2019/09/09 16:40:49 by viclucas         ###   ########.fr        #
+#    Updated: 2019/09/09 20:12:21 by viclucas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ VM_SRC	= srcs/interactive/side_informations.c \
 		  srcs/interactive/getch_theses.c \
 		  srcs/interactive/init_interactive_mode.c \
 		  srcs/interactive/pc_management.c \
+		  srcs/interactive/bottom_informations.c \
 		  srcs/errorh.c \
 		  srcs/flags.c \
 		  srcs/init_objs.c \
