@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 20:39:45 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/10 12:49:21 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 16:01:12 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,11 @@ MAX_PLAYERS, arena->num_plys);
 	else if (errnum == 6)
 		ft_printf("File not Conform\n");
 	else if (errnum == 7)
-		ft_printf("%s", OPTIONS);
+	{
+		ft_printf("USAGE ./corewar:\n-i for interactive mode (mutually");
+   		ft_printf("exclusive with -dump flag) \n-n [desired_player_num]");
+	   	ft_printf("[player]\n-dump [cycles] [player] for dumping arena memory\n");
+	}
 	else if (errnum == 8)
 		ft_printf("Option -dump must be followed by a number and without -i flag:\n\
 ./corewar [-dump] [num cycles till dump] [[champions.cor]...]\n");
