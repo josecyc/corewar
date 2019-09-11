@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 10:34:12 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/10 12:01:06 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 22:06:08 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void		inst_dummy2(t_player *p, t_arena *arena)
 static void	new_process(t_player **new, t_player *tmp)
 {
 	int i;
-	
+
 	i = 0;
 	*new = create_player();
 	(*new)->pnum = tmp->pnum;
@@ -49,6 +49,7 @@ static void	new_process(t_player **new, t_player *tmp)
 		i++;
 	}
 }
+
 void		inst_lfork(t_player **head, t_arena *arena, t_player *cur)
 {
 	t_player *new;

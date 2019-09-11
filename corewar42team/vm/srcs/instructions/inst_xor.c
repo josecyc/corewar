@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 10:37:45 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/10 16:22:01 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 21:57:42 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,18 @@
 
 int			inst_xor_pt2(t_player *cur, t_arena *arena, int *i, int *j)
 {
-	if ((cur->inst->ebyte >> *i & 3) == IND_CODE)
+	int		addr;
+	short	byte;
+
+	if (((cur->inst->ebyte >> *i) & 3) == IND_CODE)
 	{
-		memory_to_int(&cur->inst->args[*j], arena,\
-		(get_addr_value(cur, (-cur->inst->size) + (cur->inst->args[*j] % IDX_MOD))), 4);
+		byte = (cur->inst->args[*j] % IDX_MOD);
+		addr = get_addr_value(cur, (-cur->inst->size) + byte);
+		memory_to_int(&cur->inst->args[*j], arena, addr, 4);
 	}
 	else if ((cur->inst->ebyte >> *i & 3) == REG_CODE)
 	{
-		if (valid_reg_int(cur, cur->inst->args[*j]))
+		if (valid_reg_int(cur, *j))
 			cur->inst->args[*j] = cur->reg[cur->inst->args[*j] - 1];
 		else
 		{
@@ -36,7 +40,7 @@ int			inst_xor_pt2(t_player *cur, t_arena *arena, int *i, int *j)
 			return (0);
 		}
 	}
-	*i -= 2;
+	*i = *i - 2;
 	*j = *j + 1;
 	return (1);
 }
@@ -48,11 +52,17 @@ void		inst_xor(t_player *cur, t_arena *arena)
 
 	j = 0;
 	i = 6;
+	if (!valid_reg_int(cur, 2))
+	{
+		advance_proc_pc(&cur, jump_next_op(cur->inst->op_code));
+		return ;
+	}
 	while (i != 2)
 	{
 		if (!inst_xor_pt2(cur, arena, &i, &j))
-			break;
+			return ;
 	}
 	cur->carry = ((cur->inst->args[0] ^ cur->inst->args[1]) == 0) ? 1 : 0;
-	cur->reg[cur->inst->args[2] - 1] = (cur->inst->args[0] ^ cur->inst->args[1]);
+	cur->reg[cur->inst->args[2] - 1] =
+	(cur->inst->args[0] ^ cur->inst->args[1]);
 }
