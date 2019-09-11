@@ -6,7 +6,7 @@
 /*   By: viclucas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 06:54:27 by viclucas          #+#    #+#             */
-/*   Updated: 2019/09/10 19:03:27 by viclucas         ###   ########.fr       */
+/*   Updated: 2019/09/11 10:02:30 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ void		winner_print(t_player *p, t_arena *arena, t_window *win)
 {
 	t_player *tmp;
 
-	if (!arena->flags->interactive)
+	if (arena->flags->interactive != 1)
+	{
 		return ;
+	}
 	tmp = p;
 	wattron(win->down, COLOR_PAIR(3));
 	while (tmp)
