@@ -5,6 +5,12 @@ rm -rf cor_files_us
 mkdir cor_files_us
 mv *.cor cor_files_us
 for i in cor_files_us/*.cor; do
-	echo "corewaring $i"
-	./../corewar "$i"
+	for j in cor_files_us/*.cor; do
+		for k in cor_files_us/*.cor; do
+			for l in cor_files_us/*.cor; do
+				echo "corewaring $i $j $k $l"
+				./../corewar "$i" "$j" "$k" "$l"
+			done
+		done
+	done
 done

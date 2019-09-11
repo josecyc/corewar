@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 19:58:22 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/10 19:12:58 by viclucas         ###   ########.fr       */
+/*   Updated: 2019/09/10 17:22:38 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ int				main(int argc, char **argv)
 	if ((!arena.flags->interactive && !arena.flags->dump_bl) ||
 	(arena.flags->dump_bl && arena.total_cycles < arena.flags->dump_cycles))
 		announce_winner(fplayer, &arena);
+	printf("arena->total cycles %d\n", arena.total_cycles);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:21:56 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/10 00:03:56 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 22:01:25 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,36 @@
 ** Op Code number 3;
 */
 
-void		inst_st(t_player *cur, t_arena *arena)
+void	inst_st2(t_player *cur, t_arena *arena, unsigned char ebyte, int r_val)
+{
+	int		adress;
+	int		i;
+
+	adress = 0;
+	i = 24;
+	if (ebyte == REG_CODE)
+	{
+		if (!valid_reg_int(cur, 1) &&
+		advance_proc_pc(&cur, jump_next_op(cur->inst->op_code)))
+			return ;
+		cur->reg[cur->inst->args[1] - 1] = r_val;
+	}
+	else
+	{
+		adress = get_addr_value(cur, (-cur->inst->size) + \
+		(cur->inst->args[1] % IDX_MOD));
+		cur->write_addr = adress;
+		while (i >= 0)
+		{
+			adress = (adress == MEM_SIZE) ? 0 : adress;
+			arena->memory[adress++] = (char)(r_val >> i);
+			i -= 8;
+		}
+		cur->write_bl = 1;
+	}
+}
+
+void	inst_st(t_player *cur, t_arena *arena)
 {
 	unsigned char	ebyte;
 	int				reg_value;
@@ -35,27 +64,5 @@ void		inst_st(t_player *cur, t_arena *arena)
 	}
 	reg_value = cur->reg[cur->inst->args[0] - 1];
 	ebyte = cur->inst->ebyte >> 4 & 3;
-	if (ebyte == REG_CODE)
-	{
-		if (!valid_reg_int(cur, 1))
-		{
-			advance_proc_pc(&cur, jump_next_op(cur->inst->op_code));
-			return ;
-		}
-		cur->reg[cur->inst->args[1] - 1] = reg_value;
-	}
-	else
-	{
-		adress = get_addr_value(cur, (-cur->inst->size) + \
-		(cur->inst->args[1] % IDX_MOD));
-		cur->write_addr = adress;
-		while (i >= 0)
-		{
-			adress = (adress == MEM_SIZE) ? 0 : adress;
-			arena->memory[adress] = (char)(reg_value >> i);
-			adress++;
-			i -= 8;
-		}
-		cur->write_bl = 1;
-	}
+	inst_st2(cur, arena, ebyte, reg_value);
 }

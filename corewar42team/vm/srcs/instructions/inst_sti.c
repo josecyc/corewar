@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:22:26 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/10 00:07:20 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 16:39:19 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,12 @@ static void		write_data(t_player *cur, t_arena *arena)
 	int i;
 	int adress;
 	int data;
+	int	res;
 
+	res = cur->inst->args[1] + cur->inst->args[2];
+	res %= IDX_MOD;
+	cur->write_addr = get_addr_value(cur, (-cur->inst->size) + res);
+	cur->write_bl = 1;
 	adress = cur->write_addr;
 	i = 24;
 	data = cur->reg[cur->inst->args[0] - 1];
@@ -63,9 +68,5 @@ void			inst_sti(t_player *cur, t_arena *arena)
 		}
 		a -= 2;
 	}
-	result = cur->inst->args[1] + cur->inst->args[2];
-	result %= IDX_MOD;
-	cur->write_addr = get_addr_value(cur, (-cur->inst->size) + result);
-	cur->write_bl = 1;
 	write_data(cur, arena);
 }
