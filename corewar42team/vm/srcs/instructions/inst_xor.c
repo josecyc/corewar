@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 10:37:45 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/11 10:38:40 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/11 12:03:14 by jcruz-y-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 ** and stores the result in ARG_3 reg
 */
 
-int        inst_xor_pt2(t_player *cur, t_arena *arena, int *i, int *j)
+int			inst_xor_pt2(t_player *cur, t_arena *arena, int *i, int *j)
 {
 	int		addr;
 	short	byte;
