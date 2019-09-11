@@ -62,13 +62,5 @@ add r1, r2, r3
 
 sti r1, %:live, %1
 
-#fork
-#lfork
-
-#lld
-#ldi
-
-#aff
-
 live:	live %1
 		lfork %2000000
