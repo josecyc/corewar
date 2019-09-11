@@ -19,7 +19,7 @@
 ** and stores the result in ARG_3 reg
 */
 
-int			inst_xor_pt2(t_player *cur, t_arena *arena, int *i, int *j)
+void        inst_xor(t_player *cur, t_arena *arena)
 {
 	int		addr;
 	short	byte;

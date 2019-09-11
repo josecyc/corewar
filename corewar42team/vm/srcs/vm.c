@@ -60,4 +60,3 @@ int				main(int argc, char **argv)
 	printf("arena->total cycles %d\n", arena.total_cycles);
 	return (0);
 }
-

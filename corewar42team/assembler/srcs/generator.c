@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:28:57 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/10 14:30:35 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 19:01:09 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	print_name(t_vars *ob, int fd)
 	while (i++ < length)
 		ft_putchar_fd(0, ob->output_fd);
 	byte_print(ob->prog_size, 4, ob->output_fd);
-	length = COMMENT_LENGTH + 4;
+	length = C_L + 4;
 	i = ft_strlen(ob->comment);
 	ft_putstr_fd(ob->comment, ob->output_fd);
 	while (i++ < length)
@@ -68,7 +68,7 @@ static int	print_encoding(t_vars *ob, int op_code, char **inst, int num_params)
 
 	i = 0;
 	byte = 0;
-	if (op_tab[op_code].encoding_byte == 1)
+	if (g_op_tab[op_code].encoding_byte == 1)
 	{
 		while (i < num_params)
 		{
@@ -107,7 +107,7 @@ static int	print_inst(t_vars *ob, char **inst, int counter)
 	ft_putchar_fd(ob->op_code + 1, ob->output_fd);
 	counter++;
 	counter += print_encoding(ob, ob->op_code, inst,
-			op_tab[ob->op_code].num_args);
+			g_op_tab[ob->op_code].num_args);
 	temp = print_params(ob, inst, ob->op_code, begin_address);
 	counter = (temp == -1) ? -1 : counter + temp;
 	free_split(inst);

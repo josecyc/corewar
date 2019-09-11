@@ -6,7 +6,7 @@
 #    By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/15 19:22:08 by jdiaz             #+#    #+#              #
-#    Updated: 2019/01/26 18:32:57 by tholzheu         ###   ########.fr        #
+#    Updated: 2019/09/10 20:36:24 by viclucas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,19 +20,25 @@ LIBFT_PATH = ../libft/
 FLAGS = -Wall -Werror -Wextra
 INC = -I ./includes/ -I ./$(LIBFT_PATH)includes/
 
-ASM_SRC = srcs/generator.c srcs/parser.c srcs/check_args.c srcs/lexer.c \
-		  srcs/assembler.c srcs/op.c srcs/tools.c srcs/get_name.c srcs/error_messages.c \
-		  srcs/check_arg_types.c srcs/print.c
+ASM_SRC = srcs/generator.c \
+		  srcs/parser.c \
+		  srcs/check_args.c \
+		  srcs/lexer.c \
+		  srcs/assembler.c \
+		  srcs/op.c \
+		  srcs/tools.c \
+		  srcs/get_name.c \
+		  srcs/error_messages.c \
+		  srcs/check_arg_types.c \
+		  srcs/print.c \
 		  
-ASM_OBJ = generator.o parser.o check_args.o assembler.o op.o lexer.o tools.o \
-		  get_name.o error_messages.o check_arg_types.o print.o
+ASM_OBJ = $(ASM_SRC:.c=.o)
 
-all: $(NAME)
+all: $(NAME) 
 
-$(NAME):
+$(NAME): $(ASM_OBJ)
 	@make -C $(LIBFT_PATH)
-	@gcc $(FLAGS) $(INC) -c $(ASM_SRC)
-	@gcc -o $(NAME) $(ASM_OBJ) $(LIBFT_PATH)libft.a
+	@gcc $(FLAGS) $(INC) $(ASM_OBJ) -L $(LIBFT_PATH) -lft -o $(NAME)
 	@echo "Compiled asm"
 
 clean:

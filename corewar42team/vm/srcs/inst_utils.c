@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 10:38:45 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/10 00:10:33 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 19:14:30 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int			valid_reg_int(t_player *cur, int num)
 		cur->inst->args[1] <= REG_NUMBER && cur->inst->args[1] > 0 &&
 		cur->inst->args[2] <= REG_NUMBER && cur->inst->args[2] > 0)
 			return (1);
-	}	
+	}
 	else if (num == 0 && cur->inst->args[0] <= REG_NUMBER &&\
 	cur->inst->args[0] > 0)
 		return (1);
