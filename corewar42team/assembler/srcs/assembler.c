@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 18:09:01 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/10 14:30:06 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 17:19:21 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int				get_op(char *mnemonic, t_vars *ob)
 	i = 0;
 	while (i < 16)
 	{
-		if (ft_strcmp(op_tab[i].mnemonic, mnemonic) == 0)
+		if (ft_strcmp(g_op_tab[i].mnemonic, mnemonic) == 0)
 		{
 			ob->op_code = i;
 			return (i);

@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 16:16:48 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/09 20:14:44 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 18:54:14 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static int		check_size(t_player **fplayer, char *prog)
 	int		actual_size;
 
 	i = 0;
-	addr = COMMENT_LENGTH + PROG_NAME_LENGTH + 16;
+	addr = C_L + PROG_NAME_LENGTH + 16;
 	actual_size = (*fplayer)->total_size - PROG_NAME_LENGTH - 16 -
-	COMMENT_LENGTH;
+	C_L;
 	if (!((*fplayer)->prog = (char *)malloc(sizeof(char) * actual_size)))
 		exit(1);
 	while (i < actual_size)

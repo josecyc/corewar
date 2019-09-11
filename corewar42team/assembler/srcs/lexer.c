@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:28:59 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/10 13:55:19 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 17:19:34 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,14 @@ static int		arg_lexer(char **inst, t_vars *ob)
 		return (-1);
 	if (inst[ob->bl_label] && inst[ob->bl_label][0] != COMMENT_CHAR
 			&& (get_op(inst[ob->bl_label], ob) == -1 ||
-			check_args(op_tab[ob->op_code].num_args,
-			op_tab[ob->op_code].arg_types, inst, ob) == -1))
+			check_args(g_op_tab[ob->op_code].num_args,
+			g_op_tab[ob->op_code].arg_types, inst, ob) == -1))
 		return (-1);
 	return (1);
 }
 
 /*
-** First pass through the file will chech correct name, comment and 
+** First pass through the file will chech correct name, comment and
 ** instructions
 */
 
