@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:28:52 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/01/26 18:52:08 by tholzheu         ###   ########.fr       */
+/*   Updated: 2019/09/10 17:18:56 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int			check_args(int num_args, int *arg_types, char **inst, t_vars *ob)
 	ob->prog_size++;
 	i = ob->bl_label + 1;
 	j = 0;
-	op_tab[ob->op_code].encoding_byte == 1 ? ob->prog_size++ : 0;
+	g_op_tab[ob->op_code].encoding_byte == 1 ? ob->prog_size++ : 0;
 	while (inst[i] && i < num_args + ob->bl_label + 1)
 	{
 		if (check_arg_type(inst, arg_types[j], ob, &i) == -1)

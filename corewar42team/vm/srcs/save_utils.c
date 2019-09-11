@@ -6,7 +6,7 @@
 /*   By: viduvern <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 11:13:15 by viduvern          #+#    #+#             */
-/*   Updated: 2019/09/09 11:20:21 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/10 17:32:02 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int			put_cycle(t_player *player, t_arena *arena)
 	else
 	{
 		player->inst->counter = \
-		op_tab[player->inst->op_code - 1].num_cycles - 1;
+		g_op_tab[player->inst->op_code - 1].num_cycles - 1;
 		return (1);
 	}
 }

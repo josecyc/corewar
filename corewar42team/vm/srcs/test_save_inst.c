@@ -6,27 +6,15 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 19:01:14 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/09 11:08:08 by viduvern         ###   ########.fr       */
+/*   Updated: 2019/09/10 19:18:03 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vm.h"
 #include <stdio.h>
 
-void	init(t_player *player, t_arena *arena, t_inst *inst)
+static void		init2(t_player *player, t_arena *arena, t_inst *inst)
 {
-	inst->op_code = -1;
-	inst->ebyte = 0;
-	inst->counter = 0;
-	inst->args[0] = 0;
-	inst->args[1] = 0;
-	inst->args[2] = 0;
-	player->pc = 0;
-	player->inst = inst;
-	arena->memory[0] = 0x10;
-	arena->memory[1] = 0x40;
-	arena->memory[2] = 0xab;
-	arena->memory[3] = 0xcd;
 	arena->memory[4] = 0xef;
 	arena->memory[5] = 0x00;
 	arena->memory[6] = 0x01;
@@ -48,7 +36,23 @@ void	init(t_player *player, t_arena *arena, t_inst *inst)
 	arena->memory[22] = 0xfb;
 }
 
-int		main(void)
+void			init(t_player *player, t_arena *arena, t_inst *inst)
+{
+	inst->op_code = -1;
+	inst->ebyte = 0;
+	inst->counter = 0;
+	inst->args[0] = 0;
+	inst->args[1] = 0;
+	inst->args[2] = 0;
+	player->pc = 0;
+	player->inst = inst;
+	arena->memory[0] = 0x10;
+	arena->memory[1] = 0x40;
+	arena->memory[2] = 0xab;
+	arena->memory[3] = 0xcd;
+}
+
+int				main(void)
 {
 	t_player	player;
 	t_arena		arena;

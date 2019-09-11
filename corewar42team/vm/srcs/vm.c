@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 19:58:22 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/09/10 16:13:53 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 19:12:58 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,3 @@ int				main(int argc, char **argv)
 		announce_winner(fplayer, &arena);
 	return (0);
 }
-

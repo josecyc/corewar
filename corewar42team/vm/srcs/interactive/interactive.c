@@ -6,7 +6,7 @@
 /*   By: viclucas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 06:54:27 by viclucas          #+#    #+#             */
-/*   Updated: 2019/09/10 13:56:53 by viclucas         ###   ########.fr       */
+/*   Updated: 2019/09/10 19:03:27 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,32 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "../../includes/vm.h"
+
+void		winner_print(t_player *p, t_arena *arena, t_window *win)
+{
+	t_player *tmp;
+
+	if (!arena->flags->interactive)
+		return ;
+	tmp = p;
+	wattron(win->down, COLOR_PAIR(3));
+	while (tmp)
+	{
+		if (tmp->pnum == arena->last_alive)
+		{
+			mvwprintw(win->down, 3, 170, "WINNER IS \"%s\"", tmp->name);
+			wattroff(win->down, COLOR_PAIR(3));
+			wrefresh(win->down);
+			getch_theses(win, arena, 1);
+			return ;
+		}
+		tmp = tmp->next;
+	}
+	mvwprintw(win->down, 3, 170, "END OF THE GAME");
+	wrefresh(win->down);
+	wattroff(win->down, COLOR_PAIR(3));
+	getch_theses(win, arena, 1);
+}
 
 void		landerer(t_data *data, t_player *tmp, t_window *win, t_arena *a)
 {

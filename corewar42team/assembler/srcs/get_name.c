@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 19:45:01 by jdiaz             #+#    #+#             */
-/*   Updated: 2019/09/09 13:38:44 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 17:12:17 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int		check_max_sizes(t_vars *ob)
 	if (ft_strlen(ob->player_name) == 0)
 	{
 		ft_printf("No header name, please write one to assemble.\n");
-		return (-1);	
+		return (-1);
 	}
 	if (ob->comment && ft_strlen(ob->comment) > 2048)
 	{

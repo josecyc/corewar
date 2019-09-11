@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:29:05 by jcruz-y-          #+#    #+#             */
-/*   Updated: 2019/01/26 19:12:38 by tholzheu         ###   ########.fr       */
+/*   Updated: 2019/09/10 17:18:31 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ static int		count_bytes(char **inst, t_vars *ob)
 
 	counter = 0;
 	get_op(inst[ob->bl_label], ob);
-	counter += 1 + op_tab[ob->op_code].encoding_byte;
-	counter += count_params(ob->op_code, op_tab[ob->op_code].num_args,
+	counter += 1 + g_op_tab[ob->op_code].encoding_byte;
+	counter += count_params(ob->op_code, g_op_tab[ob->op_code].num_args,
 			inst, ob->bl_label);
 	return (counter);
 }

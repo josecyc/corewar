@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 18:23:21 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/10 15:16:39 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 17:35:01 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int		ebyte_to_args2(t_player *player, t_arena *arena, \
 
 	result = (*step) + player->pc;
 	if ((e_pair == IND_CODE && valid_ebyte(e_pair, player->valid_arg_type)) \
-		|| (e_pair == DIR_CODE && op_tab[player->inst->op_code - 1].indexed))
+		|| (e_pair == DIR_CODE && g_op_tab[player->inst->op_code - 1].indexed))
 		(*step) += memory_to_int(&player->inst->args[player->j], arena, \
 			result, 2);
 	else if (e_pair == DIR_CODE && valid_ebyte(e_pair,\
@@ -80,11 +80,11 @@ int				ebyte_to_args(t_player *player, t_arena *arena, int *step)
 
 	i = 6;
 	player->j = -1;
-	while (++player->j < op_tab[player->inst->op_code - 1].num_args)
+	while (++player->j < g_op_tab[player->inst->op_code - 1].num_args)
 	{
 		e_pair = player->inst->ebyte >> i & 3;
 		player->valid_arg_type = \
-		op_tab[player->inst->op_code - 1].arg_types[player->j];
+		g_op_tab[player->inst->op_code - 1].arg_types[player->j];
 		if (e_pair == REG_CODE && valid_ebyte(e_pair, player->valid_arg_type) &&
 		valid_reg(arena, player, *step))
 		{
@@ -103,15 +103,15 @@ int				ebyte_to_args(t_player *player, t_arena *arena, int *step)
 
 int				save_without_eb(t_player *player, t_arena *arena, int *step)
 {
-	if (op_tab[player->inst->op_code - 1].arg_types[0] == REG_CODE && \
+	if (g_op_tab[player->inst->op_code - 1].arg_types[0] == REG_CODE && \
 			valid_reg(arena, player, *step))
 		player->inst->args[0] = (int)arena->memory[player->pc + \
 		(*step)++] & 255;
-	else if (op_tab[player->inst->op_code - 1].indexed || \
-			op_tab[player->inst->op_code - 1].arg_types[0] == IND_CODE)
+	else if (g_op_tab[player->inst->op_code - 1].indexed || \
+			g_op_tab[player->inst->op_code - 1].arg_types[0] == IND_CODE)
 		*step += memory_to_int(&player->inst->args[0], arena, player->pc + \
 		*step, 2);
-	else if (op_tab[player->inst->op_code - 1].arg_types[0] == DIR_CODE)
+	else if (g_op_tab[player->inst->op_code - 1].arg_types[0] == DIR_CODE)
 		*step += memory_to_int(&player->inst->args[0], arena, player->pc +\
 		*step, 4);
 	else
@@ -131,7 +131,7 @@ int				save_inst(t_player *player, t_arena *arena)
 	if (player->inst->op_code > 16 || player->inst->op_code < 1)
 		return (-1);
 	advance_proc_pc(&player, 1);
-	if (op_tab[player->inst->op_code - 1].encoding_byte == 1)
+	if (g_op_tab[player->inst->op_code - 1].encoding_byte == 1)
 	{
 		player->inst->ebyte = (char)arena->memory[player->pc];
 		step++;

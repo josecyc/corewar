@@ -6,14 +6,13 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 10:55:08 by tholzheu          #+#    #+#             */
-/*   Updated: 2019/09/10 14:40:57 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 19:12:28 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../includes/vm.h"
 
-static t_inst_funct	inst_functions[16] =
+static t_inst_funct		g_inst_functions[16] =
 {
 	inst_live,
 	inst_ld,
@@ -33,7 +32,7 @@ static t_inst_funct	inst_functions[16] =
 	inst_aff
 };
 
-void	clean_process_inst(t_player *process)
+void		clean_process_inst(t_player *process)
 {
 	process->inst->ebyte = 0;
 	process->inst->args[0] = 0;
@@ -47,36 +46,13 @@ void	clean_process_inst(t_player *process)
 
 /*
 ** The loop consists of the main structure and mgmnt of the program,
-** during each loop the cycle increases it finishes when 
-** cycles_to_die have been reduced to >= 0 via or when there are no more processes 
+** during each loop the cycle increases it finishes when
+** cycles_to_die have been reduced to >= 0 via or when
+** there are no more processes
 ** The cycles decrease whenever a loop is executed.
 */
 
-void	winner_print(t_player *p, t_arena *arena, t_window *win)
-{
-	t_player *tmp;
-
-	tmp = p;
-	wattron(win->down, COLOR_PAIR(3));
-	while (tmp)
-	{
-		if (tmp->pnum == arena->last_alive)
-		{
-			mvwprintw(win->down, 3, 170, "WINNER IS \"%s\"", tmp->name);
-			wattroff(win->down, COLOR_PAIR(3));
-			wrefresh(win->down);
-			getch_theses(win, arena, 1);
-			return ;
-		}
-		tmp = tmp->next;
-	}
-	mvwprintw(win->down, 3, 170, "END OF THE GAME");
-	wrefresh(win->down);
-	wattroff(win->down, COLOR_PAIR(3));
-	getch_theses(win, arena, 1);
-}
-
-void	announce_winner(t_player *p, t_arena *arena)
+void		announce_winner(t_player *p, t_arena *arena)
 {
 	t_player *tmp;
 
@@ -85,25 +61,26 @@ void	announce_winner(t_player *p, t_arena *arena)
 	{
 		if (tmp->pnum == arena->last_alive)
 		{
-			ft_printf("\n\nXXXXXXXXX\nWINNER IS \"%s\"\nXXXXXXXXXXX\n", tmp->name);
+			ft_printf("\n\nXXXXXXXXX\nWINNER IS \"%s\"\nXXXXXXXXXXX\n",
+					tmp->name);
 			return ;
 		}
 		tmp = tmp->next;
 	}
 }
 
-void	to_save_inst(t_player *cur, t_arena *arena, t_player **head)
+void		to_save_inst(t_player *cur, t_arena *arena, t_player **head)
 {
 	t_player *tmp;
 
-	if (save_inst(cur, arena) != -1) //
+	if (save_inst(cur, arena) != -1)
 	{
 		if (cur->inst->op_code == 12)
 			inst_fork(head, arena, cur);
-		else if(cur->inst->op_code == 15)
+		else if (cur->inst->op_code == 15)
 			inst_lfork(head, arena, cur);
 		else
-			inst_functions[cur->inst->op_code - 1](cur, arena);
+			g_inst_functions[cur->inst->op_code - 1](cur, arena);
 	}
 	clean_process_inst(cur);
 }
@@ -112,10 +89,10 @@ void		loop2(t_player *cur, t_arena *arena, t_player **head)
 {
 	while (cur)
 	{
-		while(cur && cur->dead == 1)
+		while (cur && cur->dead == 1)
 			cur = cur->next;
 		if (!cur)
-			break;
+			break ;
 		if (cur->inst->counter == -1)
 			while (put_cycle(cur, arena) == 0)
 				cur->pc++;
@@ -128,7 +105,7 @@ void		loop2(t_player *cur, t_arena *arena, t_player **head)
 	}
 }
 
-void	loop(t_player *players, t_arena *arena)
+void		loop(t_player *players, t_arena *arena)
 {
 	t_player		*cur;
 	t_window		win;
@@ -144,15 +121,15 @@ void	loop(t_player *players, t_arena *arena)
 				return ;
 		if (arena->flags->interactive)
 			interactive(players, arena, &win);
-		if (arena->flags->dump_bl && arena->flags->dump_cycles == arena->total_cycles)
+		if (arena->flags->dump_bl &&
+				arena->flags->dump_cycles == arena->total_cycles)
 		{
 			print_memory(arena->memory);
-			return;
+			return ;
 		}
 		arena->cycle_counter++;
 		arena->total_cycles++;
 	}
-	if (arena->flags->interactive)
-		winner_print(players, arena, &win);
+	winner_print(players, arena, &win);
 	close_win();
 }

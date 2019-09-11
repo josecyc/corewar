@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 16:56:37 by jdiaz             #+#    #+#             */
-/*   Updated: 2019/01/30 20:29:40 by jcruz-y-         ###   ########.fr       */
+/*   Updated: 2019/09/10 18:45:44 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,5 @@ int					get_next_line(const int fd, char **line);
 int					ft_isdigitstr(char *str);
 void				skip_lines(int nb, int fd);
 void				mem_to_int(int	*dst, int address, char *prog, int bytes);
-
 
 #endif
