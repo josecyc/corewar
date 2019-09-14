@@ -25,6 +25,10 @@ Then the war can begin:
 
 ![GitHub Logo](ressources/init_corewar.png)
 
-**an Arena magicly opens and you can start the fight by pressing space**
+**An Arena opens and you can start the fight by pressing space**
 
 ![GitHub Logo](ressources/ezgif.com-video-to-gif.gif)
+
+**And the winner is ..."**
+
+![GitHub Logo](ressources/winner.png)
