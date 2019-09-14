@@ -21,4 +21,6 @@ reported to be “alive”
 
 # Overview
 
+![GitHub Logo](ressources/init_corewar)
+
 ![GitHub Logo](ressources/ezgif.com-video-to-gif.gif)
