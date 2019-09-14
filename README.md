@@ -21,4 +21,4 @@ reported to be “alive”
 
 # Overview
 
-![GitHub Logo](ezgif.com-video-to-gif.gif)
+![GitHub Logo](ressources/ezgif.com-video-to-gif.gif)
