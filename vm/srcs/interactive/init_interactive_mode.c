@@ -6,7 +6,7 @@
 /*   By: viclucas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 07:12:56 by viclucas          #+#    #+#             */
-/*   Updated: 2019/09/09 21:42:26 by viclucas         ###   ########.fr       */
+/*   Updated: 2019/09/14 12:04:43 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ t_window		*init_interactive_mode(t_window *win)
 	keypad(stdscr, TRUE);
 	noecho();
 	curs_set(0);
-	if (COLS < 280 || LINES < 80)
+	if (COLS < 246 || LINES < 74)
 		error_handler_inter(WINDOW_TOO_SMALL);
 	else if (has_colors() == FALSE)
 		error_handler_inter(NO_COLORS);

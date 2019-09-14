@@ -6,7 +6,7 @@
 /*   By: jcruz-y- <jcruz-y-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 13:05:34 by viclucas          #+#    #+#             */
-/*   Updated: 2019/09/10 13:56:50 by viclucas         ###   ########.fr       */
+/*   Updated: 2019/09/14 12:02:11 by viclucas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	basic_infos(t_window *win, t_data data, t_player *tmp)
 	ft_update_coord(&tmp_data, get_addr_value(tmp, (-tmp->inst->size)),
 			win->side);
 	mvwprintw(win->side, data.y, data.x, "[%d][%d] ", tmp_data.y,
-			tmp_data.x);
+			tmp_data.x / 64);
 }
 
 void	side_informations(t_window *win, t_player *players)

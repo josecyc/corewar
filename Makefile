@@ -6,11 +6,11 @@
 #    By: viclucas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 15:19:32 by viclucas          #+#    #+#              #
-#    Updated: 2019/09/10 15:22:08 by viclucas         ###   ########.fr        #
+#    Updated: 2019/09/14 12:01:49 by viclucas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = compile
+NAME = ./corewar
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -I.
 RM = rm -f
