@@ -15,7 +15,9 @@ reported to be “alive”
 
 First you will need to compile ur assembler files to .cor files with our tool "./assembler/asm"
 > assembler/asm champions/name_of_a_champion.s
+
 > assembler/asm champions/name_of_a_champion2.s
+
 Then the war can begin:
 > vm/corewar -i champions/"name_of_a_champion".cor champions/"name_of_a_champion2".cor
 
