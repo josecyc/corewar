@@ -32,3 +32,5 @@ Then the war can begin:
 **And the winner is ..."**
 
 ![GitHub Logo](ressources/winner.png)
+
+**Machine-gun won with less memory owning because he was the last one executing the "live" instruction before the end of the time**
